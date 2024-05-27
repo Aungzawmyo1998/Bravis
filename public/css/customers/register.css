@@ -1,0 +1,51 @@
+
+body {
+    background-color: #EDF2FB;
+    padding: 5rem;
+}
+
+.body-container h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.form-container {
+    background-color: #FFF;
+    padding: 3rem;
+    border-radius: 25px;
+    width: 40rem;
+    margin: 0 auto;
+}
+@media (max-width: 800px) {
+    .form-container {
+        width: 90%;
+    }
+}
+@media (max-width: 484px) {
+    body {
+        padding: inherit;
+        padding-top: 3rem;
+    }
+    .form-container {
+        border-radius: inherit;
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        padding: inherit;
+        padding-top: 3rem;
+    }
+    .form-container {
+        border-radius: inherit;
+    }
+
+}
+@media (max-width: 358px) {
+    .fullname {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+

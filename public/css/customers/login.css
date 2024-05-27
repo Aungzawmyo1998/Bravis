@@ -1,0 +1,44 @@
+body {
+    background-color: #EDF2FB;
+    width: 100%;
+    padding: 5rem;
+}
+.login_container {
+    display: grid;
+    grid-template-columns: repeat(2, 40rem);
+    justify-content: center;
+
+}
+.form_side {
+    /* width: 50%; */
+    padding: 3rem;
+    background-color: #EDF2FB;
+    /* border: 2px solid red;    */
+}
+.form_side > h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.form_container {
+    background: #FFF;
+    width: 30rem;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.form_container input {
+    background-color: #E7E7E7;
+}
+.register > p {
+    text-align: center;
+}
+.register > p a {
+    margin-left: 1rem;
+}
+
+.image_side {
+    background-image: url(../../img/customers/login-bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
