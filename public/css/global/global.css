@@ -1,31 +1,109 @@
+:root {
+   --primary-color: #3B76EF;
+   --background-color: #D9E5FA;
+   --border-radius: 10px;
+   --font-color: #6d6d6d;
+   --header-color: #504F54;
+   --input-background-color: #F7FAFF;
+}
+
  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    list-style: none;
+    text-decoration: none;
+ }
+ body {
+    background-color: var(--background-color);
  }
  #global {
-    padding: 5px;
+    padding: 15px 10px;
+
+
  }
 
  #global .global-container {
 
-    width: calc(100% - 10px);
-    border: 2px solid black;
+    width: calc(100% - 20px);
 
     position: fixed;
     display: grid;
-    grid-template-columns: 7% 80%;
+    gap: 20px;
+    grid-template-columns: 150px 90%;
+    grid-template-rows: calc(100vh - 30px);
+    justify-content: space-between;
  }
  .global-container .nav-container {
 
     width: 100%;
-    border: 2px solid black;
+    /* height: calc(100vh - 30px); */
+    background-color: #FFF;
+    border-radius: var(--border-radius);
+    padding: 15px;
  }
  .global-container .logo {
     font-size: 35px;
     font-weight: 600;
+    color: #5B6BDC;
     text-align: center;
+    margin-bottom: 20px;
  }
+ .global-container .nav-link {
+    line-height: 2.5;
+ }
+ .global-container .nav-link li {
+    color: var(--font-color);
+ }
+ .global-container .nav-link i {
+    font-size: 15px;
+    margin-right: 10px;
+ }
+ .global-container .nav-link a {
+    color: var(--font-color);
+ }
+
+
+ /* display pannel */
+.display-pannel .noti-container {
+    background-color: #FFF;
+    border-radius: var(--border-radius);
+    width: 100%;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.display-pannel .bell,
+.display-pannel .message {
+    font-size: 30px;
+    color: var(--font-color);
+    margin-right: 15px;
+}
+.display-pannel .profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.display-pannel .profile > span {
+    color: var(--font-color);
+}
+.display-pannel .profile-image {
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 50%;
+    overflow: hidden;
+}
+/* .display-pannel .master {
+    overflow: scroll;
+} */
+
+
 
 
 

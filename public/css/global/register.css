@@ -1,0 +1,111 @@
+
+.master .global-register {
+    width: 100%;
+
+}
+
+.global-register .header {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.global-register .header > h1 {
+    color: var(--header-color);
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.global-register .header > p {
+    color: var(--font-color);
+}
+
+/* add container */
+
+.global-register .add-container {
+    padding: 30px 20px;
+    background-color: #FFF;
+    border-radius: var(--border-radius);
+    height: calc(100vh - 259px);
+    /* border: 2px solid black; */
+    /* overflow: hidden; */
+    /* overflow: scroll; */
+}
+
+.global-register .add-container > h2 {
+    color: var(--header-color);
+    font-size: 20px;
+}
+.global-register .form-container {
+    padding: 20px;
+    height: 100%;
+    overflow: scroll;
+}
+.global-register .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.global-register .row input,
+.global-register .row textarea,
+.global-register .row select {
+    width: 75%;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--input-background-color);
+    border: 1px solid #0000003f ;
+    resize: none;
+    font-size: 20px;
+}
+.global-register .price-container {
+    width: 75%;
+    /* padding: 10px; */
+    padding-left: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--input-background-color);
+    border: 1px solid #0000003f ;
+    display: flex;
+    flex-direction: row;
+}
+.global-register .price-container > span {
+    display: flex;
+    align-items: center;
+    width: 200px;
+
+
+}
+.global-register .price-container > input {
+    border: none;
+    width: 100%;
+    border-left: 1px solid #0000003f;
+    /* border: 1px solid black; */
+    border-radius: 0 10px 10px 0;
+}
+
+.global-register .size-container {
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+}
+.size-container .size-item {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.global-register .button-container {
+    padding-top: 80px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+.global-register .button {
+    cursor: pointer;
+    width: 45%;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    border: none;
+    box-shadow: 2px 2px var(--font-color);
+    font-size: 20px;
+}
+
+
