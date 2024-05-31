@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* staff search */
+#staff-main .search-container {
+    background-color: #FFF;
+    padding: 2.5rem;
+    border-radius: 10px;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+#staff-main .search-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#staff-main .search-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+
+    /* border: 2px solid #000; */
+}
+#staff-main .search-item input,
+#staff-main .search-item select {
+    background-color: #F7FAFF;
+    width: 45%;
+}
+#staff-main .search-form button {
+    width: 20rem;
+    font-weight: 500;
+}
+
+
+/* staff list */
+#staff-main .staff-list table {
+
+}

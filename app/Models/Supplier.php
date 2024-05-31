@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-// use App\Models\Admin;
 
-class Role extends Model
+class Supplier extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
-    public function staff (): HasMany
+
+    public function products(): HasMany
     {
-        return $this->hasMany(Admin::class,'role_id','id');
+        return $this->hasMany(Product::class);
     }
 }
