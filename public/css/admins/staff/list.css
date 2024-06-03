@@ -1,0 +1,237 @@
+:root {
+    --primary-color: #3B76EF;
+    --background-color: #D9E5FA;
+    --border-radius: 10px;
+    --font-color: #6d6d6d;
+    --header-color: #504F54;
+    --input-background-color: #F7FAFF;
+ }
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+ }
+#staff-list .search-icon {
+    display: none;
+}
+#staff-list .header {
+    display: flex;
+    padding: 20px 5px ;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+#staff-list .header>h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--header-color);
+}
+#staff-list .button {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    color: #FFF;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+#staff-list .add-button {
+    width: 150px;
+}
+
+#staff-list .add-button > i {
+    margin-right: 10px;
+}
+/* search container */
+#staff-list .search-form {
+    width: 100%;
+    background-color: #FFF;
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+}
+#staff-list .search-form .form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 70%; */
+    gap: 15px;
+}
+#staff-list .search-form .search-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 50%;
+    gap: 15px;
+}
+#staff-list .search-form input,
+#staff-list .search-form select
+{
+
+    width: 300px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--input-background-color);
+    border: 1px solid #0000003f ;
+    resize: none;
+    font-size: 16px;
+
+}
+
+#staff-list .search-button .button {
+    width: 200px;
+}
+
+
+/* table list  */
+#staff-list .list  {
+    padding-top: 50px;
+}
+#staff-list .list table {
+
+    width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border-collapse: collapse;
+}
+#staff-list .list  tr th {
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+    text-align: left;
+}
+#staff-list .list table tr td {
+    color: var(--font-color);
+    padding: 15px;
+    font-size: 18px;
+}
+#staff-list .list .table-header {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+#staff-list .list tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+#staff-list .list tbody tr:hover {background-color: #ddd;}
+
+#staff-list .list .action .action-btn {
+    border: none;
+    display: inline-block;
+    color: var(--font-color);
+    cursor: pointer;
+    margin-left: 10px;
+}
+#staff-list .action  .del-btn i{
+    color: var(--danger-color);
+}
+#staff-list .action-btn > i {
+    font-size: 20px;
+}
+
+/* responsive */
+
+@media (max-width: 1200px) and (min-width: 1000px) {
+
+
+
+    #staff-list .search-form input,
+    #staff-list .search-form select {
+
+        min-width: 150px;
+        padding: 10px;
+        border-radius: var(--border-radius);
+        background-color: var(--input-background-color);
+        border: 1px solid #0000003f ;
+        resize: none;
+        font-size: 16px;
+    }
+    #staff-list .list  tr th  {
+        /* padding: 10px; */
+        font-size: 16px;
+    }
+    #staff-list .list table tr td {
+        color: var(--font-color);
+        font-size: 16px;
+    }
+}
+@media (min-width: 769px) and (max-width: 1000px) {
+    #staff-list .search-form input,
+    #staff-list .search-form select {
+        min-width: 150px;
+        padding: 10px;
+    }
+    #staff-list .search-button .button {
+        width: 120px;
+        padding: 13px;
+    }
+    #staff-list .list  {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    #staff-list .list table  {
+        width: 800px;
+    }
+    #staff-list .list  tr th  {
+        /* padding: 10px; */
+        font-size: 16px;
+    }
+    #staff-list .list table tr td {
+        color: var(--font-color);
+        font-size: 16px;
+    }
+}
+@media (min-width: 500px ) and (max-width: 768px) {
+
+    #staff-list .search-form .search-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        /* border: 1px solid black; */
+        width: 60%;
+    }
+    #staff-list .search-form input,
+    #staff-list .search-form select {
+
+        width: 160px;
+        padding: 10px;
+        border-radius: var(--border-radius);
+        background-color: var(--input-background-color);
+        border: 1px solid #0000003f ;
+        resize: none;
+        font-size: 15px;
+    }
+    #staff-list .search-button {
+
+        height: 100px;
+        /* border: 1px solid black; */
+    }
+    #staff-list .search-button .button {
+        width: 130px;
+        padding: 13px;
+
+    }
+
+    #staff-list .list  {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    #staff-list .list table  {
+        width: 750px;
+    }
+    #staff-list .list  tr th  {
+        /* padding: 10px; */
+        font-size: 16px;
+    }
+    #staff-list .list table tr td {
+        color: var(--font-color);
+        font-size: 15px;
+    }
+}

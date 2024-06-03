@@ -19,8 +19,11 @@
                     </div>
 
                     <div class="row">
-                        <button class="button">Cancel</button>
-                        <button type="submit" class="button">Add</button>
+                        <div class="button-container">
+                            <button class="button">Cancel</button>
+                            <button type="submit" class="button">Add</button>
+
+                        </div>
                     </div>
                 </form>
             </div>

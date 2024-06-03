@@ -24,14 +24,17 @@
     <link rel="stylesheet" href="{{ asset('css/global/list.css')}}">
     {{-- product liink --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/admins/product.css')}}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/admins/products/list.css')}}">
 
     {{-- staff list link css --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/admins/staff/main_staff.css')}}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/admins/staff/list.css')}}">
     {{-- add staff links css --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/admins/staff/add.css')}}"> --}}
     {{-- update staff css --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/admins/staff/edit.css')}}"> --}}
-
+    {{-- staff links and   --}}
+    <link rel="stylesheet" href="{{ asset('css/admins/staff/staff_list.css')}}">
 
     <title>@yield('title')</title>
 </head>

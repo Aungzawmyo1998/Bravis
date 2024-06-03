@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section id="product-main" class="global-list">
+<section id="product-main" class="product-list">
 
     <div class="main-container">
         <div class="header">
