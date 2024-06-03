@@ -21,6 +21,7 @@
     {{-- global linnk --}}
     <link rel="stylesheet" href="{{asset('css/global/global.css')}}">
     <link rel="stylesheet" href="{{ asset('css/global/register.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/global/list.css')}}">
     {{-- product liink --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/admins/product.css')}}"> --}}
 
@@ -39,19 +40,23 @@
         <div class="global-container">
             <div class="nav-container">
                 <div class="logo">
-                    Bravis
+                    <span class="main-logo">Bravis</span>
+                    <span class="sec-logo">B</span>
                 </div>
-                <div class="nav-data">
+                <div class="nav-data off-screen-menu">
                     <ul class="nav-link">
-                        <li><span><i class="fa-solid fa-house-user"></i></span><a href="{{ url('/admins/dashboard')}}">Dashboard</a></li>
-                        <li><span><i class="fa-solid fa-briefcase"></i></span><a href="{{ url('/product/list')}}">Product</a></li>
-                        <li><span><i class="fa-regular fa-user"></i></span><a href="{{ url('/admins/customer')}}">Customer </a></li>
-                        <li><span><i class="fa-solid fa-cart-shopping"></i></span><a href="{{ url('/admins/order')}}">Order </a></li>
-                        <li><span><i class="fa-solid fa-user-tie"></i></span><a href="{{ url('/staff/list/show')}}">Staff </a></li>
-                        <li><span><i class="fa-solid fa-lock"></i></span><a href="{{ url('/category/list')}}">Category </a></li>
-                        <li><span><i class="fa-solid fa-lock"></i></span><a href="{{ url('/supplier/list')}}">Supplier </a></li>
+                        <li><a href="{{ url('/admins/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span class="link-data">Dashboard</span></a></li>
+                        <li><a href="{{ url('/product/list')}}"><span><i class="fa-solid fa-briefcase"></i></span><span class="link-data">Product</span></a></li>
+                        <li><a href="{{ url('/admins/customer')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data">Customer</span> </a></li>
+                        <li><a href="{{ url('/admins/order')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data">Order</span> </a></li>
+                        <li><a href="{{ url('/staff/list/show')}}"><span><i class="fa-solid fa-user-tie"></i></span><span class="link-data">Staff</span> </a></li>
+                        <li><a href="{{ url('/category/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data">Category</span> </a></li>
+                        <li><a href="{{ url('/supplier/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data">Supplier</span> </a></li>
 
                     </ul>
+                </div>
+                <div class="ham-menu">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
             </div>
             <div class="display-pannel">
@@ -82,5 +87,7 @@
 
         {{-- bootstrap script --}}
         {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
+
+    <script src="{{ asset('script/ham_menu.js')}}"></script>
 </body>
 </html>

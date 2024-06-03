@@ -4,15 +4,15 @@
 
 @section('content')
 
-<section id="update-product">
+<section id="update-product " class="global-register">
     <div class="main-container">
-        <div class="heder">
-            <h1>Add Supplier</h1>
+        <div class="header">
+            <h1>Update Supplier</h1>
             <p>Edit your product necessary information here</p>
         </div>
-        <div class="update-container">
+        <div class="update-container add-container">
             <h2>Basic Information</h2>
-            <form action="{{ url('product/'.$products[2]->id)}}" method="POST" enctype="multipart/form-data">
+            <form class="form-container" action="{{ url('product/'.$products[2]->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="row">
@@ -84,8 +84,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="button">Cancel</button>
-                    <button class="button" type="submit" >Update</button>
+                    <div class="button-container">
+                        <button class="button">Cancel</button>
+                        <button class="button" type="submit" >Update</button>
+                    </div>
                 </div>
             </form>
         </div>

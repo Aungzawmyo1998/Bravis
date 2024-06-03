@@ -4,34 +4,39 @@
 
 @section('content')
 
-<section id="product-main">
+<section id="product-main" class="global-list">
 
     <div class="main-container">
-        <div class="product-header">
+        <div class="header">
             <h1>Products</h1>
-            <a href="{{ route('add.product')}}" class="button"><i class="fa-solid fa-plus"></i>Add Product</a>
+            <div class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <a href="{{ route('add.product')}}" class="add-button button"><i class="fa-solid fa-plus"></i>Add Product</a>
         </div>
-        <div class="search-container">
+        {{-- <div class="search-container"> --}}
             <div class="search-form">
-                <form action="">
+                <form action="" class="form-container">
                     <div class="search-item">
-                        <input type="text" name="product" id="" class="form-control" >
-                        <select name="" id="" class="form-select" >
-                            <option value="1">Catagory 1</option>
-                            <option value="2">Catagory 2</option>
+                        <input type="text" name="product" id="" class="" placeholder="search prosucts" >
+                        <select name="" id="" class="select-item" >
+                            <option value="1" selected>Catagory</option>
+                            @foreach ($products as $product )
+                                <option value="{{$product->category_id}}">{{$product->categories->name}}</option>
+                            @endforeach
                         </select>
-                        <input type="text" name="proce" id="" class="form-control" >
+                        <input type="text" name="proce" id="" class="" placeholder="price" >
                     </div>
                     <div class="search-button">
-                        <button type="submit" class="btn btn-primary" >Filter</button>
-                        <a href="" class="btn btn-secondary">Resect</a>
+                        <button type="submit" class="button " >Filter</button>
+                        <a href="" class="button res-btn">Resect</a>
                     </div>
                 </form>
             </div>
-            <div class="product-list">
+            <div class="list">
                 <table>
                     <thead >
-                        <tr>
+                        <tr class="table-header">
                             <th>Product</th>
                             <th>Supplier</th>
                             <th>Category</th>
@@ -47,18 +52,18 @@
                                 <td>{{$product->suppliers->name}}</td>
                                 <td>{{$product->categories->name}}</td>
                                 <td>{{$product->price}}</td>
-                                <td>
-                                    <span>{{$product->small_qty}}</span>
-                                    <span>{{$product->medium_qty}}</span>
-                                    <span>{{$product->large_qty}}</span>
+                                <td class="size">
+                                    <span>S - {{$product->small_qty}}</span>
+                                    <span>M - {{$product->medium_qty}}</span>
+                                    <span>L - {{$product->large_qty}}</span>
                                 </td>
-                                <td>
+                                <td class="action">
                                     <form action="{{ url('product/'.$product->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
 
-                                        <a href="{{ url('product/'.$product->id.'/edit')}}" class="btn"><i class="fa-regular fa-pen-to-square"></i></a>
-                                        <button type="submit" onclick="return confirm('Are you sure want to delete')">
+                                        <a href="{{ url('product/'.$product->id.'/edit')}}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <button type="submit" class="action-btn del-btn" onclick="return confirm('Are you sure want to delete')">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>
                                     </form>
@@ -68,7 +73,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        {{-- </div> --}}
 
     </div>
 
