@@ -15,11 +15,17 @@
                     @csrf
                     <div class="row">
                         <label for="name">Supplier Name</label>
-                        <input type="text" name="name" id="name"  placeholder="Supplier Name">
+                        <div class="input">
+                            <input type="text" name="name" id="name"  placeholder="Supplier Name">
+
+                        </div>
                     </div>
                     <div class="row">
                         <label for="brand">Brand</label>
+                        <div class="input">
                         <input type="text" name="brand" id="brand"  placeholder="Brand">
+
+                        </div>
                     </div>
 
                     <div class="row">

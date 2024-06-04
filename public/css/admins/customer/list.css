@@ -1,0 +1,147 @@
+:root {
+    --primary-color: #3B76EF;
+    --background-color: #D9E5FA;
+    --border-radius: 10px;
+    --font-color: #6d6d6d;
+    --header-color: #504F54;
+    --input-background-color: #F7FAFF;
+ }
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+ }
+
+ #cus-list .header {
+
+    padding: 20px 5px ;
+
+ }
+ #cus-list .header>h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--header-color);
+}
+
+#cus-list .search-form {
+    width: 100%;
+    background-color: #FFF;
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+}
+
+#cus-list .form-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#cus-list .search-item>input {
+    width: 300px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--input-background-color);
+    border: 1px solid #0000003f ;
+    resize: none;
+    font-size: 16px;
+}
+
+#cus-list .search-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+#cus-list .search-button .button {
+    width: 250px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    color: #FFF;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+#cus-list .list  {
+    padding-top: 50px;
+}
+#cus-list .list table {
+
+    width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border-collapse: collapse;
+}
+#cus-list .table-header {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+#cus-list .list thead th {
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+    text-align: left;
+}
+#cus-list .list tbody td {
+    color: var(--font-color);
+    padding: 15px;
+    font-size: 18px;
+}
+#cus-list .list tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+#cus-list .list tbody tr:hover {
+    background-color: #ddd;
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+    #cus-list .search-button .button {
+
+        width: 200px;
+        padding: 13px;
+    }
+
+    #cus-list .list thead th {
+        padding: 15px;
+        font-size: 18px;
+        text-align: left;
+    }
+    #cus-list .list tbody td {
+        color: var(--font-color);
+        padding: 15px;
+        font-size: 16px;
+    }
+
+}
+@media (min-width: 769px) and (max-width: 1000px) {
+    #cus-list .search-item>input {
+        width: 200px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    #cus-list .search-button .button {
+
+        width: 150px;
+        padding: 13px;
+    }
+    #cus-list .list thead th {
+        padding: 15px;
+        font-size: 18px;
+        text-align: left;
+    }
+    #cus-list .list tbody td {
+        color: var(--font-color);
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+
+
+

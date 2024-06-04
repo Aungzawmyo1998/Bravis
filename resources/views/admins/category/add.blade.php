@@ -15,7 +15,10 @@
                     @csrf
                     <div class="row">
                         <label for="name">Category Name</label>
-                        <input type="text" name="name" id="name" class="Category Name" placeholder="Category Name">
+                        <div class="input">
+                            <input type="text" name="name" id="name" class="Category Name" placeholder="Category Name">
+
+                        </div>
                     </div>
 
                     <div class="row">

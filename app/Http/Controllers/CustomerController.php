@@ -11,6 +11,11 @@ use App\Models\Customer;
 class CustomerController extends Controller
 {
     //
+
+    public function customer ()
+    {
+        return view('admins.customer.list');
+    }
     public function register ()
     {
         return view('customers.register');

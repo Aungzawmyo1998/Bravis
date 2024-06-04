@@ -11,7 +11,7 @@
             <div class="search-icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <a href="{{route('admin.add.staff.show')}}" class="add-button button"><i class="fa-solid fa-plus"></i>Add Staff</a>
+            <a href="{{route('admin.add.staff.show')}}" class="cat-add-button button"><i class="fa-solid fa-plus"></i>Add Staff</a>
 
         </div>
         <div class="search-form">
@@ -52,14 +52,14 @@
                             <td>{{$staff->role->name}}</td>
                             <td class="action">
                                 {{-- @dd(auth('admin')->user()->role) --}}
-                                @if((auth('admin')->id() == $staff->id && auth('admin')->user()->role->name == 'Admin') || auth('admin')->user()->role->name !== 'Staff')
+                                {{-- @if((auth('admin')->id() == $staff->id && auth('admin')->user()->role->name == 'Admin') || auth('admin')->user()->role->name !== 'Staff') --}}
                                     <form action="{{ url('staff/'.$staff->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ url('staff/'.$staff->id.'/edit') }}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
                                         <button type="submit" class="action-btn del-btn" onclick="return confirm('Are You Sure Want to Delete')" ><i class="fa-regular fa-trash-can"></i></button>
                                     </form>
-                                @endif
+                                {{-- @endif --}}
                             </td>
                         </tr>
                     @endforeach

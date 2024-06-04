@@ -18,36 +18,65 @@
 
                         <div class="row">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Staff Name" >
+                            <div class="input">
+                                <input  type="text" name="name" class="" id="name" placeholder="Staff Name" >
+                                @error('name')
+                                    <p style="color: red;">{{ $message }}</span>
+                                @enderror
+
+                            </div>
                         </div>
                         <div class="row">
                             <label for="email" >Email</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="email" >
+                            <div class="input">
+                                <input type="email" name="email" class="" id="email" placeholder="email" >
+                                @error('email')
+                                    <p style="color: red;">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="row">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="password" >
+                            <div class="input">
+                                <input type="password" name="password" class="" id="password" placeholder="password" >
+                                @error('password')
+                                    <p style="color: red;">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="row">
                             <label for="phone" >Phone Number</label>
-                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Example.09...">
+                            <div class="input">
+                                <input type="text" name="phone" class="" id="phone" placeholder="Example.09...">
+
+                            </div>
                         </div>
                         <div class="row">
                             <label for="address">Adddress</label>
-                            <textarea name="address" id="" class="form-control" cols="30" rows="5" placeholder="Address"></textarea>
+                            <div class="input">
+                                <textarea name="address" id="" class="" cols="30" rows="5" placeholder="Address"></textarea>
+
+                            </div>
                         </div>
                         <div class="row">
                             <label for="position" >Staff Position</label>
-                            <select name="position" id="position" class="form-select">
-                                <option value="1">Admin</option>
-                                <option value="2">Manager</option>
-                                <option value="3">Supervisor</option>
-                                <option value="4">Staff</option>
-                            </select>
+                            <div class="input">
+                                <select name="position" id="position" class="">
+                                    <option value="1">Admin</option>
+                                    <option value="2">Manager</option>
+                                    <option value="3">Supervisor</option>
+                                    <option value="4">Staff</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="row">
                             <label for="image"  >Profile Photo</label>
-                            <input type="file" class="form-control" name="image" id="">
+                            <div class="input">
+                                <input type="file" class="" name="image" id="">
+                                @error('image')
+                                    <p style="color: red;">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="row">
                             <div class="button-container">

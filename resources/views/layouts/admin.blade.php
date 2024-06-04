@@ -30,11 +30,18 @@
     {{-- <link rel="stylesheet" href="{{ asset('css/admins/staff/main_staff.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('css/admins/staff/list.css')}}">
     {{-- add staff links css --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/admins/staff/add.css')}}"> --}}
     {{-- update staff css --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/admins/staff/edit.css')}}"> --}}
     {{-- staff links and   --}}
     <link rel="stylesheet" href="{{ asset('css/admins/staff/staff_list.css')}}">
+
+    {{-- categories link --}}
+    <link rel="stylesheet" href="{{ asset('css/categories/list.css')}}">
+
+    {{-- supplier links --}}
+    <link rel="stylesheet" href="{{ asset('css/admins/suppliers/list.css')}}">
+
+    {{-- customer link --}}
+    <link rel="stylesheet" href="{{ asset('css/admins/customer/list.css')}}">
 
     <title>@yield('title')</title>
 </head>
@@ -50,7 +57,7 @@
                     <ul class="nav-link">
                         <li><a href="{{ url('/admins/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span class="link-data">Dashboard</span></a></li>
                         <li><a href="{{ url('/product/list')}}"><span><i class="fa-solid fa-briefcase"></i></span><span class="link-data">Product</span></a></li>
-                        <li><a href="{{ url('/admins/customer')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data">Customer</span> </a></li>
+                        <li><a href="{{ url('/customer/list')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data">Customer</span> </a></li>
                         <li><a href="{{ url('/admins/order')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data">Order</span> </a></li>
                         <li><a href="{{ url('/staff/list/show')}}"><span><i class="fa-solid fa-user-tie"></i></span><span class="link-data">Staff</span> </a></li>
                         <li><a href="{{ url('/category/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data">Category</span> </a></li>

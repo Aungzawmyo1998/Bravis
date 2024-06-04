@@ -14,10 +14,10 @@
     list-style: none;
     text-decoration: none;
  }
-#staff-list .search-icon {
+#sup-list .search-icon {
     display: none;
 }
-#staff-list .header {
+#sup-list .header {
     display: flex;
     padding: 20px 5px ;
     justify-content: space-between;
@@ -25,12 +25,12 @@
     position: relative;
     gap: 50px;
 }
-#staff-list .header>h1 {
+#sup-list .header>h1 {
     font-size: 30px;
     font-weight: 600;
     color: var(--header-color);
 }
-#staff-list .button {
+#sup-list .button {
     font-size: 15px;
     font-weight: 600;
     padding: 15px;
@@ -41,30 +41,31 @@
     text-align: center;
     cursor: pointer;
 }
-#staff-list .add-button {
-    width: 150px;
+#sup-list .add-button {
+    width: 200px;
 }
 
 /* ------------------------------ */
-#staff-list .add-button > i {
+#sup-list .add-button > i {
     margin-right: 10px;
 }
 /* search container */
-#staff-list .search-form {
+#sup-list .search-form {
     width: 100%;
     background-color: #FFF;
     border-radius: var(--border-radius);
     padding: 25px 20px;
 }
-#staff-list .search-form .form-container {
+#sup-list .search-form .form-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* width: 70%; */
     gap: 15px;
+    /* border: 2px solid black; */
 }
-#staff-list .search-form .search-item {
+
+#sup-list .search-form .search-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -73,8 +74,8 @@
     width: 50%;
     gap: 15px;
 }
-#staff-list .search-form input,
-#staff-list .search-form select
+#sup-list .search-form input,
+#sup-list .search-form select
 {
 
     width: 300px;
@@ -87,53 +88,53 @@
 
 }
 
-#staff-list .search-button .button {
+#sup-list .search-button .button {
     width: 200px;
 }
 
 
 /* table list  */
-#staff-list .list  {
+#sup-list .list  {
     padding-top: 50px;
 }
-#staff-list .list table {
+#sup-list .list table {
 
     width: 100%;
     border-radius: var(--border-radius);
     overflow: hidden;
     border-collapse: collapse;
 }
-#staff-list .list  tr th {
+#sup-list .list  tr th {
     color: #fff;
     padding: 15px;
     font-size: 20px;
     text-align: left;
 }
-#staff-list .list table tr td {
+#sup-list .list table tr td {
     color: var(--font-color);
     padding: 15px;
     font-size: 18px;
 }
-#staff-list .list .table-header {
+#sup-list .list .table-header {
     background-color: var(--primary-color);
     border-radius: 10px;
 }
-#staff-list .list tbody tr:nth-child(even) {
+#sup-list .list tbody tr:nth-child(even) {
     background-color: #fff;
 }
-#staff-list .list tbody tr:hover {background-color: #ddd;}
+#sup-list .list tbody tr:hover {background-color: #ddd;}
 
-#staff-list .list .action .action-btn {
+#sup-list .list .action .action-btn {
     border: none;
     display: inline-block;
     color: var(--font-color);
     cursor: pointer;
     margin-left: 10px;
 }
-#staff-list .action  .del-btn i{
+#sup-list .action  .del-btn i{
     color: var(--danger-color);
 }
-#staff-list .action-btn > i {
+#sup-list .action-btn > i {
     font-size: 20px;
 }
 
@@ -143,8 +144,8 @@
 
 
 
-    #staff-list .search-form input,
-    #staff-list .search-form select {
+    #sup-list .search-form input,
+    #sup-list .search-form select {
 
         min-width: 150px;
         padding: 10px;
@@ -154,64 +155,64 @@
         resize: none;
         font-size: 16px;
     }
-    #staff-list .list  tr th  {
+    #sup-list .list  tr th  {
         /* padding: 10px; */
         font-size: 16px;
     }
-    #staff-list .list table tr td {
+    #sup-list .list table tr td {
         color: var(--font-color);
         font-size: 16px;
     }
 }
 @media (min-width: 769px) and (max-width: 1000px) {
-    #staff-list .search-form input,
-    #staff-list .search-form select {
+
+    #sup-list .add-button {
+        width: 150px;
+    }
+
+    #sup-list .search-form input,
+    #sup-list .search-form select {
         min-width: 150px;
         padding: 10px;
     }
-    #staff-list .search-button .button {
+    #sup-list .search-button .button {
         width: 120px;
         padding: 13px;
     }
-    #staff-list .list  {
-        width: 100%;
-        overflow-x: scroll;
-    }
-    #staff-list .list table  {
-        width: 800px;
-    }
-    #staff-list .list  tr th  {
+
+    #sup-list .list  tr th  {
         /* padding: 10px; */
         font-size: 16px;
     }
-    #staff-list .list table tr td {
+    #sup-list .list table tr td {
         color: var(--font-color);
         font-size: 16px;
     }
 }
 @media (min-width: 500px ) and (max-width: 768px) {
 
-    #staff-list .header>h1 {
+    #sup-list .header>h1 {
         font-size: 27px;
     }
-    #staff-list .add-button {
+    #sup-list .add-button {
         /* width: 130px; */
         font-size: 16px;
         padding: 12px;
     }
     /* category add btn */
+    #sup-list .add-button {
+        width: 150px;
+        padding: 13px 5px;
+    }
 
-
-    #staff-list .search-form .search-item {
+    #sup-list .search-form .search-item {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
-
         width: 60%;
     }
-    #staff-list .search-form input,
-    #staff-list .search-form select {
+    #sup-list .search-form input,
+    #sup-list .search-form select {
 
         width: 160px;
         padding: 10px;
@@ -221,29 +222,22 @@
         resize: none;
         font-size: 15px;
     }
-    #staff-list .search-button {
+    #sup-list .search-button {
 
         height: 100px;
         /* border: 1px solid black; */
     }
-    #staff-list .search-button .button {
+    #sup-list .search-button .button {
         width: 130px;
         padding: 13px;
 
     }
 
-    #staff-list .list  {
-        width: 100%;
-        overflow-x: scroll;
-    }
-    #staff-list .list table  {
-        width: 750px;
-    }
-    #staff-list .list  tr th  {
+    #sup-list .list  tr th  {
         /* padding: 10px; */
         font-size: 16px;
     }
-    #staff-list .list table tr td {
+    #sup-list .list table tr td {
         color: var(--font-color);
         font-size: 15px;
     }
@@ -252,46 +246,54 @@
 }
 @media (max-width: 768px ) {
 
-    #staff-list .search-icon {
+    #sup-list .search-icon {
         display: block;
         position: absolute;
         top: 30px;
-        right: 130px;
+        right: 170px;
         font-size: 20px;
         color: var(--header-color);
     }
-    #staff-list .search-form {
+    #sup-list .search-form {
         display: none;
     }
-    #staff-list .search-form.active {
+    /*  */
+    #sup-list .search-form.active {
         display: block;
+        cursor: pointer;
     }
-    #staff-list .list  {
+    #sup-list .list  {
         padding-top: 30px;
     }
 }
 @media (max-width: 500px) {
-    #staff-list .search-icon {
+
+    #sup-list .add-button {
+        width: 150px;
+
+        padding: 13px 5px;
+
+    }
+
+    #sup-list .search-icon {
         display: block;
         position: absolute;
         top: 30px;
-        right: 130px;
+        right: 170px;
         font-size: 20px;
     }
-    #staff-list .search-form .form-container {
+    #sup-list .search-form .form-container {
         position: relative;
         gap: 10px;
     }
-    #staff-list .search-form .search-item {
+    #sup-list .search-form .search-item {
         display: flex;
         flex-direction: column-reverse;
         align-items: flex-start;
-
-        /* border: 1px solid black; */
         width: 60%;
     }
-    #staff-list .search-form input,
-    #staff-list .search-form select {
+    #sup-list .search-form input,
+    #sup-list .search-form select {
 
         width: 100%;
         padding: 10px;
@@ -301,62 +303,55 @@
         resize: none;
         font-size: 15px;
     }
-    #staff-list .search-form select {
+    #sup-list .search-form select {
         position: absolute;
         width: 60%;
         min-width: 80px;
         top: 1px;
         font-size: 14px;
     }
-    #staff-list .search-form input {
+    #sup-list .search-form input {
         position: absolute;
         width: 100%;
         top: 70px;
     }
-    #staff-list .search-button {
+    #sup-list .search-button {
 
         height: 100px;
-        /* border: 1px solid black; */
     }
-    #staff-list .search-button .button {
+    #sup-list .search-button .button {
         width: 100%;
         padding: 11px;
         font-size: 13px;
         /* background-color: red; */
 
     }
-    #staff-list .header>h1 {
+    #sup-list .header>h1 {
         font-size: 23px;
     }
-    #staff-list .add-button {
-        width: 130px;
-        font-size: 16px;
-        padding: 10px;
-    }
-    /*  */
-    #staff-list .list  {
-        width: 100%;
-        overflow-x: scroll;
-    }
-    #staff-list .list table  {
-        width: 750px;
-    }
-    #staff-list .list  tr th  {
+
+
+    #sup-list .list  tr th  {
         /* padding: 10px; */
+        padding:10px;
         font-size: 16px;
     }
-    #staff-list .list table tr td {
+    #sup-list .list table tr td {
+        padding: 10px;
         color: var(--font-color);
         font-size: 15px;
     }
 }
+
 @media (max-width: 400px) {
-    #staff-list .search-icon {
+    #sup-list .add-button {
+        padding: 10px 5px;
+    }
+    #sup-list .search-icon {
         display: block;
         position: absolute;
         top: 30px;
-        right: 130px;
+        left: 115px;
         font-size: 20px;
-        color: var(--header-color);
     }
 }

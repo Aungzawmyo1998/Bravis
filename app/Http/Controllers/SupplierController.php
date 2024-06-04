@@ -45,6 +45,7 @@ class SupplierController extends Controller
     public function edit($id)
     {
         $supplier = Supplier::find($id);
+        
         return view('admins.suppliers.update',compact('supplier'));
     }
 

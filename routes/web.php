@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Models\OrderProduct;
 use App\Models\Supplier;
 
 Route::get('/', function () {
@@ -60,6 +61,11 @@ Route::middleware(['admin'])->group( function () {
     Route::put('/supplier/{id}', [SupplierController::class, 'update'])->name('update.supplier');
     Route::delete('/supplier/{id}',[SupplierController::class, 'destroy'])->name('destroy.supplier');
 
+    // Order
+    Route::get('/order/list', [OrderProduct::class, 'order'])->name('order.list');
+
+    // customer
+    Route::get('/customer/list', [CustomerController::class, 'customer'])->name('customer.list');
 
 });
 

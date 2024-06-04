@@ -41,6 +41,27 @@ class AdminController extends Controller
 //   store staff
    public function staffStore (Request $request)
    {
+
+    $errorMessage = [
+        'name.required' => 'The name field is required',
+        'name.string' => 'The name must be a string',
+        'name.max' => 'The name may not be greater than :max',
+        'email.required' => 'The email field is required',
+        'email.email' => 'The email is incorect',
+        'password.required' => 'The password fild is required',
+        'password.min' => 'The password must be at leat 8 length',
+        'image.required' => 'The image is required',
+
+    ];
+
+    $validator = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email',
+        'password' => 'required|min:8',
+        'image' => 'required',
+
+    ],$errorMessage);
+
     $uuid = Str::uuid()->toString();
     $image = $uuid.'.'.$request -> image->extension();
 
@@ -69,6 +90,7 @@ class AdminController extends Controller
    {
 
     $staff = Admin::with('role')->find($id);
+
     return view('admins.staff.edit',compact('staff'));
    }
 //  update staff

@@ -41,10 +41,14 @@
     justify-content: space-between;
     margin-bottom: 20px;
 }
+.global-register .input {
+    width: 75%;
+}
 .global-register .row input,
 .global-register .row textarea,
 .global-register .row select {
-    width: 75%;
+    width: 100%;
+    /* width: 100%; */
     padding: 10px;
     border-radius: var(--border-radius);
     background-color: var(--input-background-color);
@@ -57,7 +61,7 @@
     font-size: 20px;
 }
 .global-register .price-container {
-    width: 75%;
+    width: 100%;
 
     padding-left: 10px;
     border-radius: var(--border-radius);
@@ -82,7 +86,7 @@
 
 .global-register .size-container {
     display: flex;
-    width: 75%;
+    width: 100%;
     justify-content: space-between;
 }
 .size-container .size-item {
@@ -90,6 +94,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 .global-register .button-container {
     padding-top: 70px;
@@ -129,10 +134,13 @@
         color: var(--header-color);
         font-size: 18px;
     }
+    .global-register .input {
+        width: 70%;
+    }
     .global-register .row input,
     .global-register .row textarea,
     .global-register .row select {
-        width: 70%;
+        width: 100%;
         padding: 8px 10px;
 
         background-color: var(--input-background-color);
@@ -141,7 +149,7 @@
         font-size: 18px;
     }
     .global-register .price-container {
-        width: 70%;
+        width: 100%;
         padding-left: 10px;
         border-radius: var(--border-radius);
         background-color: var(--input-background-color);
@@ -159,12 +167,13 @@
         border-radius: 0 10px 10px 0;
     }
     .global-register .size-container {
-        width: 70%;
+        width: 100%;
         justify-content: space-between;
     }
     .size-container .size-item {
+        display: flex;
         justify-content: flex-end;
-        gap: 10px;
+        gap: 5px;
     }
     .global-register .button {
         cursor: pointer;
@@ -201,13 +210,17 @@
 
         font-size: 16px;
     }
+    .global-register .input {
+        width: 65%;
+    }
     .global-register .row input,
     .global-register .row textarea,
     .global-register .row select {
-        width: 65%;
+        width: 100%;
     }
+    /* to check !!!!!!!!!!!!!!!!!!!!!! */
     .global-register .price-container {
-        width: 65%;
+        width: 100%;
     }
     .global-register .price-container > span {
         width: 100px;
@@ -219,7 +232,7 @@
         border-radius: 0 10px 10px 0;
     }
     .global-register .size-container {
-        width: 65%;
+        width: 100%;
     }
 }
 
@@ -240,6 +253,9 @@
         color: var(--header-color);
         font-size: 18px;
 
+    }
+    .global-register .input {
+        width: 100%;
     }
     .global-register .row input,
     .global-register .row textarea,
