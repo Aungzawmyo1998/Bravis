@@ -19,6 +19,9 @@
     padding: 20px 5px ;
 
  }
+ #cus-list .search-icon {
+    display: none;
+ }
  #cus-list .header>h1 {
     font-size: 30px;
     font-weight: 600;
@@ -99,6 +102,20 @@
 #cus-list .list tbody tr:hover {
     background-color: #ddd;
 }
+#cus-list .list .action .action-btn {
+    border: none;
+    display: inline-block;
+    color: var(--font-color);
+    cursor: pointer;
+    margin-left: 10px;
+}
+#cus-list .action  .del-btn i{
+    color: var(--danger-color);
+}
+#cus-list .action-btn > i {
+    font-size: 20px;
+}
+
 
 @media (min-width: 1000px) and (max-width: 1300px) {
     #cus-list .search-button .button {
@@ -138,6 +155,113 @@
     #cus-list .list tbody td {
         color: var(--font-color);
         padding: 15px;
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    #cus-list .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #cus-list .search-icon {
+        display: block;
+
+     }
+     #cus-list .search-icon>i {
+        font-size: 20px;
+        color: var(--header-color);
+        padding-right: 20px;
+     }
+     #cus-list .search-form {
+        display: none;
+     }
+     #cus-list .search-form.active {
+        display: block;
+     }
+}
+@media (max-width: 768px) and (min-width: 700px) {
+
+    #cus-list .search-item>input {
+        width: 200px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    #cus-list .search-button .button {
+
+        width: 150px;
+        padding: 13px;
+    }
+    #cus-list .list thead th {
+        padding: 15px;
+        font-size: 18px;
+        text-align: left;
+    }
+    #cus-list .list tbody td {
+        color: var(--font-color);
+        padding: 13px;
+        font-size: 16px;
+    }
+}
+@media (max-width: 700px) and (min-width: 600px) {
+    #cus-list .search-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    #cus-list .search-button .button {
+
+        width: 150px;
+        padding: 13px;
+    }
+    #cus-list .list thead th {
+        padding: 14px;
+        font-size: 17px;
+        text-align: left;
+    }
+    #cus-list .list tbody td {
+        color: var(--font-color);
+        padding: 13px;
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 599px) {
+    #cus-list .search-item>input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+    #cus-list .search-button .button {
+
+        width: 150px;
+        padding: 11px;
+    }
+
+    #cus-list .search-form .form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    #cus-list .list {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    #cus-list .list table {
+        width: 700px;
+    }
+    #cus-list .list thead th {
+        padding: 15px;
+        font-size: 18px;
+        text-align: left;
+    }
+    #cus-list .list tbody td {
+        color: var(--font-color);
+        padding: 13px;
         font-size: 16px;
     }
 }

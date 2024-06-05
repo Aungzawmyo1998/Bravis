@@ -14,11 +14,13 @@ class CustomerController extends Controller
 
     public function customer ()
     {
-        return view('admins.customer.list');
+        $customers = Customer::get();
+        // dd($customers);
+        return view('admins.customer.list',compact('customers'));
     }
     public function register ()
     {
-        return view('customers.register');
+        return view('customers.register.register');
     }
 
     public function registerProcess (Request $request)
@@ -33,7 +35,7 @@ class CustomerController extends Controller
         $customer -> address = $request -> address;
         $customer -> DOB = $request -> dob;
         $customer -> joining_date = Carbon::now();
-        $customer -> phonenumber = $request -> phno;
+        $customer -> phonenumber = $request -> phoneno;
         $customer -> State_region = $request -> state;
         $customer -> zipcode = $request -> zipcode;
         $customer -> password = bcrypt($request->password);
@@ -44,7 +46,13 @@ class CustomerController extends Controller
         $customer->save();
         $request->image->move(public_path('img/customers/registers'),$image);
 
-        return redirect()->route('customer.register');
+        return redirect()->route('customer.list');
 
+    }
+
+    public function destroy ($id)
+    {
+        Customer::find($id)->delete();
+        return redirect()->route('customer.list');
     }
 }

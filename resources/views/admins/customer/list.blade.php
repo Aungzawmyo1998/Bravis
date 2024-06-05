@@ -9,6 +9,10 @@
         <div class="main-container">
             <div class="header">
                 <h1>Customer</h1>
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
             </div>
 
             <div class="search-form">
@@ -35,20 +39,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>11</td>
-                            <td>Aung </td>
-                            <td>sss.gemail.com </td>
-                            <td>403939399 </td>
-                            <td>active</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>Aung </td>
-                            <td>sss.gemail.com </td>
-                            <td>403939399 </td>
-                            <td>active</td>
-                        </tr>
+                        @foreach ($customers as $customer )
+                            <tr>
+                                <td>{{ $customer->id }}</td>
+                                <td>{{ $customer->firstname."\t". $customer->lastname}}</td>
+                                <td>{{ $customer->email}}</td>
+                                <td>{{ $customer->email }}</td>
+                                <td class="action">
+                                    <form action="{{ url('customer/'.$customer->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <button type="submit" class="action-btn del-btn" onclick="return confirm('Are You Sure Want to Delete')" ><i class="fa-regular fa-trash-can"></i></button>
+
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

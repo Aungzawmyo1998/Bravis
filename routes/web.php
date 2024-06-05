@@ -66,12 +66,15 @@ Route::middleware(['admin'])->group( function () {
 
     // customer
     Route::get('/customer/list', [CustomerController::class, 'customer'])->name('customer.list');
-
+    Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
+    Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
+    ROute::delete('/customer/{id}', [CustomerController::class , 'destroy'])->name('destroy.custome');
 });
 
 Route::prefix('customer')->group( function() {
     // Route::get('/login', [])
     Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
     Route::post('/register/process', [CustomerController::class, 'registerProcess'])->name('customer.register.process');
+
 });
 
