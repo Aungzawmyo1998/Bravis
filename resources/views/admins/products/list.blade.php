@@ -16,13 +16,15 @@
         </div>
         {{-- <div class="search-container"> --}}
             <div class="search-form">
-                <form action="" class="form-container">
+                <form action="{{ url('/product/search')}}" class="form-container" method="POST">
+                    @csrf
+
                     <div class="search-item">
                         <input type="text" name="product" id="" class="" placeholder="search prosucts" >
-                        <select name="" id="" class="select-item" >
-                            <option value="1" selected>Catagory</option>
-                            @foreach ($products as $product )
-                                <option value="{{$product->category_id}}">{{$product->categories->name}}</option>
+                        <select name="category" id="" class="select-item" >
+                            <option value="default" selected>Catagory</option>
+                            @foreach ($categories as $category )
+                                <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
                         <input type="text" name="proce" id="" class="" placeholder="price" >

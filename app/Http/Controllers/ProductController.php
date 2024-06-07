@@ -14,11 +14,42 @@ class ProductController extends Controller
     //
     public function product ()
     {
-        $products = Product::get();
+        $products = Product::all();
+        $categories = Category::all();
 
         // $count =
 
-        return view('admins.products.list',compact('products'));
+        return view('admins.products.list',compact('products', 'categories'));
+
+    }
+    public function search (Request $request)
+    {
+        $product = $request->product;
+        $category = $request->category;
+        $categories = Category::all();
+
+        if($request->product == null && $request->category == 'default') {
+            $products = Product::orderBy('id','desc')->get();
+            return view('admins.products.list',compact('products','categories'));
+        }
+
+        if($request->has('product') && $request->category != 'default') {
+            $products = Product::where('name','LIKE',"%$product%")
+                                ->where('category_id','=',"$category")
+                                ->orderBy('id','desc')
+                                ->get();
+
+            return view('admins.products.list',compact('products','categories'));
+        }
+        if ($request->has('product')) {
+
+            $products = Product::where('name','LIKE',"%$product%")
+                        ->orderBy('id','desc')
+                        ->get();
+
+            return view('admins.products.list',compact('products','categories'));
+        }
+
     }
 
     public function addProduct ()

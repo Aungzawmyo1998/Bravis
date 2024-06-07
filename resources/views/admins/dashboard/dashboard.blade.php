@@ -24,30 +24,31 @@
                     <span class="count">2000000</span>
                 </div>
             </div>
+
             <div class="row-two">
-                <div class="item">
-                    <div class="icon"></div>
+                <div class="item item-one">
+                    <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
                     <div class="inner-item">
                         <h4>Total Order</h4>
                         <span class="count">500</span>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="icon"></div>
+                <div class="item item-two">
+                    <div class="icon"><i class="fa-solid fa-circle-notch"></i></div>
                     <div class="inner-item">
                         <h4>Order Pending</h4>
                         <span class="count">500</span>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="icon"></div>
+                <div class="item item-three">
+                    <div class="icon"><i class="fa-solid fa-truck-moving"></i></div>
                     <div class="inner-item">
                         <h4>Order Processing</h4>
                         <span class="count">500</span>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="icon"></div>
+                <div class="item item-four">
+                    <div class="icon"><i class="fa-regular fa-clock"></i></div>
                     <div class="inner-item">
                         <h4>Order Delivered</h4>
                         <span class="count">500</span>
@@ -66,7 +67,7 @@
                         </div>
                     </div>
                     <div class="inner-item">
-                        
+
                     </div>
                 </div>
                 <div class="item sale-static">
