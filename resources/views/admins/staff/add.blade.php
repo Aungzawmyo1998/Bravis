@@ -48,13 +48,19 @@
                             <label for="phone" >Phone Number</label>
                             <div class="input">
                                 <input type="text" name="phone" class="" id="phone" placeholder="Example.09...">
+                                @error('phone')
+                                    <p style="color: red;">{{ $message }}</span>
 
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="address">Adddress</label>
                             <div class="input">
                                 <textarea name="address" id="" class="" cols="30" rows="5" placeholder="Address"></textarea>
+                                @error('address')
+                                    <p style="color: red;">{{ $message }}</span>
+                                @enderror
 
                             </div>
                         </div>

@@ -7,17 +7,17 @@
     {{-- font awesome cdn --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- css link --}}
-    <link rel="stylesheet" href="{{asset('css/Customers/index.css')}}" type="text/css" >
+    <link rel="stylesheet" href="{{asset('css/customers/index.css')}}" type="text/css" >
     <title>Document</title>
 </head>
 <body>
     <header>
-        <div class="disc_bar">
+        <div class="disc-container">
             <p>
                 Flash Sales : Sign in and Get Extra  25%  off on Selected Items
             </p>
-            <div class="signin_container">
-                <ul>
+            <div class="signin-container">
+                <ul class="link">
                     <li>
                         <a href="">FAQ</a>
                     </li>
@@ -32,51 +32,48 @@
                 </ul>
             </div>
         </div>
-        <nav class="nav_container">
+        <div class="nav-container">
             <div class="logo">Bravis</div>
-            <div class="nav_data">
-                <button class="close-menu-btn"></button>
-                <ul class="nav_links">
-                    <li>
-                        <a href="">Women</a>
-                        <ul class="sub_nav" >
+            <div class="nav-data">
+                <ul class="nav-link">
+                    <li class="won-parent">
+                        Women
+                        <ul class="sub-nav won-sub" >
                             <li><a href="">Women's Tees </a></li>
                             <li><a href="">Women's T-Shirts </a></li>
                             <li><a href="">Women's Hoodies & Sweet Shirts </a></li>
                             <li><a href="">Women's Pen & Shorts</a></li>
                         </ul>
                      </li>
-                    <li>
-                        <a href="">Men</a>
-                        <ul class="sub_nav" >
+
+                    <li class="man-parent">
+                        Men
+                        <ul class="sub-nav man-sub" >
                             <li><a href="">Men's Tees </a></li>
                             <li><a href="">Men's T-Shirts </a></li>
                             <li><a href="">Men's Hoodies & Sweet Shirts </a></li>
                             <li><a href="">Men's Pen & Shorts</a></li>
                         </ul>
                     </li>
+
                     <li><a href="">Contact</a> </li>
                     <li><a href="">About Us</a></li>
                 </ul>
             </div>
-            <div class="icon">
-                <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                <li><i class="fa-solid fa-cart-plus"></i></li>
-            </div>
-            <div class="hamburger">
-                <button type="button" class="open-menu-btn">
-                    <span class="line line-1"></span>
-                    <span class="line line-1"></span>
-                    <span class="line line-1"></span>
-                </button>
-
+            <div class="icon-container">
+                <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span class="icon"><i class="fa-solid fa-cart-plus"></i></span>
             </div>
 
-        </nav>
+            <button class="hambuger">
+                <div class="bar"></div>
+            </button>
+
+        </div>
     </header>
 
 
-<script src="{{asset('css/Customers/script/index_script.js')}}" >
+<script src="{{asset('script/customer/index.js')}}" >
 
 
 </script>

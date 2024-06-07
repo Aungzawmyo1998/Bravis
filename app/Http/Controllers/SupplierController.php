@@ -22,6 +22,12 @@ class SupplierController extends Controller
 
     public function supplierStore(Request $request)
     {
+        $request->validate([
+            'name'=>'required|max:255|string',
+            'brand'=>'required',
+
+        ]);
+
         $uuid = Str::uuid()->toString();
 
         $supplier = new Supplier();
@@ -29,7 +35,6 @@ class SupplierController extends Controller
         $supplier->brandname = $request->brand;
         $supplier->uuid = $uuid;
         $supplier->status = 'active';
-
         $supplier->save();
 
         return redirect()->route('supplier.list');
@@ -45,12 +50,18 @@ class SupplierController extends Controller
     public function edit($id)
     {
         $supplier = Supplier::find($id);
-        
+
         return view('admins.suppliers.update',compact('supplier'));
     }
 
     public function update( Request $request,$id)
     {
+        $request->validate([
+            'name'=>'required|max:255|string',
+            'brand'=>'required',
+
+        ]);
+
         $supplier = Supplier::find($id);
 
         $supplier->name = $request->name;

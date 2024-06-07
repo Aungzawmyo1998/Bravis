@@ -26,7 +26,8 @@ Route::get('admin/login', [LoginController::class, 'adminLoginShow']) -> name('a
 Route::post('/admin/login/process',[LoginController::class, 'adminLogin'])->name('admin.login.process');
 
 Route::middleware(['admin'])->group( function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard']) -> name('admin.dashboard');
+    // dashboard //
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard']) -> name('admin.dashboard');
 
     // add staff //
     Route::get('/staff', [AdminController::class, 'staffList'])->name('admin.staff.list');
@@ -36,6 +37,7 @@ Route::middleware(['admin'])->group( function () {
     Route::get('/staff/{id}/edit', [AdminController::class, 'edit'])->name('staff.edit');
     Route::put('/staff/{id}', [AdminController::class, 'update'])->name('staff.update.process');
     Route::delete('/staff/{id}', [AdminController::class, 'destroy'])->name('staff.delete');
+    Route::get('staff/logout',[AdminController::class, 'logout'])->name('staff.logout');
 
     // Product
     Route::get('/product/list', [ProductController::class, 'product'])->name('product.list');
@@ -69,6 +71,8 @@ Route::middleware(['admin'])->group( function () {
     Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
     Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
     ROute::delete('/customer/{id}', [CustomerController::class , 'destroy'])->name('destroy.custome');
+
+    Route::post('/customer/search', [CustomerController::class, 'search'])->name('search.customer');
 });
 
 Route::prefix('customer')->group( function() {
@@ -77,4 +81,8 @@ Route::prefix('customer')->group( function() {
     Route::post('/register/process', [CustomerController::class, 'registerProcess'])->name('customer.register.process');
 
 });
+
+
+// Customers
+// Route::get('/home')
 

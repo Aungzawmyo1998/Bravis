@@ -18,6 +18,17 @@ class CustomerController extends Controller
         // dd($customers);
         return view('admins.customer.list',compact('customers'));
     }
+
+    public function search (Request $request)
+    {
+        $search = $request->search;
+        // dd($search);
+        $customers = Customer::where(function( $query ) use ($search) {
+            $query -> where('firstname','LIKE',"%$search%");
+        })->get();
+        return view('admins.customer.list',compact('customers'));
+
+    }
     public function register ()
     {
         return view('customers.register.register');

@@ -17,7 +17,9 @@
                         <label for="name">Category Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name" class="Category Name" placeholder="Category Name">
-
+                            @error('name')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 

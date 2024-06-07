@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Admin;
 use App\Models\Role;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,7 @@ class AdminController extends Controller
 
    public function dashboard ()
    {
-    return view('admins.dashboard');
+    return view('admins.dashboard.dashboard');
    }
 
    public function staffList()
@@ -43,7 +44,7 @@ class AdminController extends Controller
    {
 
     $errorMessage = [
-        'name.required' => 'The name field is required',
+        'name.required' => 'The name field is required baajsbfk ',
         'name.string' => 'The name must be a string',
         'name.max' => 'The name may not be greater than :max',
         'email.required' => 'The email field is required',
@@ -54,11 +55,14 @@ class AdminController extends Controller
 
     ];
 
-    $validator = $request->validate([
+    $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email',
         'password' => 'required|min:8',
         'image' => 'required',
+        'phone' => 'required',
+        'address' => 'required',
+
 
     ],$errorMessage);
 
@@ -96,21 +100,20 @@ class AdminController extends Controller
 //  update staff
    public function update(Request $request,$id)
    {
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email',
+        'password' => 'required|min:8',
+        'image' => 'required',
+        'phone' => 'required',
+        'address' => 'required',
+
+
+    ]);
+
     $uuid = Str::uuid()->toString();
     $image = $uuid.'.'.$request -> image->extension();
-    // Admin::find($id)->update([
-    //     "name" => $request->name,
-    //     "email" => $request->email,
-    //     "address" => $request->address,
-    //     "role_id" => $request->position,
-    //     "phone" => $request->phone,
-    //     "password" => bcrypt($request->password),
-    //     "image" => $image,
-    //     "uuid" => $uuid,
-    //     "status" => "active",
-    //     "created_at" => Carbon::now(),
-    //     "updated_at" => Carbon::now(),
-    // ]);
+
 
     $staff =Admin::find($id);
     $staff -> name = $request -> name;
@@ -135,5 +138,15 @@ class AdminController extends Controller
    {
         Admin::find($id)->delete();
         return redirect()->back();
+   }
+
+   public function logout (Request $request)
+   {
+
+    Auth::logout();
+    session()->flush();
+
+    return redirect()->route('admin.login.show');
+
    }
 }

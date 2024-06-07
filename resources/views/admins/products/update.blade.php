@@ -7,7 +7,7 @@
 <section id="update-product " class="global-register">
     <div class="main-container">
         <div class="header">
-            <h1>Update Supplier</h1>
+            <h1>Update Product</h1>
             <p>Edit your product necessary information here</p>
         </div>
         <div class="update-container add-container">
@@ -19,7 +19,9 @@
                     <label for="name">Product Title/Name</label>
                     <div class="input">
                         <input type="text" name="name" id="name" placeholder="Product Title/Name" value="{{$products[2]->name}}">
-
+                        @error('name')
+                            <p style="color: red;"> {{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
@@ -28,7 +30,9 @@
                         <textarea name="description" id="description" cols="30" rows="5" placeholder="please type description about your product" >
                             {{$products[2]->description}}
                         </textarea>
-
+                        @error('description')
+                            <p style="color: red;"> {{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -36,7 +40,9 @@
                     <label for="image">Product Image</label>
                     <div class="input">
                         <input type="file" name="image" id="image">
-
+                        @error('image')
+                            <p style="color: red;"> {{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">

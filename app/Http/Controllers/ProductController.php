@@ -34,6 +34,17 @@ class ProductController extends Controller
 
     public function storeProduct(Request $request )
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required',
+            'image' => 'required',
+            'price' => 'required|integer',
+            'small' => 'required|integer',
+            'medium' => 'required|integer',
+            'large' => 'required|integer',
+
+        ]);
+
         $uuid = Str::uuid()->toString();
         $image = $uuid.'.'.$request->image->extension();
 
@@ -43,9 +54,9 @@ class ProductController extends Controller
         $product->admin_id = auth('admin')->user()->id;
         $product->supplier_id = $request->brand;
         $product->price = intval($request->price);
-        $product->small_qty = intval($request->small);
-        $product->medium_qty = intval($request->medium);
-        $product->large_qty = intval($request->large);
+        $product->small_qty = $request->small;
+        $product->medium_qty = $request->medium;
+        $product->large_qty = $request->large;
         $product->gender = $request->gender;
         $product->description = $request->description;
         $product->image = $image;
@@ -72,6 +83,16 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required',
+            'image' => 'required',
+            'price' => 'required|integer',
+            'small' => 'required|integer',
+            'medium' => 'required|integer',
+            'large' => 'required|integer',
+
+        ]);
         $uuid = Str::uuid()->toString();
         $image = $uuid.'.'.$request->image->extension();
 

@@ -16,12 +16,14 @@
             </div>
 
             <div class="search-form">
-                <form action="" class="form-container">
+                <form action="{{ route('search.customer')}}" class="form-container" method="POST">
+                    @csrf
+
                     <div class="search-item">
-                        <input type="text" name="" id="" placeholder="Search">
+                        <input type="text" name="search" id="" placeholder="Search">
                     </div>
                     <div class="search-button">
-                        <button class="button">Search</button>
+                        <button type="submit" class="button">Search</button>
                         <button class="button">Reset</button>
                     </div>
                 </form>

@@ -26,8 +26,8 @@
 
     position: fixed;
     display: grid;
-    gap: 20px;
-    grid-template-columns: 150px calc(100% - 190px);
+    gap: 3px;
+    grid-template-columns: 150px calc(100% - 172px);
     grid-template-rows: calc(100vh - 30px);
     justify-content: space-between;
     overflow: hidden;

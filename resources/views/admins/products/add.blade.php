@@ -18,7 +18,9 @@
                         <label for="name">Product Title/Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name" placeholder="Product Title/Name">
-
+                            @error('name')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="row">
@@ -27,6 +29,9 @@
                             <textarea name="description" id="description" cols="30" rows="5" placeholder="please type description about your product" >
 
                             </textarea>
+                            @error('description')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -34,7 +39,9 @@
                         <label for="image">Product Image</label>
                         <div class="input">
                             <input type="file" name="image" id="image">
-
+                            @error('image')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="row">
@@ -77,6 +84,9 @@
                                 <span>MMK</span>
                                 <input type="text" name="price" id="price">
                             </div>
+                            @error('price')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -86,17 +96,21 @@
                             <div class="size-container">
                                 <div class="size-item">
                                     <label for="small">S</label>
-                                    <input type="text" name="small" id="small">
+
+                                    <input type="number" name="small" id="small"><br>
+
                                 </div>
                                 <div class="size-item">
                                     <label for="medium">M</label>
-                                    <input type="text" name="medium" id="medium">
+                                    <input type="number" name="medium" id="medium"><br>
+                                   
                                 </div>
                                 <div class="size-item">
                                     <label for="large">L</label>
-                                    <input type="text" name="large" id="large">
+                                    <input type="number" name="large" id="large">
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="row">

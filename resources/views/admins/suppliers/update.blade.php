@@ -18,11 +18,21 @@
                     @method('PUT')
                     <div class="row">
                         <label for="name">Supplier Name</label>
-                        <input type="text" name="name" id="name"  placeholder="Supplier Name" value="{{ $supplier->name }}">
+                        <div class="input">
+                            <input type="text" name="name" id="name"  placeholder="Supplier Name" value="{{ $supplier->name }}">
+                            @error('name')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                     <div class="row">
                         <label for="brand">Brand</label>
-                        <input type="text" name="brand" id="brand"  placeholder="Brand" value="{{ $supplier->brandname }}">
+                        <div class="input">
+                            <input type="text" name="brand" id="brand"  placeholder="Brand" value="{{ $supplier->brandname }}">
+                            @error('brand')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                     <div class="row">
                         <div class="button-container">

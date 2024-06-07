@@ -43,6 +43,9 @@
     {{-- customer link --}}
     <link rel="stylesheet" href="{{ asset('css/admins/customer/list.css')}}">
 
+    {{-- dashboard --}}
+    <link rel="stylesheet" href="{{ asset('css/admins/dashboard/dashboard.css')}}">
+
     <title>@yield('title')</title>
 </head>
 <body>
@@ -55,7 +58,7 @@
                 </div>
                 <div class="nav-data off-screen-menu">
                     <ul class="nav-link">
-                        <li><a href="{{ url('/admins/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span class="link-data">Dashboard</span></a></li>
+                        <li><a href="{{ url('/admin/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span class="link-data">Dashboard</span></a></li>
                         <li><a href="{{ url('/product/list')}}"><span><i class="fa-solid fa-briefcase"></i></span><span class="link-data">Product</span></a></li>
                         <li><a href="{{ url('/customer/list')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data">Customer</span> </a></li>
                         <li><a href="{{ url('/admins/order')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data">Order</span> </a></li>

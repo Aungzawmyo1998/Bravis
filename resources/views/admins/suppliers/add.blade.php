@@ -17,14 +17,18 @@
                         <label for="name">Supplier Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name"  placeholder="Supplier Name">
-
+                            @error('name')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="row">
                         <label for="brand">Brand</label>
                         <div class="input">
-                        <input type="text" name="brand" id="brand"  placeholder="Brand">
-
+                            <input type="text" name="brand" id="brand"  placeholder="Brand">
+                            @error('brand')
+                                <p style="color: red;"> {{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 

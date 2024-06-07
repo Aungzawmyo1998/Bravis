@@ -29,7 +29,7 @@ class CategoryController extends Controller
             'name'=>'required|string|max:255|'
         ],
         [
-            'name.required'=>'The name must be required'
+            'name.required'=>'The name field required'
         ]);
 
         $uuid = Str::uuid()->toString();
@@ -52,6 +52,9 @@ class CategoryController extends Controller
 
     public function update (Request $request,$id)
     {
+        $request->validate([
+            'name'=>'required'
+        ]);
         $category = Category::find($id);
         $category->name = $request->name;
 
