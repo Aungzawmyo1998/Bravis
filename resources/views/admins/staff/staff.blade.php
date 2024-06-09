@@ -15,15 +15,16 @@
 
         </div>
         <div class="search-form">
-            <form class="form-container" action="" method="get">
+            <form class="form-container" action="{{ route('staff.search')}}" method="post">
+                @csrf
 
                 <div class="search-item">
-                    <input type="text" name="search" id="" placeholder="Search by name / email /phone no" >
-                    <select name="search" id="" class="form-select">
-                        <option value="1">Admin</option>
-                        <option value="2">Manager</option>
-                        <option value="3">Supervisor</option>
-                        <option value="4">Staff</option>
+                    <input type="text" name="search" id="" placeholder="Search by name / email /phone no"  >
+                    <select name="role" id="" class="">
+                        <option value="default">Role</option>
+                        @foreach ($roles as $role )
+                            <option value="{{ $role->id}}">{{ $role->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="search-button">

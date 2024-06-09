@@ -20,14 +20,14 @@
                     @csrf
 
                     <div class="search-item">
-                        <input type="text" name="product" id="" class="" placeholder="search prosucts" >
+                        <input type="text" name="product"  placeholder="search prosucts" >
                         <select name="category" id="" class="select-item" >
                             <option value="default" selected>Catagory</option>
                             @foreach ($categories as $category )
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
-                        <input type="text" name="proce" id="" class="" placeholder="price" >
+                        <input type="text" name="price" id="" class="" placeholder="price" >
                     </div>
                     <div class="search-button">
                         <button type="submit" class="button " >Filter</button>

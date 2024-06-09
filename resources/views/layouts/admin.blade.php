@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="{{ asset('css/admins/staff/staff_list.css')}}">
 
     {{-- categories link --}}
-    <link rel="stylesheet" href="{{ asset('css/categories/list.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/admins/categories/list.css')}}">
 
     {{-- supplier links --}}
     <link rel="stylesheet" href="{{ asset('css/admins/suppliers/list.css')}}">

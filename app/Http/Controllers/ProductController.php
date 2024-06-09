@@ -14,8 +14,8 @@ class ProductController extends Controller
     //
     public function product ()
     {
-        $products = Product::all();
-        $categories = Category::all();
+        $products = Product::orderBy('id','desc')->get();
+        $categories = Category::get();
 
         // $count =
 
@@ -26,29 +26,88 @@ class ProductController extends Controller
     {
         $product = $request->product;
         $category = $request->category;
-        $categories = Category::all();
+        $categories = Category::get();
+        $price = intval($request->price) ;
 
-        if($request->product == null && $request->category == 'default') {
+        // dd($price);
+
+        if($request->product == null && $request->category == 'default' && $request->price == null) {
             $products = Product::orderBy('id','desc')->get();
+            // dd("1");
             return view('admins.products.list',compact('products','categories'));
         }
 
-        if($request->has('product') && $request->category != 'default') {
+
+        elseif($request->has('product') && $request->category != 'default' && $request->price == null) {
             $products = Product::where('name','LIKE',"%$product%")
                                 ->where('category_id','=',"$category")
                                 ->orderBy('id','desc')
                                 ->get();
 
+                                // dd("2");
+
             return view('admins.products.list',compact('products','categories'));
         }
-        if ($request->has('product')) {
+        elseif ($request->has('product') && $request->category == 'default' && $request->price == null) {
 
             $products = Product::where('name','LIKE',"%$product%")
                         ->orderBy('id','desc')
                         ->get();
 
+                        // dd("3");
+
+
             return view('admins.products.list',compact('products','categories'));
         }
+        elseif ($request->product == null && $request->category == 'default' && $request->has('price')) {
+
+            // dd($price);
+            $products = Product::where('price','=',"$price")
+                        ->orderBy('price')
+                        ->get();
+
+                        // dd("5");
+
+            return view('admins.products.list',compact('products','categories'));
+        }
+        elseif ($request->has('product') && $request->category == 'default' && $request->has('price')) {
+
+            // dd($product);
+            $products = Product::where('price','<=',"$price")
+                        ->where('name','LIKE',"%$product%")
+                        ->orderBy('price','desc')
+                        ->get();
+
+                        // dd("4");
+
+
+            return view('admins.products.list',compact('products','categories'));
+
+        }
+        elseif ($request->product == null && $request->category != 'default' && $request->has('price')) {
+            $products = Product::where('price','=<',"$price")
+                        ->where('category_id','=',"$category")
+                        ->orderBy('price','desc')
+                        ->get();
+
+                        // dd("6");
+
+            return view('admins.products.list',compact('products','categories'));
+
+        }
+        elseif ($request->has('product') && $request->category != 'default' && $request->has('price')) {
+            $products = Product::where('price','=<',"$price")
+                        ->where('name','LIKE',"%$product%")
+                        ->orderBy('price','desc')
+                        ->get();
+
+
+                        // dd("7");
+
+            return view('admins.products.list',compact('products','categories'));
+
+        }
+
 
     }
 

@@ -14,7 +14,7 @@
 }
 
 header {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     width: 100%;
     padding: 1rem 2rem;
@@ -111,7 +111,7 @@ header .disc-container {
 }
 .nav-container .nav-link>li {
     /* display: ; */
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 100;
     position: relative;
     color: var(--font-color);
@@ -119,8 +119,8 @@ header .disc-container {
 
 }
 .nav-container .nav-link>li>a {
-    font-size: 30px;
-    font-weight: 100;
+    font-size: 25px;
+    font-weight: 300;
     font-style: normal;
     color: var(--font-color);
 }

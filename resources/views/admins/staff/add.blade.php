@@ -19,7 +19,7 @@
                         <div class="row">
                             <label for="name">Name</label>
                             <div class="input">
-                                <input  type="text" name="name" class="" id="name" placeholder="Staff Name" >
+                                <input  type="text" name="name" class="" id="name" placeholder="Staff Name"  >
                                 @error('name')
                                     <p style="color: red;">{{ $message }}</span>
                                 @enderror
@@ -47,7 +47,7 @@
                         <div class="row">
                             <label for="phone" >Phone Number</label>
                             <div class="input">
-                                <input type="text" name="phone" class="" id="phone" placeholder="Example.09...">
+                                <input type="text" name="phone" class="" id="phone" placeholder="Example.09..." >
                                 @error('phone')
                                     <p style="color: red;">{{ $message }}</span>
 
@@ -57,7 +57,7 @@
                         <div class="row">
                             <label for="address">Adddress</label>
                             <div class="input">
-                                <textarea name="address" id="" class="" cols="30" rows="5" placeholder="Address"></textarea>
+                                <textarea name="address" id="" class="" cols="30" rows="5" placeholder="Address" ></textarea>
                                 @error('address')
                                     <p style="color: red;">{{ $message }}</span>
                                 @enderror
@@ -78,7 +78,7 @@
                         <div class="row">
                             <label for="image"  >Profile Photo</label>
                             <div class="input">
-                                <input type="file" class="" name="image" id="">
+                                <input type="file" class="" name="image" id="" >
                                 @error('image')
                                     <p style="color: red;">{{ $message }}</span>
                                 @enderror

@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -18,20 +19,62 @@ class AdminController extends Controller
     return view('admins.dashboard.dashboard');
    }
 
-   public function staffList()
-   {
-    return view('admins.staff');
-   }
 
+
+   public function search (Request $request)
+   {
+
+    $roles = Role::get();
+    $role = $request->role;
+    $search = $request->search;
+
+        if ($search == null && $role == 'default') {
+
+            $staffs = Admin::with('role')
+                ->orderBy('id','desc')
+                ->get();
+            return view('admins.staff.staff',compact('staffs','roles'));
+
+        } elseif ($request->has('search') && $role == 'default') {
+            $staffs = Admin::with('role')
+                ->whereAny(['name','email','phone',],'LIKE',"%$search%")
+                ->orderBy('id','desc')
+                ->get();
+
+            return view('admins.staff.staff',compact('staffs','roles'));
+
+        } elseif($search == null && $role != 'default') {
+
+            $staffs = Admin::with('role')
+                ->where('role_id','=',"$role")
+                ->orderBy('id','desc')
+                ->get();
+
+            return view('admins.staff.staff',compact('staffs','roles'));
+
+        } elseif($request->has('search') && $role != 'default') {
+
+            $staffs = Admin::with('role')
+            ->whereAny(['name','email','phone',],'LIKE',"%$search%")
+            ->where('role_id','=',"$role")
+                ->orderBy('id','desc')
+                ->get();
+
+            return view('admins.staff.staff',compact('staffs','roles'));
+
+        }
+
+   }
 
 
 //    staff list show
    public function staffListShow ()
    {
 
-    $staffs = Admin::with('role')->get();
+    $staffs = Admin::with('role')->orderBy('id','desc')->get();
+    $roles = Role::get();
 
-    return view('admins.staff.staff',compact('staffs'));
+    return view('admins.staff.staff',compact('staffs','roles'));
    }
 
 //    add staff

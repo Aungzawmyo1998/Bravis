@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+
+
+// Customers
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::post('/admin/process')
+
 
 Route::get('admin/login', [LoginController::class, 'adminLoginShow']) -> name('admin.login.show');
 
@@ -38,6 +40,8 @@ Route::middleware(['admin'])->group( function () {
     Route::put('/staff/{id}', [AdminController::class, 'update'])->name('staff.update.process');
     Route::delete('/staff/{id}', [AdminController::class, 'destroy'])->name('staff.delete');
     Route::get('staff/logout',[AdminController::class, 'logout'])->name('staff.logout');
+    ROute::post('/staff/search',[AdminController::class, 'search'])->name('staff.search');
+
 
     // Product
     Route::get('/product/list', [ProductController::class, 'product'])->name('product.list');
@@ -76,12 +80,12 @@ Route::middleware(['admin'])->group( function () {
     Route::post('/customer/search', [CustomerController::class, 'search'])->name('search.customer');
 });
 
-Route::prefix('customer')->group( function() {
-    // Route::get('/login', [])
-    Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
-    Route::post('/register/process', [CustomerController::class, 'registerProcess'])->name('customer.register.process');
+// Route::prefix('customer')->group( function() {
+//     // Route::get('/login', [])
+//     Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
+//     Route::post('/register/process', [CustomerController::class, 'registerProcess'])->name('customer.register.process');
 
-});
+// });
 
 
 // Customers
