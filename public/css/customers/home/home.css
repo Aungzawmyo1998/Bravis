@@ -2,6 +2,7 @@
     --background-color: #D4DCEC;
     --second-bg-color: #EDF2FB;
     --font-color: #34373A;
+    --header-font-size: 25px;
 }
 * {
     margin: 0;
@@ -73,12 +74,14 @@
     width: 100%;
     padding-top: 4rem;
     background-color: var(--second-bg-color);
+
 }
 #home .service-container  {
     width: 80%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 3rem;
 }
 
 #home .service-container .item-container {
@@ -104,17 +107,135 @@
 
 
 /* slide container */
+#slide .slide-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    position: relative;
+}
+#slide .slide-container>h1 {
+    font-size: var(--header-font-size);
+    margin-bottom: 1rem;
+}
+#slide .card-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+    margin-bottom: 1rem;
+    padding-bottom: 30px;
+
+}
+
+#slide .card-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+#slide .card .img {
+    width: 400px;
+    height: 600px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+#slide .card img {
+    width: 100%;
+    height: 100%;
+}
+#slide .card .data {
+    line-height: 2;
+}
+
+/* scroll */
+#slide .scroll-bar {
+    width: 100%;
+    height: 10px;
+    /* background-color: red; */
+
+    display: flex;
+    align-items: center;
+}
+#slide .scroll-track {
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 4px;
+
+}
+#slide .scroll-bar:hover .scroll-track {
+    height: 4px;
+}
+#slide .scroll-thumb:active {
+    height: 6px;
+    top: -2px;
+    cursor: grabbing;
+}
+#slide .scroll-thumb {
+    width: 50%;
+    height: 100%;
+    background-color: #000;
+    position: absolute;
+    cursor: grab;
+    border-radius: inherit;
+}
+#slide .scroll-thumb::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+
+}
+
+/* slide button */
+
+#previus {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    left: -23px;
+    top: 40%;
+    display: none;
+}
+#next {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    top: 40%;
+    right: -23px;
+
+}
+
+#slide .slide-btn {
+    font-size: 40px;
+    cursor: pointer;
+}
+
+
+/* category-container  */
 
 #category .category-container {
     width: 80%;
     margin: 0 auto;
+    /* padding-top: 3rem; */
+}
+#category .category-container>h1 {
+    font-size: var(--header-font-size);
+    margin-bottom: 1rem;
 }
 #category .item1 {
     grid-area: item-one;
     width: 100%;
-    height: 400px;
-    background-image: url("/public/img/customers/home/men_bg.jpg");
+    height: 600px;
+    /* background-image: url("/public/img/customers/home/men_bg.jpg"); */
     background-color: #fff;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -126,7 +247,11 @@
     width: 100%;
     /* height: 200px; */
     background-color: #fff;
-    background-image: url('/public/img/customers/home/wonmen_bg.jpg');
+    /* background-image: url('/public/img/customers/home/wonmen_bg.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +263,11 @@
     width: 100%;
     /* height: 200px; */
     background-color: #fff;
-    background-image: url('/public/img/customers/home/sport_bg.jpg');
+    /* background-image: url('/public/img/customers/home/sport_bg.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,9 +276,13 @@
 #category .item4 {
     grid-area: item-four;
     width: 100%;
-    height: 500px;
+    height: 600px;
     background-color: #fff;
-    background-image: url('/public/img/customers/home/accesssorie_bg.jpg');
+    /* background-image: url('/public/img/customers/home/accesssorie_bg.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,4 +295,57 @@
                          'item-four item-four';
     gap: 10px;
 }
+#category .item-container h2{
+    color: #FFF;
+}
 
+/* follow us */
+
+#follow-us .follow-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+}
+
+#follow-us .img-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#follow-us img {
+    width: 100%;
+    height: 100%;
+}
+
+#follow-us .follow-btn {
+    display: inline-block;
+    padding: 0.9rem 1.5rem;
+    font-size: 20px;
+    color: #FFF;
+    background-color: #000;
+}
+
+
+
+
+/* test slider responsive  */
+@media (max-width: 768px) {
+
+
+    #slide .scroll-thumb {
+
+        width: 20%;
+
+    }
+    #slide .slide-btn {
+        display: none!important;
+    }
+}

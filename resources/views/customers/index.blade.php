@@ -125,9 +125,7 @@
         </div>
     </footer>
 
-<script src="{{asset('script/customer/index.js')}}" >
-
-
-</script>
+    <script src="{{asset('script/customer/index.js')}}" ></script>
+    <script src="{{ asset('script/customer/home/slide.js')}}"></script>
 </body>
 </html>
