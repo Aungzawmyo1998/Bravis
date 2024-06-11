@@ -24,9 +24,12 @@
                             <input class="input-item" type="text" name="fname" id="fname" placeholder="first name">
                             <input class="input-item" type="text" name="lname" id="lname" placeholder="last name">
                         </div>
-                        {{-- @error()
-
-                        @enderror --}}
+                        @error('fname')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
+                        @error('lname')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
 
                     </div>
 
@@ -35,6 +38,9 @@
                         <div class="input">
                             <input class="input-item" type="date" name="dob" id="dob">
                         </div>
+                        @error('dob')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
 
                     </div>
                     <div class="row">
@@ -42,6 +48,9 @@
                         <div class="input">
                             <input class="input-item" class="input-item" type="email" name="email" id="email" placeholder="@gmail.com">
                         </div>
+                        @error('email')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
 
                     </div>
 
@@ -50,6 +59,9 @@
                         <div class="input">
                             <input class="input-item" type="password" name="password" id="password" >
                         </div>
+                        @error('password')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
 
                     </div>
                     <div class="row">
@@ -57,6 +69,9 @@
                         <div class="input">
                             <input class="input-item" type="text" name="phoneno" id="phoneno" placeholder="09000000000">
                         </div>
+                        @error('phoneno')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
 
                     </div>
                     <div class="row">
@@ -64,21 +79,34 @@
                         <div class="input">
                             <input class="input-item" type="file" name="image" id="image">
                         </div>
+                        @error('image')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
 
                     </div>
                     <div class="row">
                         <label for="address">Location</label>
                         <div class="address-input">
-                            <textarea class="input-item" type="address" name="address" id="address"  placeholder="address">
+                            <textarea class="input-item" type="address" name="address" id="address" placeholder="address">
 
                             </textarea>
-                            {{-- <textarea name="" id="" cols="30" rows="10"></textarea> --}}
+                        </div>
+                        @error('address')
+                            <p style="color: red;">{{$message}}</p>
+                        @enderror
                             <div class="state">
                                 <input class="input-item" type="text" name="state" id="state" placeholder="State/Region">
                                 <input class="input-item" type="text" name="zipcode" id="zip" placeholder="Zip Code(Eg. 1111)">
                             </div>
+                            @error('state')
+                                <p style="color: red;">{{$message}}</p>
+                            @enderror
+                            @error('zipcode')
+                                <p style="color: red;">{{$message}}</p>
+                            @enderror
 
-                        </div>
+
+
                     </div>
 
                     <div class="row">

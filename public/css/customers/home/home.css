@@ -121,7 +121,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    gap: 10px;
+    gap: 20px;
 
     overflow-x: auto;
 
@@ -141,6 +141,9 @@
     height: 600px;
     object-fit: cover;
     margin-bottom: 1rem;
+    box-shadow: 3px 4px 10px 0px rgba(74,72,72,0.78);
+    -webkit-box-shadow: 3px 4px 10px 0px rgba(74,72,72,0.78);
+    -moz-box-shadow: 3px 4px 10px 0px rgba(74,72,72,0.78);
 }
 #slide .card img {
     width: 100%;
@@ -148,6 +151,7 @@
 }
 #slide .card .data {
     line-height: 2;
+    color: #000;
 }
 
 /* scroll */

@@ -6,9 +6,11 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerController;
 // use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Models\OrderProduct;
+use App\Models\Role;
 use App\Models\Supplier;
 
 Route::get('/', function () {
@@ -18,9 +20,25 @@ Route::get('/', function () {
 
 
 // Customers
+Route::get('/customer/login', [LoginController::class, 'customerLogin'])->name('customer.login');
+ROute::post('/customer/login', [LoginController::class, 'customerLoginProcess'])->name('customer.login.process');
+Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
+Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
 
+// products
+Route::get('/custmer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
+
+Route::middleware(['customer'])->group( function ( ) {
+
+    // Route::get('/men/products',[])
+
+});
+
+// Route::get('/customer/men/tees')
+
+
+// customer home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 
 Route::get('admin/login', [LoginController::class, 'adminLoginShow']) -> name('admin.login.show');
@@ -73,10 +91,7 @@ Route::middleware(['admin'])->group( function () {
 
     // customer
     Route::get('/customer/list', [CustomerController::class, 'customer'])->name('customer.list');
-    Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
-    Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
-    ROute::delete('/customer/{id}', [CustomerController::class , 'destroy'])->name('destroy.custome');
-
+    Route::delete('/customer/{id}', [CustomerController::class , 'destroy'])->name('destroy.custome');
     Route::post('/customer/search', [CustomerController::class, 'search'])->name('search.customer');
 });
 

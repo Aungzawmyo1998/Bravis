@@ -39,7 +39,42 @@ class LoginController extends Controller
         }
     }
 
-    public function customerLoginShow () {
+    public function customerLogin () {
         return view('customers.login');
     }
+
+    public function customerLoginProcess (Request $request) {
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ],[
+            'email.required' => 'email is required',
+            'email.email' => 'email is invilade',
+            'password.required' => 'password is required',
+        ]);
+
+
+        $auth = $request->only('email','password');
+
+        if( auth('customer')->attempt($auth)) {
+           $status = auth('customer')->user();
+
+           if( $status->status == 'active') {
+
+            return redirect()->route('home');
+           } else {
+            
+            Auth::logout();
+            return redirect()->back();
+           }
+
+        } else {
+            Auth::logout();
+            return redirect()->back();
+        }
+
+    }
+
+
 }

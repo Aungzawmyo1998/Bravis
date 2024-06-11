@@ -47,7 +47,7 @@ return [
         'customer' => [
             'driver' => 'session',
             'provider' => 'customers',
-        ]
+        ],
     ],
 
     /*
@@ -81,10 +81,7 @@ return [
             'model' => App\Models\Customer::class,
         ]
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
     ],
 
     /*

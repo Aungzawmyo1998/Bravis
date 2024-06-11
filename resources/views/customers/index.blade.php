@@ -11,6 +11,10 @@
     {{-- footer --}}
     <link rel="stylesheet" href="{{ asset('css/customers/home/footer.css')}}">
     <link rel="stylesheet" href="{{ asset('css/customers/home/home.css')}}">
+
+    {{-- products --}}
+    <link rel="stylesheet" href="{{ asset('css/customers/product/allproduct.css')}}">
+
     <title>@yield('title')</title>
 </head>
 <body>
@@ -30,7 +34,7 @@
                     </li>
                     <li>|</li>
                     <li>
-                        <a href="">Sign in</a>
+                        <a href="{{ route('customer.login')}}">Sign in</a>
                     </li>
                 </ul>
             </div>

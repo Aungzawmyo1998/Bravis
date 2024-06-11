@@ -15,6 +15,10 @@ class CheckCustomer
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if ( auth('customer')->check()) {
+            return $next($request);
+        } else {
+            return redirect()->route('customer.login');
+        }
     }
 }

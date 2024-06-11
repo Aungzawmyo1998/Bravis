@@ -36,6 +36,33 @@ class CustomerController extends Controller
 
     public function registerProcess (Request $request)
     {
+        $error_message = [
+            'fname.required'=>'first name is required',
+            'lname.required'=>'last name is requird',
+            'dob.required' => 'date of birth is required',
+            'email.required' => 'email is required',
+            'email.unique' => 'This email address is already registered.',
+            'password.required'=>'password is required',
+            'phoneno.required'=>'phone number is required',
+            'image.required'=>'image is required',
+            'address.required'=>'address is required',
+            'stat.required'=>'state is required',
+            'zipcode,required'=>'zip code is required',
+        ];
+
+        $request->validate([
+            'fname'=>'required|max:255|string',
+            'lname'=>'required|max:255|string',
+            'dob' => 'required|date',
+            'email' => 'required|email|unique:customers,email',
+            'password' => 'required|min:8',
+            'phoneno' => 'required',
+            'image' => 'required',
+            'address' => 'required',
+            'state'=>'required',
+            'zipcode'=>'required',
+        ],$error_message);
+
         $uuid = Str::uuid()->toString();
         $image = $uuid.'.'.$request->image->extension();
 
@@ -57,7 +84,7 @@ class CustomerController extends Controller
         $customer->save();
         $request->image->move(public_path('img/customers/registers'),$image);
 
-        return redirect()->route('customer.list');
+        return redirect()->route('customer.login');
 
     }
 

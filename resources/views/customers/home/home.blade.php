@@ -14,7 +14,7 @@
                 <div class="data-container">
                     <h1>Express Your Unique Style</h1>
                     <p>Time Classic</p>
-                    <a href="" class="shop-btn"> Shop Now <span>&rarr;</span></a>
+                    <a href="{{ route('customer.allproduct')}}" class="shop-btn"> Shop Now <span>&rarr;</span></a>
                 </div>
             </div>
         </div>
@@ -58,96 +58,21 @@
                     <h1>New Arrivals</h1>
                     <button id="previus" class="slide-btn"><i class="fa-solid fa-circle-chevron-left "></i></button>
                     <div class="card-container">
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="img">
-                                <img src="{{ asset('img/customers/home/men_bg.jpg')}}" alt="">
-                            </div>
-                            <div class="data">
-                                <p>Men's Gray Jogger Pantss</p>
-                                <p>400000 MMK</p>
-                            </div>
-                        </div>
+                        @foreach ($products as $product )
+
+
+                            <a href="" class="card">
+                                <div class="img">
+                                    <img src="{{asset('img/products/register/'.$product->image)}}" alt="">
+                                </div>
+                                <div class="data">
+                                    <p>{{ $product->name}}</p>
+                                    <p>{{ $product->price}} MMK</p>
+                                </div>
+                            </a>
+
+                        @endforeach
+
                     </div>
                     <button id="next" class="slide-btn"><i class="fa-solid fa-circle-chevron-right "></i></button>
                     <div class="scroll-bar">
