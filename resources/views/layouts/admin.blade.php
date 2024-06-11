@@ -58,23 +58,24 @@
                 </div>
                 <div class="nav-data off-screen-menu">
                     <ul class="nav-link">
-                        <li><a href="{{ url('/admin/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span class="link-data">Dashboard</span></a></li>
-                        <li><a href="{{ url('/product/list')}}"><span><i class="fa-solid fa-briefcase"></i></span><span class="link-data">Product</span></a></li>
-                        <li><a href="{{ url('/customer/list')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data">Customer</span> </a></li>
-                        <li><a href="{{ url('/admins/order')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data">Order</span> </a></li>
-                        <li><a href="{{ url('/staff/list/show')}}"><span><i class="fa-solid fa-user-tie"></i></span><span class="link-data">Staff</span> </a></li>
-                        <li><a href="{{ url('/category/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data">Category</span> </a></li>
-                        <li><a href="{{ url('/supplier/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data">Supplier</span> </a></li>
+                        <li><a href="{{ url('/admin/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span class="link-data1">Dashboard</span></a></li>
+                        <li><a href="{{ url('/product/list')}}"><span><i class="fa-solid fa-briefcase"></i></span><span class="link-data2">Product</span></a></li>
+                        <li><a href="{{ url('/customer/list')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data3">Customer</span> </a></li>
+                        <li><a href="{{ url('/admins/order')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data4">Order</span> </a></li>
+                        <li><a href="{{ url('/staff/list/show')}}"><span><i class="fa-solid fa-user-tie"></i></span><span class="link-data5">Staff</span> </a></li>
+                        <li><a href="{{ url('/category/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data6">Category</span> </a></li>
+                        <li><a href="{{ url('/supplier/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data7">Supplier</span> </a></li>
 
                     </ul>
                 </div>
-                <div class="ham-menu">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
+
             </div>
             <div class="display-pannel">
                 <div class="noti-container">
                     <div class="noti-item">
+                        <div id="ham-menu">
+                            <i class="fa-solid fa-bars"></i>
+                        </div>
                         <span class="bell">
                             <i class="fa-regular fa-bell"></i>
                         </span>

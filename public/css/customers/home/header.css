@@ -19,6 +19,9 @@ header {
     width: 100%;
     padding: 1rem 2rem;
     background-color: var(--background-color);
+    position: sticky;
+    top: 0;
+    z-index: 9000;
 }
 header .disc-container {
     display: flex;
@@ -51,6 +54,7 @@ header .disc-container {
 .nav-container .logo {
      font-size: 40px;
     font-weight: 500;
+    color: var(--font-color);
 }
 
 /* hamburger  */

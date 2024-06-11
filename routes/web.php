@@ -26,7 +26,10 @@ Route::get('/customer/register', [CustomerController::class, 'register'])->name(
 Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
 
 // products
-Route::get('/custmer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
+Route::get('/customer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
+Route::get('/customer/product/men', [HomeController::class, 'menProduct'])->name('customer.men.product');
+Route::get('/customer/product/women', [HomeController::class, 'womenProduct'])->name('customer.women.product');
+
 
 Route::middleware(['customer'])->group( function ( ) {
 
@@ -77,6 +80,8 @@ Route::middleware(['admin'])->group( function () {
     Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('edit.category');
     Route::put('/category/{id}', [CategoryController::class, 'update'])->name('update.category');
     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('destroy.category');
+
+    Route::post('/category/search', [CategoryController::class, 'search'])->name('category.search');
 
     // supplier
     Route::get('/supplier/list', [SupplierController::class, 'supplier'])->name('supplier.list');

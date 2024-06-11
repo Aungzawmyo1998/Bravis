@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Role;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
 
 class CategoryController extends Controller
 {
     //
     public function category()
-    {
-        $categories = Category::get();
-        return view('admins.category.list',compact('categories'));
+    {   $roles = Role::get();
+        $categories = Category::with('staffs')
+                    ->orderBy('id','desc')
+                    ->get(); //update category return 'staff'
+
+        return view('admins.category.list',compact('categories','roles'));
     }
 
     public function addCategory()
@@ -66,5 +71,10 @@ class CategoryController extends Controller
     {
         Category::find($id)->delete();
         return redirect()->back();
+    }
+
+    public function search(Request $request)
+    {
+        
     }
 }

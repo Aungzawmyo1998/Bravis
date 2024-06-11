@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Admin extends Authenticatable
 {
@@ -31,8 +32,8 @@ class Admin extends Authenticatable
 
     }
 
-    // public function category()
-    // {
-    //     return $this->hasMany(Category::class);
-    // }
+    public function category(): HasMany
+    {
+        return $this->hasMany(Category::class);
+    }
 }

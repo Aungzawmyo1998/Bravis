@@ -40,29 +40,30 @@
             </div>
         </div>
         <div class="nav-container">
-            <div class="logo">Bravis</div>
+            <a href="{{ route('home')}}" class="logo">Bravis</a>
             <div class="nav-data">
                 <ul class="nav-link">
-                    <li class="won-parent">
-                        Women
-                        <ul class="sub-nav won-sub" >
+                    <li class="won-parent"><a href="{{ route('customer.women.product')}}">Women</a>
+
+                        {{-- <ul class="sub-nav won-sub" >
                             <li><a href="">Women's Tees </a></li>
                             <li><a href="">Women's T-Shirts </a></li>
                             <li><a href="">Women's Hoodies & Sweet Shirts </a></li>
                             <li><a href="">Women's Pen & Shorts</a></li>
-                        </ul>
+                        </ul> --}}
                      </li>
 
-                    <li class="man-parent">
-                        Men
-                        <ul class="sub-nav man-sub" >
+                    <li class="man-parent"><a href="{{ route('customer.men.product')}}">Men</a>
+
+                        {{-- <ul class="sub-nav man-sub" >
                             <li><a href="">Men's Tees </a></li>
                             <li><a href="">Men's T-Shirts </a></li>
                             <li><a href="">Men's Hoodies & Sweet Shirts </a></li>
                             <li><a href="">Men's Pen & Shorts</a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
-
+                    <li><a href="">Accessories</a></li>
+                    <li><a href="">Sport</a></li>
                     <li><a href="">Contact</a> </li>
                     <li><a href="">About Us</a></li>
                 </ul>
