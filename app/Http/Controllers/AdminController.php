@@ -157,6 +157,7 @@ class AdminController extends Controller
     $uuid = Str::uuid()->toString();
     $image = $uuid.'.'.$request -> image->extension();
 
+    // if ( )
 
     $staff =Admin::find($id);
     $staff -> name = $request -> name;

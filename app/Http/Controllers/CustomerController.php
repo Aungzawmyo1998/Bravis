@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\Customer;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class CustomerController extends Controller
@@ -14,7 +15,7 @@ class CustomerController extends Controller
 
     public function customer ()
     {
-        $customers = Customer::get();
+        $customers = Customer::orderBy('id','desc')->get();
         // dd($customers);
         return view('admins.customer.list',compact('customers'));
     }
@@ -22,11 +23,23 @@ class CustomerController extends Controller
     public function search (Request $request)
     {
         $search = $request->search;
+
+
         // dd($search);
-        $customers = Customer::where(function( $query ) use ($search) {
-            $query -> where('firstname','LIKE',"%$search%");
-        })->get();
-        return view('admins.customer.list',compact('customers'));
+        if (empty($search)) {
+            $customers = Customer::orderBy('id','desc')->get();
+
+            return view('admins.customer.list',compact('customers'));
+
+        }
+
+        if (!empty($search)) {
+            $customers = Customer::withName($search)
+                        ->orWhereAny(['email','phonenumber','address'],'LIKE',"%$search%")
+                        ->get();
+            return view('admins.customer.list',compact('customers'));
+
+        }
 
     }
     public function register ()

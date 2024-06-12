@@ -25,4 +25,18 @@ class Customer extends Authenticatable
         'uuid',
 
     ];
+
+    function scopeWithName($query, $name)
+    {
+        // Split each Name by Spaces
+        $names = explode(" ", $name);
+
+        // Search each Name Field for any specified Name
+        return Customer::where(function ($query) use ($names) {
+            $query->whereIn('firstname', $names);
+            $query->orWhere(function ($query) use ($names) {
+                $query->whereIn('lastname', $names);
+            });
+        });
+    }
 }

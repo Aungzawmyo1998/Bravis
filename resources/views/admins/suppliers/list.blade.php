@@ -17,14 +17,16 @@
             </a>
         </div>
         <div class="search-form">
-            <form action="" class="form-container">
+            <form action="{{ route('supplier.search')}}" class="form-container" method="GET">
+                @csrf
                 <div class="search-item">
-                    <input type="text" name="item" id="" placeholder="Search by name/email/phone-no">
-                    <select name="role" id="">
-                        <option value="1">Admin</option>
-                        <option value="2">Manager</option>
-                        <option value="3">Supplier</option>
-                        <option value="4">Staff</option>
+                    <input type="text" name="search" id="" placeholder="Search by name/email/phone-no">
+                    <select name="brand" id="">
+                        <option value="default" selected>Brand</option>
+                        @foreach ($brands as $brand )
+                            <option value="{{ $brand->brandname}}">{{ $brand->brandname}}</option>
+                        @endforeach
+
                     </select>
                 </div>
                 <div class="search-button">

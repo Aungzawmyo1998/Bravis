@@ -81,7 +81,7 @@ Route::middleware(['admin'])->group( function () {
     Route::put('/category/{id}', [CategoryController::class, 'update'])->name('update.category');
     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('destroy.category');
 
-    Route::post('/category/search', [CategoryController::class, 'search'])->name('category.search');
+    Route::get('/category/search', [CategoryController::class, 'search'])->name('category.search');
 
     // supplier
     Route::get('/supplier/list', [SupplierController::class, 'supplier'])->name('supplier.list');
@@ -90,6 +90,7 @@ Route::middleware(['admin'])->group( function () {
     Route::get('/supplier/{id}/edit',[SupplierController::class, 'edit'])->name('edit.supplier');
     Route::put('/supplier/{id}', [SupplierController::class, 'update'])->name('update.supplier');
     Route::delete('/supplier/{id}',[SupplierController::class, 'destroy'])->name('destroy.supplier');
+    Route::get('/supplier/search', [SupplierController::class, 'search'])->name('supplier.search');
 
     // Order
     Route::get('/order/list', [OrderProduct::class, 'order'])->name('order.list');

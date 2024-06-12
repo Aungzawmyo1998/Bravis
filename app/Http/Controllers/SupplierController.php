@@ -11,8 +11,12 @@ class SupplierController extends Controller
     //
     public function supplier()
     {
-        $suppliers = Supplier::get();
-        return view('admins.suppliers.list',compact('suppliers'));
+        $suppliers = Supplier::orderBy('id','desc')->get();
+
+        $brands = Supplier::select('brandname')
+                ->groupBy('brandname')
+                ->get();
+        return view('admins.suppliers.list',compact('suppliers','brands'));
     }
 
     public function addSupplier()
@@ -70,5 +74,46 @@ class SupplierController extends Controller
         $supplier->update();
 
         return redirect()->route('supplier.list');
+    }
+
+    public function search (Request $request)
+    {
+        $brands = Supplier::select('brandname')
+                ->groupBy('brandname')
+                ->get();
+
+        $search = $request->search;
+        $brand = $request->brand;
+
+        if(empty($search) && $brand == "default") {
+            $suppliers = Supplier::orderBy('id','desc')->get();
+            return view('admins.suppliers.list',compact('suppliers','brands'));
+        }
+
+        if(!empty($search) && $brand != "default") {
+
+            $suppliers = Supplier::where('name','LIKE',"%$search%")
+                        ->where('brandname','LIKE',"$brand")
+                        ->get();
+
+            return view('admins.suppliers.list',compact('suppliers','brands'));
+        }
+
+        if(empty($search) && $brand != "default") {
+
+            $suppliers = Supplier::where('brandname','LIKE',"$brand")
+                        ->get();
+
+            return view('admins.suppliers.list',compact('suppliers','brands'));
+        }
+        if(!empty($search) && $brand == "default") {
+
+            $suppliers = Supplier::where('name','LIKE',"%$search%")
+                        ->get();
+
+            return view('admins.suppliers.list',compact('suppliers','brands'));
+        }
+
+
     }
 }

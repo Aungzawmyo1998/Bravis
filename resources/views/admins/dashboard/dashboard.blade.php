@@ -62,8 +62,8 @@
                             <h3>Top selling product</h3>
                         </div>
                         <div class="switch-container">
-                            <div class="switch-item">Men </div>
-                            <div class="switch-item">Women </div>
+                            <div class="switch-item men-item">Men </div>
+                            <div class="switch-item women-item">Women </div>
                         </div>
                     </div>
                     <div class="inner-item">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="inner-item">
-
+                        <canvas id="monthlyChart" class="monthly-chart" ></canvas>
                     </div>
                 </div>
             </div>
@@ -86,3 +86,4 @@
     </section>
 
 @endsection
+

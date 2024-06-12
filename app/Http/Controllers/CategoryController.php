@@ -75,6 +75,63 @@ class CategoryController extends Controller
 
     public function search(Request $request)
     {
-        
+        $search = $request->search;
+        $position = $request->position;
+
+        $roles = Role::get();
+
+
+
+        if ( empty($search) && $request->position == "default" ) {
+
+            $categories = Category::orderBy('id','desc')->get();
+            return view('admins.category.list',compact('categories','roles'));
+        }
+
+        if (!empty($search) && $position != "default") {
+            $categories = Category::join('admins','admins.id','=','categories.admin_id')
+            ->whereAny(['categories.name','admins.name','admins.phone','admins.email'],'LIKE',"%$search%")
+            ->where('admins.role_id','=',"$position")
+            ->select('categories.*')
+            ->get();
+
+            // dd($categories);
+            return view('admins.category.list', compact('categories','roles'));
+
+
+
+        }
+
+        if( empty($search) &&  $position != "default") {
+            $categories = Category::join('admins','categories.admin_id','=','admins.id')
+                                    ->where('admins.role_id','=',"$position")
+                                    ->select('categories.*')
+                                    ->get();
+
+            return view('admins.category.list', compact('categories','roles'));
+
+        }
+
+        if ( !empty($search) && $request->position == "default") {
+
+            // $categories = DB::table('categories')
+            //             -> join('admins','categories.admin_id','=','admins.id')
+            //             -> select('categories.*')
+            //             ->whereAny(['categories.name','admins.name','admins.phone','admins.phone'],'LIKE',"%$search%")
+            //             ->get();
+
+            $categories = Category::join('admins','admins.id', '=','categories.admin_id')
+
+                        ->whereAny(['categories.name','admins.name','admins.phone','admins.email'],'LIKE',"%$search%")
+                        ->select('categories.*')
+                        ->get();
+
+
+            return view('admins.category.list', compact('categories','roles'));
+        }
+
+        if (empty($search) && $position != "default") {
+
+        }
     }
 }

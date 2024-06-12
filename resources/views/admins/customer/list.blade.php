@@ -46,7 +46,7 @@
                                 <td>{{ $customer->id }}</td>
                                 <td>{{ $customer->firstname."\t". $customer->lastname}}</td>
                                 <td>{{ $customer->email}}</td>
-                                <td>{{ $customer->email }}</td>
+                                <td>{{ $customer->phonenumber }}</td>
                                 <td class="action">
                                     <form action="{{ url('customer/'.$customer->id)}}" method="POST">
                                         @csrf

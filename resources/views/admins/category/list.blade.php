@@ -17,11 +17,11 @@
             </a>
         </div>
         <div class="search-form">
-            <form class="form-container" action="{{ route('category.search')}}" method="POST">
+            <form class="form-container" action="{{ route('category.search')}}" method="get">
                 @csrf
                 <div class="search-item">
                     <input type="text" name="search" id="" placeholder="Search by name / email /phone no">
-                    <select name="positon" id="" class="form-select">
+                    <select name="position" id="" class="form-select">
                         <option value="default">Role</option>
                         @foreach ($roles as $role )
                             <option value="{{ $role->id}}">{{ $role->name}}</option>
@@ -45,7 +45,7 @@
                 <tbody>
                     @foreach ($categories as $category )
                         <tr>
-                            <td>{{$category->name}}</td>
+                            <td>{{$category->name}}</td>    
                             <td>{{ $category->staffs->name }}</td>
                             <td class="action">
                                 <form action="{{ url('category/'.$category->id)}}" method="post">
