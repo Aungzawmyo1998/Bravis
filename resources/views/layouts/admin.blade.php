@@ -104,12 +104,15 @@
         <script src="{{ asset('script/ham_menu.js')}}"></script>
 
         {{-- chart script --}}
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 
         {{--  sale status script --}}
         <script src="{{ asset('script/admin/sale_status.js')}}"></script>
         {{-- top sale --}}
         <script src="{{ asset('script/admin/top_sale.js')}}"></script>
+
 
 </body>
 </html>
