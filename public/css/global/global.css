@@ -101,6 +101,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    position: relative;
 }
 .display-pannel .profile > span {
     color: var(--font-color);
@@ -108,10 +109,47 @@
 .display-pannel .profile-image {
     width: 40px;
     height: 40px;
-    border: 2px solid black;
+    border: 1px solid #CCC;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
 }
+
+.display-pannel .profile-image>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.display-pannel .profile .logout-container {
+    border: 1px solid #CCC;
+    border-radius: var(--border-radius);
+    background-color: #FFF;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 170px;
+    padding: 0.5rem 1rem;
+    display: none;
+    z-index: 100;
+
+}
+.display-pannel .profile .logout-container.active {
+    display: block;
+}
+.display-pannel .profile .logout-container li {
+    color: var(--font-color);
+    font-size: 20px;
+    line-height: 2;
+}
+
+.display-pannel .profile .logout-container li>a {
+    color: var(--font-color);
+    display: inline-block;
+    margin-left: 10px;
+}
+
+
 /* .display-pannel .master {
     overflow: scroll;
 } */

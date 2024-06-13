@@ -50,4 +50,25 @@ class HomeController extends Controller
         return view('customers.product.women_product', compact('products'));
     }
 
+    // product detal //
+    public function productDetail ($id)
+    {
+        $products = Product::find($id);
+
+        if($products->gender == "Male") {
+
+            $men = Product::select('*')
+                            ->where('gender','=','Male')
+                            ->where('category_id','=',"$products->category_id")
+                            ->limit(4)
+                            ->orderBy('id','desc')
+                            ->get();
+
+
+            return view('customers.product.detail',compact('products','men'));
+        }
+
+
+    }
+
 }

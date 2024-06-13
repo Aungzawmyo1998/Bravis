@@ -29,7 +29,7 @@ Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->
 Route::get('/customer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
 Route::get('/customer/product/men', [HomeController::class, 'menProduct'])->name('customer.men.product');
 Route::get('/customer/product/women', [HomeController::class, 'womenProduct'])->name('customer.women.product');
-
+Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetail'])->name('customer.product.detail');
 
 Route::middleware(['customer'])->group( function ( ) {
 

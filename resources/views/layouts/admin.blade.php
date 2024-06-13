@@ -84,9 +84,17 @@
                         </span>
                     </div>
                     <div class="profile">
-                        <span>Aung Zaw Myo</span>
+                        <span>
+                            {{ auth('admin')->user()->name}}
+                        </span>
+
                         <div class="profile-image">
 
+                                <img src="{{ asset('img/staff/register/'.auth('admin')->user()->image)}}" alt="">
+                        </div>
+                        <div class="logout-container">
+                            <li><i class="fa-solid fa-gear"></i><a href="{{ url('staff/'.auth('admin')->user()->id.'/edit') }}">Edit Profile</a></li>
+                            <li><i class="fa-solid fa-right-from-bracket"></i><a href="{{ route('staff.logout')}}">Log Out</a></li>
                         </div>
                     </div>
                 </div>
@@ -113,6 +121,16 @@
         {{-- top sale --}}
         <script src="{{ asset('script/admin/top_sale.js')}}"></script>
 
+        {{-- logout script --}}
+        <script>
+            const profile = document.querySelector(".profile-image");
+            const logoutContainer = document.querySelector(".logout-container");
+
+
+            profile.addEventListener('click', ()=>{
+                logoutContainer.classList.toggle("active");
+            });
+        </script>
 
 </body>
 </html>

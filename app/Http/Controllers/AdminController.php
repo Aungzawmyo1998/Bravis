@@ -9,6 +9,9 @@ use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+use function Laravel\Prompts\password;
 
 class AdminController extends Controller
 {
@@ -92,6 +95,7 @@ class AdminController extends Controller
         'name.max' => 'The name may not be greater than :max',
         'email.required' => 'The email field is required',
         'email.email' => 'The email is incorect',
+        'email.unique' => 'The email is already exists',
         'password.required' => 'The password fild is required',
         'password.min' => 'The password must be at leat 8 length',
         'image.required' => 'The image is required',
@@ -100,7 +104,7 @@ class AdminController extends Controller
 
     $request->validate([
         'name' => 'required|string|max:255',
-        'email' => 'required|email',
+        'email' => 'required|email|unique:admins,email',
         'password' => 'required|min:8',
         'image' => 'required',
         'phone' => 'required',
@@ -143,35 +147,43 @@ class AdminController extends Controller
 //  update staff
    public function update(Request $request,$id)
    {
+
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email',
-        'password' => 'required|min:8',
-        'image' => 'required',
+        // 'password' => 'required|min:8',
+        // 'image' => 'required',
         'phone' => 'required',
         'address' => 'required',
 
 
     ]);
 
-    $uuid = Str::uuid()->toString();
-    $image = $uuid.'.'.$request -> image->extension();
 
-    // if ( )
+    $uuid = Str::uuid()->toString();
 
     $staff =Admin::find($id);
     $staff -> name = $request -> name;
     $staff -> email = $request -> email;
-    $staff -> password = bcrypt($request->password);
+    if(!empty($request->password)) {
+        $staff -> password = bcrypt($request->password);
+    }
     $staff -> phone = $request -> phone;
     $staff -> address = $request -> address;
     $staff -> role_id = $request -> position;
     $staff -> uuid = $uuid;
-    $staff -> image = $image;
+    if($request->hasFile('image')) {
+
+        $image = $uuid.'.'.$request -> image->extension();
+
+        $staff -> image = $image;
+        $request->image->move(public_path('img/staff/register'),$image);
+
+    }
     $staff -> status = 'active';
 
     $staff->update();
-    $request->image->move(public_path('img/staff/register'),$image);
+    // $request->image->move(public_path('img/staff/register'),$image);
     return redirect()->route('staff.list.show');
 
     print_r($request);
@@ -180,7 +192,8 @@ class AdminController extends Controller
 
    public function destroy ($id)
    {
-        Admin::find($id)->delete();
+        // dd(Admin::find($id));
+        Admin::destroy($id);
         return redirect()->back();
    }
 

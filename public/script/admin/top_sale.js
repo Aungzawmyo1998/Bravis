@@ -1,23 +1,4 @@
-// const men = document.querySelector(".men-item");
-// const women = document.querySelector(".women-item");
-// const menSale = document.querySelector(".men-top-sale");
-// const switch_container = document.querySelector(".switch-container");
-// for switch container
-// men.addEventListener("click", ()=>{
-//     men.classList.add("active");
-//     women.classList.remove("active");
-//     menSale.classList.add("active");
-// });
 
-// women.addEventListener("click", ()=>{
-//     men.classList.remove("active");
-//     women.classList.add("active");
-//     menSale.classList.remove("active");
-// })
-
-// const switchItem = document.getElementsByClassName("switch-item");
-// const men = document.getElementById("men");
-// const women = document.getElementById("womwn");
 
 function selectItem(item,switchBtn) {
     const selectContainer = document.getElementsByClassName('sale');

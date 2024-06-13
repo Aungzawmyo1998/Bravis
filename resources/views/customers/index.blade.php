@@ -15,6 +15,9 @@
     {{-- products --}}
     <link rel="stylesheet" href="{{ asset('css/customers/product/allproduct.css')}}">
 
+    {{-- product detail css --}}
+    <link rel="stylesheet" href="{{ asset('css/customers/product/product_detail.css')}}">
+
     <title>@yield('title')</title>
 </head>
 <body>

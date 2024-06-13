@@ -39,7 +39,7 @@
                 <div class="row">
                     <label for="password" class="">Password</label>
                     <div class="input">
-                        <input type="password" name="password" class="" id="password" placeholder="password" value="{{ $staff->password}}" >
+                        <input type="password" name="password" class="" id="password" placeholder="password" value="" >
                         @error('password')
                             <p style="color: red;">{{ $message }}</span>
                         @enderror

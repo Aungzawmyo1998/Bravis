@@ -19,13 +19,16 @@ class LoginController extends Controller
 
     public function adminLogin ( Request $request )
     {
-        // $request->valildate([
-        //     'email' => 'required|email',
-        //     'password' => 'required|min:8',
-        // ]);
+        // dd(bcrypt($request->password));
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required|min:8'
+        ]);
 
         $auth = $request -> only('email','password');
+        // dd($auth);
         if( auth('admin')->attempt($auth) ) {
+            // dd("reach");
             $admin = auth('admin')->user();
 
             if($admin->status == 'active' ) {
@@ -37,6 +40,7 @@ class LoginController extends Controller
             }
 
         }
+        return back()->withErrors('email and password is incorect');
     }
 
     public function customerLogin () {
@@ -64,7 +68,7 @@ class LoginController extends Controller
 
             return redirect()->route('home');
            } else {
-            
+
             Auth::logout();
             return redirect()->back();
            }
