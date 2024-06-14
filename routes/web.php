@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 // use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -24,6 +25,7 @@ Route::get('/customer/login', [LoginController::class, 'customerLogin'])->name('
 ROute::post('/customer/login', [LoginController::class, 'customerLoginProcess'])->name('customer.login.process');
 Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
 Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
+Route::get('/customer/logout', [CustomerController::class, 'logout']) -> name('custoemr.logout');
 
 // products
 Route::get('/customer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
@@ -31,9 +33,12 @@ Route::get('/customer/product/men', [HomeController::class, 'menProduct'])->name
 Route::get('/customer/product/women', [HomeController::class, 'womenProduct'])->name('customer.women.product');
 Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetail'])->name('customer.product.detail');
 
+// cart
+
 Route::middleware(['customer'])->group( function ( ) {
 
-    // Route::get('/men/products',[])
+    Route::post('/customer/product/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
+
 
 });
 

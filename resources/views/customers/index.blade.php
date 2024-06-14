@@ -20,8 +20,14 @@
 
     <title>@yield('title')</title>
 </head>
-<body>
+<body >
     <header>
+        <div class="add-to-cart">
+            <div class="header">
+                <h2>Cart</h2>
+                <i id="close-cart" class="fa-solid fa-xmark close-cart"></i>
+            </div>
+        </div>
         <div class="disc-container">
             <p>
                 Flash Sales : Sign in and Get Extra  25%  off on Selected Items
@@ -73,8 +79,10 @@
             </div>
             <div class="icon-container">
                 <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <span class="icon"><i class="fa-solid fa-cart-plus"></i></span>
+                <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
+
             </div>
+
 
             <button class="hambuger">
                 <div class="bar"></div>
@@ -135,5 +143,6 @@
 
     <script src="{{asset('script/customer/index.js')}}" ></script>
     <script src="{{ asset('script/customer/home/slide.js')}}"></script>
+    <script src="{{ asset('script/customer/addToCart.js')}}"> </script>
 </body>
 </html>

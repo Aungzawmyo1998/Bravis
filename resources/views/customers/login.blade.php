@@ -16,6 +16,15 @@
                 <form action="{{url('customer/login')}}" method="post" class="form" >
                     @csrf
                     <h3>Sign In Here</h3>
+
+                    @if ($errors->any())
+                        @foreach ($errors->error as $error )
+
+                        <p style="color: red;">{{$error}}</p>
+                        @endforeach
+
+                    @endif
+
                     <div class="row">
                         <input type="text" id="email" name="email"  class="input" placeholder="Email Address" >
                         @error('email')

@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Builder;
-
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -106,4 +106,15 @@ class CustomerController extends Controller
         Customer::find($id)->delete();
         return redirect()->route('customer.list');
     }
+
+    public function logout (Request $request)
+    {
+
+     Auth::logout();
+     session()->flush();
+
+     return redirect()->route('home');
+
+    }
+
 }

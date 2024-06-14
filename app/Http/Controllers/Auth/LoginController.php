@@ -44,6 +44,7 @@ class LoginController extends Controller
     }
 
     public function customerLogin () {
+        // dd(url()->previous());
         return view('customers.login');
     }
 
@@ -61,21 +62,41 @@ class LoginController extends Controller
 
         $auth = $request->only('email','password');
 
-        if( auth('customer')->attempt($auth)) {
-           $status = auth('customer')->user();
+        // if( auth('customer')->attempt($auth)) {
+        //    $status = auth('customer')->user();
 
-           if( $status->status == 'active') {
+        //    if( $status->status == 'active') {
 
-            return redirect()->route('home');
-           } else {
+        //     return redirect()->back();
+        //    } else {
 
+        //     // Auth::logout();
+        //     return redirect()->back();
+        //    }
+
+        // } else {
+
+        //     Auth::logout();
+        //     return back()->withErrors('error','email and password is incorect');
+        // }
+
+        if( auth('customer')->attempt($auth))
+        {
+            $status = auth('customer')->user()->status;
+            if ($status == 'active')
+            {
+                return redirect()->route('home');
+            }
+            else
+            {
+                Auth::logout();
+                return back();
+            }
+        }
+        else
+        {
             Auth::logout();
-            return redirect()->back();
-           }
-
-        } else {
-            Auth::logout();
-            return redirect()->back();
+            return back()->withErrors('error','email and password is incorect');
         }
 
     }

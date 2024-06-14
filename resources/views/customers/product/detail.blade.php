@@ -14,7 +14,15 @@
                 <div class="data">
                     <h1 style="font-weight: 500;">{{$products->name}}</h1>
                     <p>{{$products->price}} MMK</p>
-                    <form action="" class="cart-form">
+
+                    <form action="{{ route('product.add.cart')}}" class="cart-form" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" id="" value="{{ $products->id}}">
+                        {{-- <input type="hidden" name="qty" id="" value="1" > --}}
+                        @if (auth('customer')->check())
+                            <input type="hidden" name="customer_id" value="{{ auth('customer')->user()->id}}">
+                        @endif
+
                         <div class="size-container">
                             <label for="">Size</label>
                             <div class="size-item">
