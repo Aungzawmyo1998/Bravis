@@ -15,20 +15,18 @@
                     <h1 style="font-weight: 500;">{{$products->name}}</h1>
                     <p>{{$products->price}} MMK</p>
 
-                    <form action="{{ route('product.add.cart')}}" class="cart-form" method="POST">
+                    <form action="{{ url('product/'.$products->id.'/add/cart') }}" class="cart-form" method="post">
                         @csrf
-                        <input type="hidden" name="product_id" id="" value="{{ $products->id}}">
-                        {{-- <input type="hidden" name="qty" id="" value="1" > --}}
-                        @if (auth('customer')->check())
-                            <input type="hidden" name="customer_id" value="{{ auth('customer')->user()->id}}">
-                        @endif
 
                         <div class="size-container">
                             <label for="">Size</label>
                             <div class="size-item">
-                                <input type="checkbox">
-                                <input type="checkbox">
-                                <input type="checkbox">
+                                <input type="radio" name="size" id="small" value="small">
+                                <label class="label-1" for="small">S</label>
+                                <input  type="radio" name="size" id="median" value="median">
+                                <label class="label-2" for="median">M</label>
+                                <input type="radio" name="size" id="large" value="large">
+                                <label class="label-3" for="large">L</label>
                             </div>
                         </div>
                         <div class="description">
@@ -41,7 +39,7 @@
                                 <p>Free Delivery on orders over 5Lakhs</p>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
             <div class="also-like">

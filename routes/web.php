@@ -37,7 +37,7 @@ Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetai
 
 Route::middleware(['customer'])->group( function ( ) {
 
-    Route::post('/customer/product/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
+    Route::post('/product/{id}/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
 
 
 });

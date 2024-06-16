@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class CartController extends Controller
@@ -12,28 +14,36 @@ class CartController extends Controller
     //
 
 
-    public function addCart (Request $request)
+    public function addCart (Request $request,$id)
     {
-        $uuid = Str::uuid()->toString();
-        $price = Product::where('id','=',"$request->product_id")
-                ->select('price')
-                ->get();
-        $qty = 1;
 
-        $price = $price->toArray();
-        $total_price = $qty * $price[0]['price'];
+        $product = Product::find($id);
 
-        $cart = new Cart();
 
-        $cart->product_id = $request->product_id;
-        $cart->customer_id = $request->customer_id;
-        $cart->quantity = $qty;
-        $cart->totalprice = doubleval($total_price);
-        $cart->paymentmethod = "";
-        $cart->uuid = $uuid;
-        $cart->status = 'active';
 
-        $cart->save();
+        $cart = session()->get('cart');
+
+        if(isset($cart[$id]))
+        {
+            $cart[$id]["qty"]++;
+        }
+        else
+        {
+            $cart[$id]= [
+                "id" => $id,
+                "name" => $product->name,
+                "price" => $product->price,
+                "image" => $product->image,
+                "size" => $request->size,
+                "qty" => 1,
+
+            ];
+        }
+
+       session()->put('cart',$cart);
+
+
+    // echo $cart[$id]["qty"];
 
         return redirect()->back();
     }

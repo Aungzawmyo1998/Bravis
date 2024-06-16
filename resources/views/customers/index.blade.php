@@ -22,11 +22,41 @@
 </head>
 <body >
     <header>
-        <div class="add-to-cart">
+        <div id="cart-data" class="add-to-cart">
             <div class="header">
                 <h2>Cart</h2>
                 <i id="close-cart" class="fa-solid fa-xmark close-cart"></i>
             </div>
+
+            <form action="" method="get" class="add-cart-form">
+                <div class="add-item-container" id="products">
+
+                    @if (session('cart'))
+                            @foreach (session('cart') as $id => $details )
+                                <div class="add-item product" >
+                                    <div class="img-container">
+                                        <img  src="{{ asset('img/products/register/'.$details["image"])}}" alt="">
+                                    </div>
+                                    <div class="data-container">
+                                        <h2>{{$details["name"]}}</h2>
+                                        <p>{{ $details["price"]}} MMK</p>
+                                        <div class="button">
+                                            <div class="qty-btn">
+                                                <button type="button" id="inc-btn" class="value-btn increase" >+</button>
+                                                <input type="number"  min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
+                                                <button type="button" id="dec-btn" class="value-btn decrease">-</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                    @endif
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="check-btn">Check Out</button>
+                </div>
+            </form>
         </div>
         <div class="disc-container">
             <p>
@@ -144,5 +174,31 @@
     <script src="{{asset('script/customer/index.js')}}" ></script>
     <script src="{{ asset('script/customer/home/slide.js')}}"></script>
     <script src="{{ asset('script/customer/addToCart.js')}}"> </script>
+    {{-- For Order QTY --}}
+     <script>
+
+        const productsContainer = document.getElementById("products");
+        productsContainer.addEventListener("click", function(event) {
+
+            if (event.target.classList.contains("decrease") || event.target.classList.contains("increase")) {
+                const productElement = event.target.closest(".product");
+                const quantityInput = productElement.querySelector(".quantity");
+                let currentValue = parseInt(quantityInput.value);
+
+                if (event.target.classList.contains("decrease"))
+                {
+                    if (currentValue > 1)
+                    {
+                        quantityInput.value = currentValue - 1;
+                    }
+                }
+                else if (event.target.classList.contains("increase"))
+                {
+                    quantityInput.value = currentValue + 1;
+                }
+            }
+        } );
+
+    </script>
 </body>
 </html>
