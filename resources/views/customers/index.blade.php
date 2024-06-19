@@ -35,12 +35,7 @@
 
             <div  class="add-cart-form">
                 <div class="add-item-container" id="products">
- {{--
-                     @if (session()->get('cart') != null)
-                    <label style="visibility: hidden;" value="{{ $j=0;  }}"></label>
-                    <label style="visibility: hidden;" value="{{ $i=0;  }}"></label>
 
---}}
                     @if (session()->get('cart') != null)
 
 
@@ -58,19 +53,15 @@
                                         <div class="price-container ">
 
                                             <input type="hidden" id="unit-price" name="price" value="{{ $details["price"]}}" class="price">
-                                            <input type="text" class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span>
+                                            <input  type="text" disabled class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span>
                                         </div>
-                                            <div class="button">
+                                        <div class="button">
 
-                                                <div class="qty-btn ">
-
-
-                                                    <button type="button"    class="increase-btn updateQty" value="{{ $details['id']}}" >+</button>
-                                                    <input type="text"  min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
-                                                    <button type="button"   class="decrease-btn updateQty" value="{{ $details['id']}}" >-</button>
-                                                </div>
-
-
+                                            <div class="qty-btn ">
+                                                <button type="button"    class="increase-btn updateQty" value="{{ $details['id']}}" >+</button>
+                                                <input type="text" disabled min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
+                                                <button type="button"   class="decrease-btn updateQty" value="{{ $details['id']}}" >-</button>
+                                            </div>
 
                                             <button value="{{ $details['id'] }}" class="remove-btn">Remove</button>
                                         </div>
@@ -138,8 +129,10 @@
             </div>
             <div class="icon-container">
                 <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
-
+                <div class="cart-icon">
+                    <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
+                    <span id="count-priduct">0</span>
+                </div>
             </div>
 
 
@@ -200,126 +193,9 @@
         </div>
     </footer>
 
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    {{-- <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/custom.js"></script> --}}
-
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-    {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-
-
     <script src="{{asset('script/customer/index.js')}}" ></script>
     <script src="{{ asset('script/customer/home/slide.js')}}"></script>
     <script src="{{ asset('script/customer/addToCart.js')}}"> </script>
-
-
-
-{{--
-    <script>
-        $(document).ready(function () {
-            $.ajaxSetup(
-            {
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            }
-            );
-
-            $(document).on('click', '.ic', function(){
-                var ids = $(this).attr('id');
-                var id = $('#'+ids).val();
-                // console.log(id);
-
-                $.ajax({
-
-
-                    type: 'POST',
-                    url: "{{ route('addToCartInc')}}",
-                    data: {index: id},
-                    success: function(data) {
-                        alert(JSON.stringify(data));
-                        var total = 0;
-                        $.each(data,function(key,value) {
-                            total = +total + + value["price"];
-                        } );
-                        window.location.reload();
-                    }
-                });
-            });
-
-        });
-        function incrementValue() {
-            var value = parseInt(document.getElementById("a").value,10);
-            value = isNaN(value) ? 0 : value;
-            if (value < 100) {
-                value ++;
-                document.getElementById('a').value = value;
-            }
-        }
-
-        function decrementValue() {
-            var value = parseInt(document.getElementById("a").value,10);
-            value = isNaN(value) ? 0 : value;
-            if (value >1) {
-                value --;
-                document.getElementById('a').value = value;
-            }
-        }
-
-
-    </script>
-    --}}
-
-    {{-- For Order QTY
-     <script>
-
-        const productsContainer = document.getElementById("products");
-        productsContainer.addEventListener("click", function(event) {
-
-            if (event.target.classList.contains("decrease") || event.target.classList.contains("increase")) {
-                const productElement = event.target.closest(".product");
-                const quantityInput = productElement.querySelector(".quantity");
-                const priceInput = productElement.querySelector(".price");
-
-                let currentValue = parseInt(quantityInput.value);
-                let currentPrice = parseInt(priceInput.value);
-                // var cartData = @json(session('cart'));
-
-
-
-                    if (event.target.classList.contains("decrease"))
-                    {
-                        if (currentValue > 1)
-                        {
-                            quantityInput.value = currentValue - 1;
-
-                            totalQty = parseInt(quantityInput.value);
-
-
-                        }
-
-                    }
-                    else if (event.target.classList.contains("increase"))
-                    {
-                        quantityInput.value = currentValue + 1;
-
-
-                        // console.log(currentValue + 1);
-                        // priceInput.value = currentPrice * (currentValue + 1);
-                    }
-            }
-        } );
-
-        // function qty(value) {
-
-        //     return value;
-        // }
-
-    </script>  --}}
-    {{-- livewire script --}}
-
 
 </body>
 </html>

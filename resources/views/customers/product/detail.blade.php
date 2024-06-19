@@ -42,7 +42,7 @@
                         </div>
                     </form>
 
-
+                </div>
             </div>
             <div class="also-like">
                 <h1>You may also like</h1>

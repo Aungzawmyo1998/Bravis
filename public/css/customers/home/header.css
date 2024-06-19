@@ -181,12 +181,32 @@ header .disc-container {
     color: var(--font-color);
 
 }
-.icon-container .icon {
+.nav-container .icon-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.nav-container .icon-container .icon {
     display: inline-block;
     font-size: 30px;
     color: var(--font-color);
     margin-left: 15px;
     cursor: pointer;
+}
+.nav-container .cart-icon {
+    position: relative;
+}
+#count-priduct {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 25px;
+    padding: 3px;
+    border-radius: 50px;
+    text-align: center;
+    background-color: red;
+
 }
 .nav-link .sub-nav li:hover {
     /* border: 0.5px solid; */
@@ -273,8 +293,8 @@ header .add-to-cart.active {
     border-top: 1px solid #CCC;
     padding: 2rem;
 }
-#cart-data .add-cart-form .check-btn {
-
+#cart-data .btn-container .check-btn {
+    display: inline-block;
     width: 100%;
     padding: 1rem;
     text-align: center;
@@ -301,6 +321,17 @@ header .add-to-cart.active {
     outline: none;
 
 } */
+ #cart-data .total-price {
+    border: none;
+    background-color: transparent;
+    width: 100px;
+    text-align: right;
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+    margin-right: 10px;
+
+ }
 #cart-data .value-btn {
     width: 20px;
     padding: 5px;
@@ -331,12 +362,29 @@ header .add-to-cart.active {
     display: flex;
     justify-content: space-between;
     gap: 3rem;
+    padding: 5px;
+}
+#cart-data .qty-btn {
+    padding: 5px 10px;
+}
+#cart-data .updateQty {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: transparent;
+}
+#cart-data .decrease-btn {
+    font-size: 25px;
 }
 #cart-data .remove-btn {
     display: inline-block;
-    padding: 10px;
+    padding: 5px 10px;
     background-color: #0079FF;
     border-radius: 5px;
     color: #FFF;
     font-weight: 600;
+    border: none;
+    cursor: pointer;
 }
+

@@ -133,6 +133,7 @@
 
 #detail-product .also-like .card-container {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(4, 1fr);
     justify-content: space-between;
 }
@@ -155,6 +156,7 @@
 }
 #detail-product .also-like .data {
     line-height: 2;
+    color: black;
 }
 
 
