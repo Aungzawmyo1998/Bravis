@@ -35,6 +35,8 @@ $(document).ready(function (){
         value ++;
 
         $(this).closest('.product_data').find('.qty-value').val(value);
+
+
     });
 
     $('.decrease-btn').click(function (e) {
@@ -48,15 +50,26 @@ $(document).ready(function (){
             // $('.qty-value').val(value);
             $(this).closest('.product_data').find('.qty-value').val(value);
         }
+
+
     });
+
+    // price
+
 
     // increase qty in session
 
     $(document).on('click','.updateQty', function () {
 
+
         var qty = $(this).closest('.product_data').find('.qty-value').val();
         var value = parseInt(qty);
         var productID  = $(this).val();
+
+        var unitPrice = $(this).closest('.product_data').find('.price').val();
+        // alert(unitPrice);
+        totalPrice = parseInt(unitPrice)*qty;
+        $(this).closest('.product_data').find('.total-price').val(totalPrice);
 
 
         $.ajax({
@@ -68,7 +81,7 @@ $(document).ready(function (){
 
                 "id": productID,
                 "qty": value,
-                "action": "increase",
+
             },
 
         });

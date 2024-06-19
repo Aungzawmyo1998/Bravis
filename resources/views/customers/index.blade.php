@@ -51,32 +51,23 @@
                                         <img  src="{{ asset('img/products/register/'.$details["image"])}}" alt="">
                                     </div>
 
-                                    <div class="data-container">
+                                    <div class="data-container product_data">
                                         <h2>{{$details["name"]}}</h2>
 
-                                        <div class="price-container">
-                                            <input type="text" name="price" value="{{ $details["price"] * $details["qty"]}}" class="price" id=""><span>MMK</span>
+                                        <div class="price-container ">
+
+                                            <input type="hidden" id="unit-price" name="price" value="{{ $details["price"]}}" class="price">
+                                            <input type="text" class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span>
                                         </div>
                                             <div class="button">
 
-                                                <div class="qty-btn product_data">
+                                                <div class="qty-btn ">
+
                                                     {{-- <input type="hidden" name="id" value="{{ $details["id"]  }}" > --}}
                                                     <button type="button"    class="increase-btn updateQty" value="{{ $details['id']}}" >+</button>
                                                     <input type="text"  min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
                                                     <button type="button"   class="decrease-btn updateQty" value="{{ $details['id']}}" >-</button>
                                                 </div>
-
-
-                                                 {{--
-
-                                                 <div class="incdec">
-                                                    <input type="hidden" name="id" value="{{$details["id"]}}"/>
-                                                    <button type="button"  onclick="decrementValue()"  class="dc" id="{{'decrease'.$j}}" value="{{$j}}">-</button>
-                                                    <input type="text"  class="qtyval" name="quantity" value="{{$details["qty"]}}" maxlength="3" max="100" size="2" id="a"  />
-                                                    <button type="button" onclick="incrementValue()"   class="ic" id="{{'increase'.$j}}" value="{{$j}}" >+</button>
-
-                                                </div>
-                                                --}}
 
 
 

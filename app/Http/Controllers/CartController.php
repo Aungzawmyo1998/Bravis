@@ -55,16 +55,19 @@ class CartController extends Controller
 
         // dd($request->all());
 
+
         $cart = session()->get('cart');
         $qty = $request->qty;
         $id = $request->id;
 
+        $product = Product::find($id);
+
 
         if(isset($cart[$id]))
         {
+
             $cart[$id]["qty"] = $qty;
 
-            // return response()
         }
         session()->put('cart',$cart);
 
