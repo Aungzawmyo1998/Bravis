@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Livewire\Cart;
 use App\Models\OrderProduct;
 use App\Models\Role;
 use App\Models\Supplier;
@@ -19,10 +20,15 @@ Route::get('/', function () {
 });
 
 
+// live wire test
+
+Route::get('/index', function () {
+    return view('customers.index');
+});
 
 // Customers
 Route::get('/customer/login', [LoginController::class, 'customerLogin'])->name('customer.login');
-ROute::post('/customer/login', [LoginController::class, 'customerLoginProcess'])->name('customer.login.process');
+Route::post('/customer/login', [LoginController::class, 'customerLoginProcess'])->name('customer.login.process');
 Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
 Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
 Route::get('/customer/logout', [CustomerController::class, 'logout']) -> name('custoemr.logout');
@@ -38,6 +44,9 @@ Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetai
 Route::middleware(['customer'])->group( function ( ) {
 
     Route::post('/product/{id}/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
+    // Route::post('/update/cart', [CartController::class, 'updateCart'])->name('update.cart');
+    // Route::post('/addtocart/increment',[CartController::class, 'addToCartInc'])->name('addToCartInc');
+    Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 
 
 });

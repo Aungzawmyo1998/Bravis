@@ -51,13 +51,14 @@ class HomeController extends Controller
     }
 
     // product detal //
+    
     public function productDetail ($id)
     {
         $products = Product::find($id);
 
         if($products->gender == "Male") {
 
-            $men = Product::select('*')
+            $items = Product::select('*')
                             ->where('gender','=','Male')
                             ->where('category_id','=',"$products->category_id")
                             ->limit(4)
@@ -65,10 +66,24 @@ class HomeController extends Controller
                             ->get();
 
 
-            return view('customers.product.detail',compact('products','men'));
+            return view('customers.product.detail',compact('products','items'));
+        }
+
+        if($products->gender == "Female") {
+
+            $items = Product::select('*')
+                            ->where('gender','=','Female')
+                            ->where('category_id','=',"$products->category_id")
+                            ->limit(4)
+                            ->orderBy('id','desc')
+                            ->get();
+
+
+            return view('customers.product.detail',compact('products','items'));
         }
 
 
     }
+
 
 }

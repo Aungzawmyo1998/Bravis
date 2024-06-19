@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- font awesome cdn --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,7 +19,11 @@
     {{-- product detail css --}}
     <link rel="stylesheet" href="{{ asset('css/customers/product/product_detail.css')}}">
 
+    {{-- test livewire --}}
+
+
     <title>@yield('title')</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body >
     <header>
@@ -28,35 +33,66 @@
                 <i id="close-cart" class="fa-solid fa-xmark close-cart"></i>
             </div>
 
-            <form action="" method="get" class="add-cart-form">
+            <div  class="add-cart-form">
                 <div class="add-item-container" id="products">
+ {{--
+                     @if (session()->get('cart') != null)
+                    <label style="visibility: hidden;" value="{{ $j=0;  }}"></label>
+                    <label style="visibility: hidden;" value="{{ $i=0;  }}"></label>
 
-                    @if (session('cart'))
-                            @foreach (session('cart') as $id => $details )
-                                <div class="add-item product" >
+--}}
+                    @if (session()->get('cart') != null)
+
+
+                         @foreach (session('cart') as $id => $details )
+
+                                <div class="add-item product cart-item"   >
                                     <div class="img-container">
                                         <img  src="{{ asset('img/products/register/'.$details["image"])}}" alt="">
                                     </div>
+
                                     <div class="data-container">
                                         <h2>{{$details["name"]}}</h2>
-                                        <p>{{ $details["price"]}} MMK</p>
-                                        <div class="button">
-                                            <div class="qty-btn">
-                                                <button type="button" id="inc-btn" class="value-btn increase" >+</button>
-                                                <input type="number"  min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
-                                                <button type="button" id="dec-btn" class="value-btn decrease">-</button>
-                                            </div>
+
+                                        <div class="price-container">
+                                            <input type="text" name="price" value="{{ $details["price"] * $details["qty"]}}" class="price" id=""><span>MMK</span>
+                                        </div>
+                                            <div class="button">
+
+                                                <div class="qty-btn product_data">
+                                                    {{-- <input type="hidden" name="id" value="{{ $details["id"]  }}" > --}}
+                                                    <button type="button"    class="increase-btn updateQty" value="{{ $details['id']}}" >+</button>
+                                                    <input type="text"  min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
+                                                    <button type="button"   class="decrease-btn updateQty" value="{{ $details['id']}}" >-</button>
+                                                </div>
+
+
+                                                 {{--
+
+                                                 <div class="incdec">
+                                                    <input type="hidden" name="id" value="{{$details["id"]}}"/>
+                                                    <button type="button"  onclick="decrementValue()"  class="dc" id="{{'decrease'.$j}}" value="{{$j}}">-</button>
+                                                    <input type="text"  class="qtyval" name="quantity" value="{{$details["qty"]}}" maxlength="3" max="100" size="2" id="a"  />
+                                                    <button type="button" onclick="incrementValue()"   class="ic" id="{{'increase'.$j}}" value="{{$j}}" >+</button>
+
+                                                </div>
+                                                --}}
+
+
+
+                                            <a href="" class="remove-btn">Remove</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
+
                     @endif
                 </div>
 
                 <div class="btn-container">
-                    <button type="submit" class="check-btn">Check Out</button>
+                    <a href="#"  class="check-btn">Check Out</a>
                 </div>
-            </form>
+            </div>
         </div>
         <div class="disc-container">
             <p>
@@ -171,10 +207,79 @@
         </div>
     </footer>
 
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    {{-- <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/custom.js"></script> --}}
+
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+    {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+
     <script src="{{asset('script/customer/index.js')}}" ></script>
     <script src="{{ asset('script/customer/home/slide.js')}}"></script>
     <script src="{{ asset('script/customer/addToCart.js')}}"> </script>
-    {{-- For Order QTY --}}
+
+
+
+{{--
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup(
+            {
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            }
+            );
+
+            $(document).on('click', '.ic', function(){
+                var ids = $(this).attr('id');
+                var id = $('#'+ids).val();
+                // console.log(id);
+
+                $.ajax({
+
+
+                    type: 'POST',
+                    url: "{{ route('addToCartInc')}}",
+                    data: {index: id},
+                    success: function(data) {
+                        alert(JSON.stringify(data));
+                        var total = 0;
+                        $.each(data,function(key,value) {
+                            total = +total + + value["price"];
+                        } );
+                        window.location.reload();
+                    }
+                });
+            });
+
+        });
+        function incrementValue() {
+            var value = parseInt(document.getElementById("a").value,10);
+            value = isNaN(value) ? 0 : value;
+            if (value < 100) {
+                value ++;
+                document.getElementById('a').value = value;
+            }
+        }
+
+        function decrementValue() {
+            var value = parseInt(document.getElementById("a").value,10);
+            value = isNaN(value) ? 0 : value;
+            if (value >1) {
+                value --;
+                document.getElementById('a').value = value;
+            }
+        }
+
+
+    </script>
+    --}}
+
+    {{-- For Order QTY
      <script>
 
         const productsContainer = document.getElementById("products");
@@ -183,22 +288,45 @@
             if (event.target.classList.contains("decrease") || event.target.classList.contains("increase")) {
                 const productElement = event.target.closest(".product");
                 const quantityInput = productElement.querySelector(".quantity");
-                let currentValue = parseInt(quantityInput.value);
+                const priceInput = productElement.querySelector(".price");
 
-                if (event.target.classList.contains("decrease"))
-                {
-                    if (currentValue > 1)
+                let currentValue = parseInt(quantityInput.value);
+                let currentPrice = parseInt(priceInput.value);
+                // var cartData = @json(session('cart'));
+
+
+
+                    if (event.target.classList.contains("decrease"))
                     {
-                        quantityInput.value = currentValue - 1;
+                        if (currentValue > 1)
+                        {
+                            quantityInput.value = currentValue - 1;
+
+                            totalQty = parseInt(quantityInput.value);
+
+
+                        }
+
                     }
-                }
-                else if (event.target.classList.contains("increase"))
-                {
-                    quantityInput.value = currentValue + 1;
-                }
+                    else if (event.target.classList.contains("increase"))
+                    {
+                        quantityInput.value = currentValue + 1;
+
+
+                        // console.log(currentValue + 1);
+                        // priceInput.value = currentPrice * (currentValue + 1);
+                    }
             }
         } );
 
-    </script>
+        // function qty(value) {
+
+        //     return value;
+        // }
+
+    </script>  --}}
+    {{-- livewire script --}}
+
+
 </body>
 </html>

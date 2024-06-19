@@ -30,8 +30,7 @@
                 <div class="item-container">
                     @foreach ($products as $product )
 
-
-                        <a href="" class="card">
+                        <a href="{{ url('customer/product/'.$product->id.'/detail') }}" class="card">
                             <div class="img-container">
                                 <img src="{{ asset('img/products/register/'.$product->image)}}" alt="">
                             </div>
