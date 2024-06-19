@@ -67,7 +67,6 @@ $(document).ready(function (){
         var productID  = $(this).val();
 
         var unitPrice = $(this).closest('.product_data').find('.price').val();
-        // alert(unitPrice);
         totalPrice = parseInt(unitPrice)*qty;
         $(this).closest('.product_data').find('.total-price').val(totalPrice);
 
@@ -87,7 +86,24 @@ $(document).ready(function (){
         });
 
     });
+
+    $(document).on('click','.remove-btn', function(){
+
+        $(this).closest('.product_data').find('.cart-item').css('display','none');
+
+        var productID = $(this).val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/cart/delete',
+            data: {
+                "id": productID,
+            }
+        });
+
+    });
 });
+
 
 // for show cart
 

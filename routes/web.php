@@ -47,6 +47,7 @@ Route::middleware(['customer'])->group( function ( ) {
     // Route::post('/update/cart', [CartController::class, 'updateCart'])->name('update.cart');
     // Route::post('/addtocart/increment',[CartController::class, 'addToCartInc'])->name('addToCartInc');
     Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::post('/cart/delete', [CartController::class, 'deleteProduct'])->name('cart.delefte');
 
 
 });

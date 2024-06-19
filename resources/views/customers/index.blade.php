@@ -45,13 +45,14 @@
 
 
                          @foreach (session('cart') as $id => $details )
+                            <div class="product_data">
 
-                                <div class="add-item product cart-item"   >
+                                <div class="add-item  cart-item">
                                     <div class="img-container">
                                         <img  src="{{ asset('img/products/register/'.$details["image"])}}" alt="">
                                     </div>
 
-                                    <div class="data-container product_data">
+                                    <div class="data-container ">
                                         <h2>{{$details["name"]}}</h2>
 
                                         <div class="price-container ">
@@ -63,7 +64,7 @@
 
                                                 <div class="qty-btn ">
 
-                                                    {{-- <input type="hidden" name="id" value="{{ $details["id"]  }}" > --}}
+
                                                     <button type="button"    class="increase-btn updateQty" value="{{ $details['id']}}" >+</button>
                                                     <input type="text"  min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
                                                     <button type="button"   class="decrease-btn updateQty" value="{{ $details['id']}}" >-</button>
@@ -71,11 +72,12 @@
 
 
 
-                                            <a href="" class="remove-btn">Remove</a>
+                                            <button value="{{ $details['id'] }}" class="remove-btn">Remove</button>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
 
                     @endif
                 </div>

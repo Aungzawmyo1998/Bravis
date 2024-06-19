@@ -73,6 +73,18 @@ class CartController extends Controller
 
     }
 
+    public function deleteProduct(Request $request)
+    {
+        $id = $request->id;
+        $cart = session()->get('cart');
+
+        if(isset($cart[$id]))
+        {
+            unset($cart[$id]);
+            session()->put('cart',$cart);
+        }
+    }
+
 
     // public function updateCart (Request $request )
     // {
