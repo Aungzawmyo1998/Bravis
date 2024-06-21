@@ -49,12 +49,38 @@ class HomeController extends Controller
 
         return view('customers.product.women_product', compact('products'));
     }
+    //
+
+    // ACCESSORIES PRODUCT
+    public function accessoriesProduct()
+    {
+        $products = Product::join('categories','categories.id','=','products.category_id')
+                    ->select('products.*')
+                    ->where('categories.name','LIKE','%accessories%')
+                    ->orderBy('products.id','desc')
+                    ->get();
+
+        return view('customers.product.accessories_product', compact('products'));
+    }
+
+    // SPORT
+    public function sportProduct()
+    {
+        $products = Product::join('categories','categories.id','=','products.category_id')
+                    ->select('products.*')
+                    ->where('categories.name','LIKE','%sport%')
+                    ->orderBy('products.id','desc')
+                    ->get();
+
+        return view('customers.product.sport', compact('products'));
+    }
 
     // product detal //
-    
+
     public function productDetail ($id)
     {
         $products = Product::find($id);
+
 
         if($products->gender == "Male") {
 

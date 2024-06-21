@@ -34,10 +34,13 @@ Route::get('/customer/register', [CustomerController::class, 'register'])->name(
 Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
 Route::get('/customer/logout', [CustomerController::class, 'logout']) -> name('custoemr.logout');
 
-// products
+// products categories
 Route::get('/customer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
 Route::get('/customer/product/men', [HomeController::class, 'menProduct'])->name('customer.men.product');
 Route::get('/customer/product/women', [HomeController::class, 'womenProduct'])->name('customer.women.product');
+Route::get('/custoemr/product/accessories', [HomeController::class, 'accessoriesProduct'])->name('customer.accessories.product');
+Route::get('/customer/product/sport', [HomeController::class, 'sportProduct'])->name('customer.sport.product');
+
 Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetail'])->name('customer.product.detail');
 
 // cart
@@ -53,6 +56,7 @@ Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetai
 // });
 // Payment
 Route::get('/customer/checkout', [PaymentController::class , 'checkOut'])->name('checkout');
+Route::post('/customer/payment', [PaymentController::class , 'payment'])->name('payment');
 
 // Route::get('/customer/men/tees')
 

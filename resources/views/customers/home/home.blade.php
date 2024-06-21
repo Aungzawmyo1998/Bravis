@@ -89,19 +89,19 @@
                     <h1>Ready To Wear Perfection</h1>
 
                     <div class="item-container">
-                        <div class="item1" style="background-image: url({{ asset( 'img/customers/home/men_bg.jpg')}})">
+                        <a href="{{route('customer.men.product')}}" class="item1" style="background-image: url({{ asset( 'img/customers/home/men_bg.jpg')}})">
 
                             <h2>Men Fashion</h2>
-                        </div>
-                        <div class="item2" style="background-image: url({{ asset('img/customers/home/wonmen_bg.jpg')}})">
+                        </a>
+                        <a href="{{route('customer.women.product')}}" class="item2" style="background-image: url({{ asset('img/customers/home/wonmen_bg.jpg')}})">
                             <h2>Woomen Fashion</h2>
-                        </div>
-                        <div class="item3" style="background-image: url({{ asset('img/customers/home/accesssorie_bg.jpg')}})">
+                        </a>
+                        <a href="{{route('customer.accessories.product')}}" class="item3" style="background-image: url({{ asset('img/customers/home/accesssorie_bg.jpg')}})">
                             <h2>Accessories</h2>
-                        </div>
-                        <div class="item4" style="background-image: url({{ asset('img/customers/home/sport_bg.jpg')}})">
+                        </a>
+                        <a href="{{route('customer.sport.product')}}" class="item4" style="background-image: url({{ asset('img/customers/home/sport_bg.jpg')}})">
                             <h2>Sport Wear</h2>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -22,18 +22,26 @@
             </div>
             <div class="data-container">
 
-                <form action="">
+                <form action="{{ route('payment')}}" method="POST">
+                    @csrf
+
                     <div class="payment">
                         <div class="container contact">
                             <div class="header contact-header">
                                 <h2>Contact</h2>
                                 <span>Have an account?<a href="{{ route('customer.login')}}"> Login</a></span>
                             </div>
-                            <div class="input-row">
-                                <input type="email" name="email" placeholder="Email*" value="{{ auth('customer')->user() != null ? $customer->email : null }}">
-                            </div>
+                            @auth
+                                <div class="input-row">
+                                    <input type="email" name="email" placeholder="Email*" value="{{ auth('customer')->user() != null ? $customer->email : null }}">
+                                </div>
+                            @endauth
+
                             <div class="input-row">
                                 <input type="text" name="phno" placeholder="Phone Number" value="{{ auth('customer')->user() != null ? $customer->phonenumber : null }}">
+                                @error('phno')
+                                    <p style="color: red;">{{$message}}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="container delivery">
@@ -44,15 +52,40 @@
                                 <select name="state" id=""></select>
                             </div> --}}
                             <div class="input-row sec-input-row">
-                                <input type="text" name="fname" placeholder="First Name" value="{{ auth('customer')->user() != null ? $customer->firstname : null }}">
-                                <input type="text" name="lname" placeholder="Last Name" value="{{ auth('customer')->user() != null ? $customer->lastname : null }}">
+                                <div class="sec-child-input" >
+                                    <input type="text" name="fname" placeholder="First Name" value="{{ auth('customer')->user() != null ? $customer->firstname : null }}">
+                                    @error('fname')
+                                        <p style="color: red;">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="sec-child-input" >
+                                    <input type="text" name="lname" placeholder="Last Name" value="{{ auth('customer')->user() != null ? $customer->lastname : null }}">
+                                    @error('lname')
+                                        <p style="color: red;">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                {{-- <input type="text" name="fname" placeholder="First Name" value="{{ auth('customer')->user() != null ? $customer->firstname : null }}">
+                                <input type="text" name="lname" placeholder="Last Name" value="{{ auth('customer')->user() != null ? $customer->lastname : null }}"> --}}
                             </div>
                             <div class="input-row">
                                 <textarea name="address" class="address" id="" cols="30" rows="10" placeholder="Address">{{ auth('customer')->user() != null ? $customer->address : null }}</textarea>
+                                @error('address')
+                                        <p style="color: red;">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="input-row sec-input-row">
-                                <input type="text" name="state" placeholder="State/Region (eg. Yangon)" value="{{ auth('customer')->user() != null ? $customer->State_region : null }}">
-                                <input type="text" name="zipcode" placeholder="Zip Code (Eg. 1111)" value="{{ auth('customer')->user() != null ? $customer->zipcode : null }}">
+                                <div class="sec-child-input">
+                                    <input type="text" name="state" placeholder="State/Region (eg. Yangon)" value="{{ auth('customer')->user() != null ? $customer->State_region : null }}">
+                                    @error('state')
+                                        <p style="color: red;">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="sec-child-input">
+                                    <input type="text" name="zipcode" placeholder="Zip Code (Eg. 1111)" value="{{ auth('customer')->user() != null ? $customer->zipcode : null }}">
+                                    @error('zipcode')
+                                        <p style="color: red;">{{$message}}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="container shipping">
@@ -78,7 +111,7 @@
                             <thead>
                                 <tr>
                                     <th><h2>Your Order</h2></th>
-                                    <th><h2><a href="">Edit</a></h2></th>
+                                    <th><h2><a href="{{ route('customer.allproduct')}}">Edit</a></h2></th>
                                 </tr>
                             </thead>
                             <tbody>

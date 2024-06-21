@@ -68,17 +68,19 @@ class LoginController extends Controller
             if ($status == 'active')
             {
                 return redirect()->route('home');
-                // return redirect()->
+
             }
             else
             {
                 Auth::logout();
+                session()->flush();
                 return back();
             }
         }
         else
         {
             Auth::logout();
+            session()->flush();
             return back()->withErrors('error','email and password is incorect');
         }
 

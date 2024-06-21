@@ -48,7 +48,7 @@ body {
 #payment .payment .input-row {
     margin-bottom: 1rem;
 }
-#payment .payment .input-row>input {
+#payment .payment .input-row input {
     width: 100%;
     padding: 1rem;
     border: 1px solid #000;
@@ -56,7 +56,10 @@ body {
     font-size: 16px;
     background-color: transparent;
 }
-#payment .payment .input-row>input:focus,
+#payment .payment .sec-child-input {
+    width: 100%;
+}
+#payment .payment .input-row input:focus,
 #payment .address {
     outline: none;
 }
@@ -72,6 +75,7 @@ body {
     font-size: 16px;
 }
 #payment .payment .sec-input-row {
+
     display: flex;
     justify-content: space-between;
     gap: 1rem;

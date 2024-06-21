@@ -93,9 +93,13 @@
                         <a href="">Orders and Returns</a>
                     </li>
                     <li>|</li>
-                    <li>
-                        <a href="{{ route('customer.login')}}">Sign in</a>
-                    </li>
+                    @guest
+                    <li><a href="{{ route('customer.login')}}">Sign in</a></li>
+                    @endguest
+                    @auth
+                    <li><a href="{{ route('custoemr.logout')}}">Log Out</a></li>
+                    @endauth
+
                 </ul>
             </div>
         </div>
@@ -122,8 +126,8 @@
                             <li><a href="">Men's Pen & Shorts</a></li>
                         </ul> --}}
                     </li>
-                    <li><a href="">Accessories</a></li>
-                    <li><a href="">Sport</a></li>
+                    <li><a href="{{ route('customer.accessories.product')}}">Accessories</a></li>
+                    <li><a href="{{ route('customer.sport.product') }}">Sport</a></li>
                     <li><a href="">Contact</a> </li>
                     <li><a href="">About Us</a></li>
                 </ul>
