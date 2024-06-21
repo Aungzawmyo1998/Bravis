@@ -62,30 +62,13 @@ class LoginController extends Controller
 
         $auth = $request->only('email','password');
 
-        // if( auth('customer')->attempt($auth)) {
-        //    $status = auth('customer')->user();
-
-        //    if( $status->status == 'active') {
-
-        //     return redirect()->back();
-        //    } else {
-
-        //     // Auth::logout();
-        //     return redirect()->back();
-        //    }
-
-        // } else {
-
-        //     Auth::logout();
-        //     return back()->withErrors('error','email and password is incorect');
-        // }
-
         if( auth('customer')->attempt($auth))
         {
             $status = auth('customer')->user()->status;
             if ($status == 'active')
             {
                 return redirect()->route('home');
+                // return redirect()->
             }
             else
             {

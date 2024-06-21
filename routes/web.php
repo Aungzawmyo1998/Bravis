@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 // use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Livewire\Cart;
@@ -41,7 +42,7 @@ Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetai
 
 // cart
 
-Route::middleware(['customer'])->group( function ( ) {
+// Route::middleware(['customer'])->group( function ( ) {
 
     Route::post('/product/{id}/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
     // Route::post('/update/cart', [CartController::class, 'updateCart'])->name('update.cart');
@@ -49,8 +50,9 @@ Route::middleware(['customer'])->group( function ( ) {
     Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
     Route::post('/cart/delete', [CartController::class, 'deleteProduct'])->name('cart.delefte');
 
-
-});
+// });
+// Payment
+Route::get('/customer/checkout', [PaymentController::class , 'checkOut'])->name('checkout');
 
 // Route::get('/customer/men/tees')
 

@@ -51,7 +51,7 @@
                                         <h2>{{$details["name"]}}</h2>
 
                                         <div class="price-container ">
-
+                                            <input type="text" name="size" value="{{$details["size"]}}" class="size">
                                             <input type="hidden" id="unit-price" name="price" value="{{ $details["price"]}}" class="price">
                                             <input  type="text" disabled class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span>
                                         </div>
@@ -74,7 +74,8 @@
                 </div>
 
                 <div class="btn-container">
-                    <a href="#"  class="check-btn">Check Out</a>
+                    {{-- <a href="{{ auth('customer') == null ? url('customer/checkout') : url('customer/checkout/'.auth('customer')->user()->id) }}"  class="check-btn">Check Out</a> --}}
+                    <a href="{{ route('checkout')}}" class="check-btn">Check Out</a>
                 </div>
             </div>
         </div>

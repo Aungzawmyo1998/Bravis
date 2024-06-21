@@ -21,24 +21,27 @@ class CartController extends Controller
 
 
 
-        $cart = session()->get('cart');
+        $cart = session()->get('cart',[]);
+        $size = $request->size;
+        $cartkey = $id.'_'.$size;
 
         // $price = $cart[$id]["qty"] * $product->price;
 
-        if(isset($cart[$id]))
+        if(isset($cart[$cartkey]))
         {
-            $cart[$id]["qty"]++;
+            $cart[$cartkey]["qty"]++;
 
         }
         else
         {
-            $cart[$id]= [
+            $cart[$cartkey]= [
                 "id" => $id,
                 "name" => $product->name,
                 "price" => $product->price,
                 "image" => $product->image,
                 "size" => $request->size,
                 "qty" => 1,
+                // "totalPrice" => $cart["qty"] * $cart["price"],
 
             ];
         }
@@ -56,17 +59,21 @@ class CartController extends Controller
         // dd($request->all());
 
 
+
         $cart = session()->get('cart');
         $qty = $request->qty;
         $id = $request->id;
+        $size = $request->size;
+
+        $cartkey = $id.'_'.$size;
 
         $product = Product::find($id);
 
 
-        if(isset($cart[$id]))
+        if(isset($cart[$cartkey]))
         {
 
-            $cart[$id]["qty"] = $qty;
+            $cart[$cartkey]["qty"] = $qty;
 
         }
         session()->put('cart',$cart);
@@ -75,57 +82,22 @@ class CartController extends Controller
 
     public function deleteProduct(Request $request)
     {
+
+        // dd($request->all());
+
         $id = $request->id;
+        $size = $request->size;
+        $cartkey = $id.'_'.$size;
         $cart = session()->get('cart');
 
-        if(isset($cart[$id]))
+        if(isset($cart[$cartkey]))
         {
-            unset($cart[$id]);
+            unset($cart[$cartkey]);
             session()->put('cart',$cart);
         }
     }
 
 
-    // public function updateCart (Request $request )
-    // {
-    //     dd($request->productID);
-
-    //     $productId = $request->input('product_id');
-    //     $action = $request->input('action');
-
-    //     $cart = session()->get('cart', []);
-
-    //     if (isset($cart[$productId])) {
-    //         if ($action == 'increase') {
-    //             $cart[$productId]["qty"] += 1;
-    //         } elseif ($action == 'decrease' && $cart[$productId]["qty"] > 1) {
-    //             $cart[$productId]["qty"] -= 1;
-    //         }
-    //     }
-
-    //     session()->put('cart', $cart);
-    // }
-
-    /*
-
-    public function addToCartInc(Request $request)
-    {
-        // dd($request->all());
-        $index = $request->index;
-        $incrementNum = session()->get('cart');
-        foreach($incrementNum as $key => &$value) {
-            if($key == $index) {
-                $value['qty'] += 1;
-                $value['price'] = $value['price'] * $value["qty"];
-                session()->put('cart',$incrementNum);
-            }
-        }
-
-        $session = session()->get('cart');
-        return $session;
-    }
-
-    */
 
 
 }

@@ -70,6 +70,7 @@ $(document).ready(function (){
         totalPrice = parseInt(unitPrice)*qty;
         $(this).closest('.product_data').find('.total-price').val(totalPrice);
 
+        var size = $(this).closest('.product_data').find('.size').val();
 
         $.ajax({
             type: 'POST',
@@ -80,6 +81,7 @@ $(document).ready(function (){
 
                 "id": productID,
                 "qty": value,
+                "size": size,
 
             },
 
@@ -92,12 +94,15 @@ $(document).ready(function (){
         $(this).closest('.product_data').find('.cart-item').css('display','none');
 
         var productID = $(this).val();
+        var size = $(this).closest('.product_data').find('.size').val();
+
 
         $.ajax({
             type: 'POST',
             url: '/cart/delete',
             data: {
                 "id": productID,
+                "size": size,
             }
         });
 
