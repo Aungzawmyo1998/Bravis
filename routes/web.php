@@ -16,23 +16,26 @@ use App\Models\OrderProduct;
 use App\Models\Role;
 use App\Models\Supplier;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 // live wire test
-
 Route::get('/index', function () {
     return view('customers.index');
 });
+
+//CUSTOMER SEARCH
+
+Route::get('/women/search', [HomeController::class, 'womenSearch'])->name('women.search');
+Route::get('/men/search', [HomeController::class, 'menSearch'])->name('men.search');
+Route::get('/accessories/search', [HomeController::class, 'accessoriesSearch'])->name('accessories.search');
+Route::get('/sport/search', [HomeController::class, 'sportSearch'])->name('sport.search');
+
 
 // Customers
 Route::get('/customer/login', [LoginController::class, 'customerLogin'])->name('customer.login');
 Route::post('/customer/login', [LoginController::class, 'customerLoginProcess'])->name('customer.login.process');
 Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
 Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
-Route::get('/customer/logout', [CustomerController::class, 'logout']) -> name('custoemr.logout');
 
 // products categories
 Route::get('/customer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
@@ -45,24 +48,25 @@ Route::get('/customer/product/{id}/detail',[HomeController::class, 'productDetai
 
 // cart
 
-// Route::middleware(['customer'])->group( function ( ) {
+Route::middleware(['customer'])->group(function (){
+    Route::get('/customer/logout', [CustomerController::class, 'logout']) -> name('custoemr.logout');
 
-    Route::post('/product/{id}/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
-    // Route::post('/update/cart', [CartController::class, 'updateCart'])->name('update.cart');
-    // Route::post('/addtocart/increment',[CartController::class, 'addToCartInc'])->name('addToCartInc');
-    Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
-    Route::post('/cart/delete', [CartController::class, 'deleteProduct'])->name('cart.delefte');
+});
 
-// });
+
+
+Route::post('/product/{id}/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/delete', [CartController::class, 'deleteProduct'])->name('cart.delefte');
+
+
 // Payment
 Route::get('/customer/checkout', [PaymentController::class , 'checkOut'])->name('checkout');
 Route::post('/customer/payment', [PaymentController::class , 'payment'])->name('payment');
 
-// Route::get('/customer/men/tees')
-
 
 // customer home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('admin/login', [LoginController::class, 'adminLoginShow']) -> name('admin.login.show');
@@ -121,15 +125,4 @@ Route::middleware(['admin'])->group( function () {
     Route::delete('/customer/{id}', [CustomerController::class , 'destroy'])->name('destroy.custome');
     Route::post('/customer/search', [CustomerController::class, 'search'])->name('search.customer');
 });
-
-// Route::prefix('customer')->group( function() {
-//     // Route::get('/login', [])
-//     Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
-//     Route::post('/register/process', [CustomerController::class, 'registerProcess'])->name('customer.register.process');
-
-// });
-
-
-// Customers
-// Route::get('/home')
 

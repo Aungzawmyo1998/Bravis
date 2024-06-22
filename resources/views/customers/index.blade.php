@@ -26,6 +26,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body >
+
     <header>
         <div id="cart-data" class="add-to-cart">
             <div class="header">
@@ -93,12 +94,17 @@
                         <a href="">Orders and Returns</a>
                     </li>
                     <li>|</li>
-                    @guest
-                    <li><a href="{{ route('customer.login')}}">Sign in</a></li>
-                    @endguest
-                    @auth
-                    <li><a href="{{ route('custoemr.logout')}}">Log Out</a></li>
-                    @endauth
+
+                    <li>
+
+                        @if(auth('customer')->user() != null)
+                            <a href="{{ route('custoemr.logout')}}">Log Out</a>
+                        @else
+                            <a href="{{ route('customer.login')}}">Login</a>
+                        @endif
+
+                    </li>
+
 
                 </ul>
             </div>
@@ -201,6 +207,7 @@
     <script src="{{asset('script/customer/index.js')}}" ></script>
     <script src="{{ asset('script/customer/home/slide.js')}}"></script>
     <script src="{{ asset('script/customer/addToCart.js')}}"> </script>
+    <script src="{{ asset('script/customer/women/womenProduct.js')}}"></script>
 
 </body>
 </html>
