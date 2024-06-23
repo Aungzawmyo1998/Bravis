@@ -1,0 +1,101 @@
+
+:root {
+    --input-bg-color: #E7E7E7;
+    --input-bd-radious: 5px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+#contact-us {
+    width: 100%;
+    background-color: #FFF;
+}
+
+#contact-us .main-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#contact-us .office-data {
+    padding-top: 4rem;
+}
+#contact-us .office-data>h1 {
+    margin-bottom: 2rem;
+}
+#contact-us .office-data .data-row {
+    width: fit-content;
+    margin-bottom: 2rem;
+    line-height: 25px;
+}
+#contact-us .social-icon {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1.5rem;
+    /* gap: 1rem; */
+}
+#contact-us .social-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: fill;
+    box-shadow: -3px 6px 6px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -3px 6px 6px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -3px 6px 6px 0px rgba(0,0,0,0.75);
+
+}
+
+#contact-us .customer-data {
+    width: 100%;
+}
+#contact-us .customer-form {
+    width: 100%;
+}
+#contact-us .customer-form .header {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+#contact-us .customer-form .header>h1 {
+    text-align: center;
+}
+#contact-us .customer-form  .input-row {
+    margin-bottom: 2rem;
+}
+#contact-us .customer-form .input-data,
+#contact-us .customer-form .address {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--input-bd-radious);
+    background-color: var(--input-bg-color);
+}
+#contact-us .customer-form .address {
+    height: 100px;
+    resize: none;
+}
+#contact-us .customer-form .input-data:focus,
+#contact-us .customer-form .address:focus {
+    outline: none;
+}
+#contact-us .customer-form .sub-btn {
+    width: 200px;
+    padding: .7rem;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #0079FF;
+    color: #fff;
+    border-radius: var(--input-bd-radious);
+}
+
+
+

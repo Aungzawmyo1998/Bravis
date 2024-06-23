@@ -19,13 +19,19 @@
     {{-- product detail css --}}
     <link rel="stylesheet" href="{{ asset('css/customers/product/product_detail.css')}}">
 
+    {{-- contact us css --}}
+    <link rel="stylesheet" href="{{ asset('css/customers/contactUs.css')}}">
+
+    {{-- about us css --}}
+    <link rel="stylesheet" href="{{ asset('css/customers/aboutUs.css')}}">
+
     {{-- test livewire --}}
 
 
     <title>@yield('title')</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body >
+<body style="background-color: #D4DCEC;" >
 
     <header>
         <div id="cart-data" class="add-to-cart">
@@ -134,8 +140,8 @@
                     </li>
                     <li><a href="{{ route('customer.accessories.product')}}">Accessories</a></li>
                     <li><a href="{{ route('customer.sport.product') }}">Sport</a></li>
-                    <li><a href="">Contact</a> </li>
-                    <li><a href="">About Us</a></li>
+                    <li><a href="{{ route('contactus')}}">Contact</a> </li>
+                    <li><a href="{{ route('aboutus')}}">About Us</a></li>
                 </ul>
             </div>
             <div class="icon-container">

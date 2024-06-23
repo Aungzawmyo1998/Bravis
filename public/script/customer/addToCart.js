@@ -107,4 +107,8 @@ $(document).ready(function (){
         });
 
     });
+    // INC VALUE
+    // $(document).on('click','#btn', function(){
+
+    // });
 });

@@ -34,7 +34,7 @@
                             <p>{{$products->description}}</p>
                         </div>
                         <div class="btn-container">
-                            <button type="submit" class="cart-btn">Add to cart</button>
+                            <button type="submit" id="add-btn" class="cart-btn">Add to cart</button>
                             <div class="deli-container">
                                 <img src="{{ asset('icon/home/delivery-service.png') }}" alt="">
                                 <p>Free Delivery on orders over 5Lakhs</p>

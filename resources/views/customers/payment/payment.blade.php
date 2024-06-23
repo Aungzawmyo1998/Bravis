@@ -102,6 +102,7 @@
 
                         </div>
                     </div>
+                    <div class="card-data"></div>
                     <button type="submit" class="pay-btn"> Pay Now</button>
                 </form>
                 <div class="order">

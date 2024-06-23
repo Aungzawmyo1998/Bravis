@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
@@ -7,9 +8,11 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 // use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SupplierController;
 use App\Livewire\Cart;
 use App\Models\OrderProduct;
@@ -36,6 +39,8 @@ Route::get('/customer/login', [LoginController::class, 'customerLogin'])->name('
 Route::post('/customer/login', [LoginController::class, 'customerLoginProcess'])->name('customer.login.process');
 Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
 Route::post('/customer/store', [CustomerController::class, 'registerProcess'])->name('store.customer');
+Route::get('/about',[AboutUsController::class, 'aboutUs'])->name('aboutus');
+Route::get('/contact', [ContactUsController::class, 'contactUs'])->name('contactus');
 
 // products categories
 Route::get('/customer/allproduct', [HomeController::class, 'allProduct'])->name('customer.allproduct');
@@ -126,3 +131,10 @@ Route::middleware(['admin'])->group( function () {
     Route::post('/customer/search', [CustomerController::class, 'search'])->name('search.customer');
 });
 
+
+// FOR STRIPE
+
+Route::controller(StripePaymentController::class)->group( function() {
+    Route::get('stripe','stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
