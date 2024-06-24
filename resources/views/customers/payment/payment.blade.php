@@ -103,8 +103,8 @@
                                 <h2>Shippong Fees</h2>
                             </div>
                             <div class="data">
-                                <input type="radio" class="s-fee" checked name="del-fee" id="ygn" value="2500">
-                                <input type="radio" class="s-fee" name="del-fee" id="other-region" value="3500">
+                                <input type="radio" class="s-fee" checked name="delfee" id="ygn" value="2500">
+                                <input type="radio" class="s-fee" name="delfee" id="other-region" value="3500">
 
                                 <label class="select-fee ygn" id="ygnBtn" for="ygn">Yangon 2500MMK</label>
                                 <label class="select-fee other-region" id="otherBtn" for="other-region">Other Region 3500MMK</label>

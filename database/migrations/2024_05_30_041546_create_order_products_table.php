@@ -18,7 +18,11 @@ return new class extends Migration
                 $table->foreign('product_id')->references('id')->on('products');
                 $table->unsignedBigInteger('order_id');
                 $table->foreign('order_id')->references('id')->on('orders');
-                $table->integer('qty');
+                // $table->integer('qty'); delete row
+
+                $table->integer('small_qty'); // update row
+                $table->integer('median_qty'); // update row
+                $table->integer('large_qty'); // update row
                 $table->float('price');
                 $table->string('uuid');
                 $table->string('status');
