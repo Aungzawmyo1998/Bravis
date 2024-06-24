@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Carbon\Carbon;
 use Hamcrest\Type\IsInteger;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Stripe;
 
 class PaymentController extends Controller
 {
     //
-    public function checkOut()
+    public function checkOut(): View
     {
         $previousUrl = url()->previous();
         session()->put('url',$previousUrl);
@@ -50,11 +53,12 @@ class PaymentController extends Controller
 
     }
 
-    public function payment(Request $request)
+    public function payment(Request $request): RedirectResponse
     {
         if(auth('customer')->user() != null )
         {
-            dd("register");
+            // dd("register");
+            
         }
         else
         {
@@ -89,5 +93,17 @@ class PaymentController extends Controller
 
             $customer->save();
         }
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+
+        Stripe\Charge::create([
+            "amount" => 10 * 100,
+            "currency" => "usd",
+            "source" => $request->stripeToken,
+            "description" => "Test payment from itsolutionstuff.com."
+        ]);
+        return back()
+                ->with('success', 'Payment successful!');
     }
 }

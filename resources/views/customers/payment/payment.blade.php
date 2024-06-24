@@ -11,6 +11,9 @@
     {{-- jquery  --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    {{-- --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
 </head>
 <body>
@@ -20,9 +23,16 @@
             <div class="header">
                 <h1>Check Out</h1>
             </div>
+
+            {{-- @session('success')
+                        <div class="alert alert-success" role="alert">
+                            {{ $value }}
+                        </div>
+                    @endsession --}}
+
             <div class="data-container">
 
-                <form action="{{ route('payment')}}" method="POST">
+                <form action="{{ route('payment') }}" id='checkout-form' method='post'>
                     @csrf
 
                     <div class="payment">
@@ -102,8 +112,9 @@
 
                         </div>
                     </div>
-                    <div class="card-data"></div>
-                    <button type="submit" class="pay-btn"> Pay Now</button>
+                    <input type='hidden' name='stripeToken' id='stripe-token-id'>
+                    <div id="card-element" class="card-data"></div>
+                    <button type="button" id="pay-btn" class="pay-btn" onclick="createToken()"> Pay Now</button>
                 </form>
                 <div class="order">
                     <div class="your-order">
@@ -168,6 +179,8 @@
         </div>
     </div>
 
+    {{-- stripe lib --}}
+    <script src="https://js.stripe.com/v3/"></script>
 
     <script>
 
@@ -187,6 +200,32 @@
             totalPrice.innerHTML = parseInt(productTotalPrice) + parseInt(otherFee.value);
 
         });
+
+        // PAYMENT
+        var stripe = Stripe('{{ env('STRIPE_KEY') }}');
+        var elements = stripe.elements();
+        var cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        function createToken() {
+        document.getElementById("pay-btn").disabled = true;
+        stripe.createToken(cardElement).then(function(result) {
+
+            if(typeof result.error != 'undefined') {
+                document.getElementById("pay-btn").disabled = false;
+                alert(result.error.message);
+            }
+
+            /* creating token success */
+            if(typeof result.token != 'undefined') {
+                document.getElementById("stripe-token-id").value = result.token.id;
+                document.getElementById('checkout-form').submit();
+            }
+        });
+    }
+
+
+
     </script>
 
 </body>
