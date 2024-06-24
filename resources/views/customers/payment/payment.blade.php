@@ -112,7 +112,7 @@
 
                         </div>
                     </div>
-                    <input type='hidden' name='stripeToken' id='stripe-token-id'>
+                    <input type='hidden' name="stripeToken" id='stripe-token-id'>
                     <div id="card-element" class="card-data"></div>
                     <button type="button" id="pay-btn" class="pay-btn" onclick="createToken()"> Pay Now</button>
                 </form>

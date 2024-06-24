@@ -6,7 +6,6 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Carbon\Carbon;
-use Hamcrest\Type\IsInteger;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -62,7 +61,7 @@ class PaymentController extends Controller
     {
         $cart = session()->get('cart');
 
-
+        // dd($request->stripeToken);
 
         if($cart != null) {
             foreach ($cart as $id => $value)
@@ -84,7 +83,7 @@ class PaymentController extends Controller
         if(auth('customer')->user() != null )
         {
             $customer_id = auth('customer')->user()->id;
-
+            // dd("reach");
             $order = new Order();
 
             $order->customer_id = $customer_id;
@@ -97,8 +96,17 @@ class PaymentController extends Controller
 
             $order->save();
 
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            Stripe\Charge::create ([
+                "amount" => $totalPrice * 0.25 ,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
+        ]);
+
         }
-        else
+        if(auth('customer')->user() == null )
         {
 
             $request->validate([
@@ -110,16 +118,13 @@ class PaymentController extends Controller
                 'zipcode' => 'required',
             ]);
 
-            dd($request->all());
-
-
             $customer = new Customer();
 
             $customer->firstname = $request->fname;
             $customer->lastname = $request->lname;
-            $customer->email = "_";
+            $customer->email = $uuid;
             $customer->address = $request->address;
-            $customer->DOB = "_";
+            $customer->DOB = null;
             $customer->joining_date = Carbon::now();
             $customer->phonenumber = $request->phno;
             $customer->State_region = $request->state;
@@ -131,13 +136,14 @@ class PaymentController extends Controller
 
             $customer->save();
 
-            $customer_id = Customer::where('uuid','=',"$uuid")
+            $customer = Customer::where('uuid','=',"$uuid")
                             ->select('id')
                             ->get();
 
+            $customer_id = $customer[0]->id;
+            // dd($customer_id);
             // TO STORE ONE TIME PAYMENT ORDER
             $order = new Order();
-
             $order->customer_id = $customer_id;
             $order->paymentmethod = "One Time Transitioin";
             $order->qty = $totalItem;
@@ -148,6 +154,15 @@ class PaymentController extends Controller
 
             $order->save();
 
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            Stripe\Charge::create ([
+                "amount" => $totalPrice,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
+        ]);
+
         }
 
          // STORE DATA TO PRODUCT ORDER TABLE
@@ -155,14 +170,8 @@ class PaymentController extends Controller
                         ->select('id')
                         ->get();
 
-        // dd($order_id);
-        //
-       if($order) {
-        $order_id = intval($order);
-       }
-       dd($order_id);
+        $order_id = $order[0]->id;
 
-        // dd(print_r($cart));
         if($cart != null)
         {
             $product = session()->get('product');
@@ -198,13 +207,12 @@ class PaymentController extends Controller
                 session()->put('product',$product);
             }
 
-            // dd($product);
         }
         foreach ($product as $value)
         {
             $order_product = new OrderProduct();
             $order_product->product_id = $value['id'];
-            $order_product->order_id = intval($order_id);
+            $order_product->order_id = $order_id;
             $order_product->small_qty = $value['small_qty'];
             $order_product->median_qty = $value['median_qty'];
             $order_product->large_qty = $value['large_qty'];
@@ -216,15 +224,7 @@ class PaymentController extends Controller
         }
 
 
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        Stripe\Charge::create([
-            "amount" => 10 * 100,
-            "currency" => "usd",
-            "source" => $request->stripeToken,
-            "description" => "Test payment from itsolutionstuff.com."
-        ]);
-        return back()
-                ->with('success', 'Payment successful!');
+        return redirect()->route('payment.success')->with('success', 'Payment successful!');
     }
 }

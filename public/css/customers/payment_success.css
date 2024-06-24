@@ -1,0 +1,43 @@
+#payment-success .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem
+}
+
+#payment-success .container .green-mark {
+    width: 50px;
+}
+#payment-success .header {
+    font-size: 70px;
+    font-weight: 600;
+}
+#payment-success p {
+    font-size: 20px;
+    font-weight: 500;
+}
+#payment-success .deli {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-end;
+}
+#payment-success .deli-img {
+    width: 60px;
+}
+#payment-success .btn {
+    display: inline-block;
+    width: 350px;
+    text-align: center;
+    padding: 1rem;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #0079FF;
+    border-radius: 5px;
+}

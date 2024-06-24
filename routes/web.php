@@ -68,6 +68,9 @@ Route::post('/cart/delete', [CartController::class, 'deleteProduct'])->name('car
 // Payment
 Route::get('/customer/checkout', [PaymentController::class , 'checkOut'])->name('checkout');
 Route::post('/customer/payment', [PaymentController::class , 'payment'])->name('payment');
+Route::get('/payment/success', function (){
+    return view('customers.payment_success');
+})->name('payment.success');
 
 
 // customer home
@@ -134,7 +137,7 @@ Route::middleware(['admin'])->group( function () {
 
 // FOR STRIPE
 
-Route::controller(StripePaymentController::class)->group( function() {
-    Route::get('stripe','stripe');
+Route::controller(StripePaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });

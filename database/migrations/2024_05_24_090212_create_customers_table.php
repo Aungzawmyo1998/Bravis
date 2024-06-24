@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('email')->unique();
             $table->string('address');
-            $table->date('DOB');
+            $table->date('DOB')->nullable(); //update null able
             $table->dateTime('joining_date');
             $table->string('phonenumber');
             $table->string('State_region');

@@ -25,6 +25,9 @@
     {{-- about us css --}}
     <link rel="stylesheet" href="{{ asset('css/customers/aboutUs.css')}}">
 
+    {{-- payment success css--}}
+    <link rel="stylesheet" href="{{asset('css/customers/payment_success.css')}}">
+
     {{-- test livewire --}}
 
 
