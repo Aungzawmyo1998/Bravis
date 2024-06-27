@@ -15,7 +15,7 @@
                 @csrf
                 @method('PUT')
 
-                <div class="row">
+                <div class="input-row">
                     <label for="name" class="">Name</label>
                     <div class="input">
                         <input type="text" name="name" class="" id="name" placeholder="Staff Name" value="{{ $staff->name }}" >
@@ -25,7 +25,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="email" class="">Email</label>
                     <div class="input">
 
@@ -36,7 +36,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="password" class="">Password</label>
                     <div class="input">
                         <input type="password" name="password" class="" id="password" placeholder="password" value="" >
@@ -46,7 +46,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="phone" class="">Phone Number</label>
                     <div class="input">
 
@@ -57,7 +57,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="address" class="">Adddress</label>
                     <div class="input">
 
@@ -68,7 +68,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="position" class="">Staff Position</label>
                     <div class="input">
                         <select name="position" id="position" class="">
@@ -79,7 +79,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="image" class="" >Profile Photo</label>
                     <div class="input">
                         <input type="file" class="" name="image" id="">
@@ -89,7 +89,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <div class="button-container">
                         <button class="button" type="button">Cancel</button>
                         <button class="button" type="submit">Update</button>

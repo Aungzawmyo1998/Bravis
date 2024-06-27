@@ -82,8 +82,18 @@ class PaymentController extends Controller
 
         if(auth('customer')->user() != null )
         {
+
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            Stripe\Charge::create ([
+                "amount" => $totalPrice * 0.25 ,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
+            ]);
+
             $customer_id = auth('customer')->user()->id;
-            // dd("reach");
+
             $order = new Order();
 
             $order->customer_id = $customer_id;
@@ -96,18 +106,13 @@ class PaymentController extends Controller
 
             $order->save();
 
-            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            Stripe\Charge::create ([
-                "amount" => $totalPrice * 0.25 ,
-                "currency" => "usd",
-                "source" => $request->stripeToken,
-                "description" => "Test payment from itsolutionstuff.com."
-        ]);
 
         }
         if(auth('customer')->user() == null )
         {
+
+
 
             $request->validate([
                 'phno' => 'required',
@@ -116,6 +121,15 @@ class PaymentController extends Controller
                 'address' => 'required',
                 'state' => 'required',
                 'zipcode' => 'required',
+            ]);
+
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            Stripe\Charge::create ([
+                "amount" => $totalPrice,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
             ]);
 
             $customer = new Customer();
@@ -154,14 +168,7 @@ class PaymentController extends Controller
 
             $order->save();
 
-            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            Stripe\Charge::create ([
-                "amount" => $totalPrice,
-                "currency" => "usd",
-                "source" => $request->stripeToken,
-                "description" => "Test payment from itsolutionstuff.com."
-        ]);
 
         }
 
@@ -224,6 +231,7 @@ class PaymentController extends Controller
         }
 
 
+        session()->forget(['cart','product']);
 
         return redirect()->route('payment.success')->with('success', 'Payment successful!');
     }

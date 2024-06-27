@@ -11,7 +11,7 @@
                 <h1>Customer</h1>
                 <div class="search-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
-
+                    
                 </div>
             </div>
 

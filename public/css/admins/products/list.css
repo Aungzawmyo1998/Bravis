@@ -59,6 +59,7 @@
     background-color: #FFF;
     border-radius: var(--border-radius);
     padding: 25px 20px;
+    margin-bottom: 2rem;
 
 }
 .product-list .form-container {
@@ -100,32 +101,36 @@
 
 /* table list */
 
-.product-list .list  {
-    padding-top: 50px;
-}
-.product-list .list table {
-
+.product-list .list-table {
     width: 100%;
-    border-radius: var(--border-radius);
-    overflow: hidden;
     border-collapse: collapse;
-}
-.product-list .list  tr th {
-    color: #fff;
-    padding: 15px;
-    font-size: 20px;
-    text-align: left;
-}
-.product-list .list table tr td {
-    color: var(--font-color);
-    padding: 15px;
-    font-size: 18px;
-}
-.product-list .list .table-header {
-    background-color: var(--primary-color);
     border-radius: 10px;
+    overflow: hidden;
 }
-.product-list .list .size>span {
+
+ .product-list .header-row>th {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #FFF;
+ }
+
+.product-list .data-row  td {
+    color: var(--font-color);
+    padding: .6rem;
+    font-weight: 600;
+}
+.product-list .data-row:nth-child(odd) {
+    background-color: #FFF;
+}
+.product-list .data-row:nth-child(even) {
+    background-color: #DFEAFD;
+}
+
+.product-list .data-row:hover {
+    background-color: #CCC;
+}
+
+.product-list .list-table .size>span {
     display: inline-block;
     width: 80px;
     padding: 5px;
@@ -133,12 +138,10 @@
     background-color: #6DD4B1;
     border-radius: var(--border-radius);
 }
-.product-list .list tbody tr:nth-child(even) {
-    background-color: #fff;
-}
-.product-list .list tbody tr:hover {background-color: #ddd;}
+/*  */
 
-.product-list .list .action .action-btn {
+
+.product-list .list-table .action .action-btn {
     border: none;
     display: inline-block;
     color: var(--font-color);
@@ -198,22 +201,22 @@
 }
 
 @media (max-width: 1400px) {
-    .product-list .list  {
+    .product-list .list-table  {
         padding-top: 30px;
         width: 100%;
         overflow-x: scroll;
     }
-    .product-list .list table {
+    .product-list .list-table  {
         border-radius: var(--border-radius);
         width: 1200px;
     }
-    .product-list .list  tr th {
+    .product-list .list-table  tr th {
         color: #fff;
         padding: 10px;
         font-size: 17px;
         text-align: left;
     }
-    .product-list .list table tr td {
+    .product-list .list-table  tr td {
         color: var(--font-color);
         padding: 10px;
         font-size: 15px;
@@ -358,17 +361,17 @@
     }
 
     /* table list */
-    .product-list .list table {
+    .product-list .list-table table {
         border-radius: var(--border-radius);
         width: 800px;
     }
-    .product-list .list  tr th {
+    .product-list .list-table  tr th {
         color: #fff;
         padding: 8px;
         font-size: 15px;
         text-align: left;
     }
-    .product-list .list table tr td {
+    .product-list .list-table  tr td {
         color: var(--font-color);
         padding: 8px;
         font-size: 13px;

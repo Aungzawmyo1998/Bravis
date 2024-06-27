@@ -16,7 +16,7 @@
                     <form action="{{ route('staff.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="row">
+                        <div class="input-row">
                             <label for="name">Name</label>
                             <div class="input">
                                 <input  type="text" name="name" class="" id="name" placeholder="Staff Name"  >
@@ -26,7 +26,7 @@
 
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="input-row">
                             <label for="email" >Email</label>
                             <div class="input">
                                 <input type="email" name="email" class="" id="email" placeholder="email" >
@@ -35,7 +35,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="input-row">
                             <label for="password">Password</label>
                             <div class="input">
                                 <input type="password" name="password" class="" id="password" placeholder="password" >
@@ -44,7 +44,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="input-row">
                             <label for="phone" >Phone Number</label>
                             <div class="input">
                                 <input type="text" name="phone" class="" id="phone" placeholder="Example.09..." >
@@ -54,7 +54,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="input-row">
                             <label for="address">Adddress</label>
                             <div class="input">
                                 <textarea name="address" id="" class="" cols="30" rows="5" placeholder="Address" ></textarea>
@@ -64,7 +64,7 @@
 
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="input-row">
                             <label for="position" >Staff Position</label>
                             <div class="input">
                                 <select name="position" id="position" class="">
@@ -75,7 +75,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="input-row">
                             <label for="image"  >Profile Photo</label>
                             <div class="input">
                                 <input type="file" class="" name="image" id="" >
@@ -84,7 +84,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="input-row">
                             <div class="button-container">
                                 <button class="button" type="button">Cancel</button>
                                 <button class="button" type="submit">Add</button>

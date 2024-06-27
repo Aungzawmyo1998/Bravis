@@ -15,7 +15,7 @@
             <form class="form-container" action="{{ url('product/'.$products[2]->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                <div class="row">
+                <div class="input-row">
                     <label for="name">Product Title/Name</label>
                     <div class="input">
                         <input type="text" name="name" id="name" placeholder="Product Title/Name" value="{{$products[2]->name}}">
@@ -24,7 +24,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="description">Product Description</label>
                     <div class="input">
                         <textarea name="description" id="description" cols="30" rows="5" placeholder="please type description about your product" >
@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="input-row">
                     <label for="image">Product Image</label>
                     <div class="input">
                         <input type="file" name="image" id="image">
@@ -45,7 +45,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <label for="brand">Brand Name</label>
                     <div class="input">
                         <select name="brand" id="brand">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="input-row">
                     <label for="category">Category</label>
                     <div class="input">
                         <select name="category" id="category">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="input-row">
                     <label for="gender">Gender</label>
                     <div class="input">
                         <select name="gender" id="gender">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="input-row">
                     <label for="price">Product Price</label>
                     <div class="input">
                         <div class="price-container">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="input-row">
                     <label for="">Size</label>
                     <div class="input">
                         <div class="size-container">
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="input-row">
                     <div class="button-container">
                         <button class="button">Cancel</button>
                         <button class="button" type="submit" >Update</button>

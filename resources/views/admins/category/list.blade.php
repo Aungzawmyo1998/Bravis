@@ -11,7 +11,7 @@
             <div class="search-icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <a href="{{ route('add.category')}}" class="add-button button">
+            <a href="{{ route('add.category')}}" style="text-decoration: none;" class="add-button button">
                 <i class="fa-solid fa-plus"></i>
                 Add Category
             </a>
@@ -45,7 +45,7 @@
                 <tbody>
                     @foreach ($categories as $category )
                         <tr>
-                            <td>{{$category->name}}</td>    
+                            <td>{{$category->name}}</td>
                             <td>{{ $category->staffs->name }}</td>
                             <td class="action">
                                 <form action="{{ url('category/'.$category->id)}}" method="post">

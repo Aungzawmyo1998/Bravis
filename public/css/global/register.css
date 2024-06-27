@@ -41,7 +41,7 @@
 .global-register .form-container::-webkit-scrollbar {
     display: none;
 }
-.global-register .row {
+.global-register .input-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -49,9 +49,9 @@
 .global-register .input {
     width: 75%;
 }
-.global-register .row input,
-.global-register .row textarea,
-.global-register .row select {
+.global-register .input-row input,
+.global-register .input-row textarea,
+.global-register .input-row select {
     width: 100%;
     /* width: 100%; */
     padding: 10px;
@@ -142,9 +142,9 @@
     .global-register .input {
         width: 70%;
     }
-    .global-register .row input,
-    .global-register .row textarea,
-    .global-register .row select {
+    .global-register .input-row input,
+    .global-register .input-row textarea,
+    .global-register .input-row select {
         width: 100%;
         padding: 8px 10px;
 
@@ -218,9 +218,9 @@
     .global-register .input {
         width: 65%;
     }
-    .global-register .row input,
-    .global-register .row textarea,
-    .global-register .row select {
+    .global-register .input-row input,
+    .global-register .input-row textarea,
+    .global-register .input-row select {
         width: 100%;
     }
     /* to check !!!!!!!!!!!!!!!!!!!!!! */
@@ -247,7 +247,7 @@
     }
 }
 @media (max-width: 600px) {
-    .global-register .row {
+    .global-register .input-row {
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -262,9 +262,9 @@
     .global-register .input {
         width: 100%;
     }
-    .global-register .row input,
-    .global-register .row textarea,
-    .global-register .row select {
+    .global-register .input-row input,
+    .global-register .input-row textarea,
+    .global-register .input-row select {
         width: 100%;
     }
     .global-register .price-container {
@@ -283,7 +283,7 @@
         width: 100%;
         gap: 10px;
     }
-    .global-register .row .button-container {
+    .global-register .input-row .button-container {
         border: 2xp solid black;
     }
 

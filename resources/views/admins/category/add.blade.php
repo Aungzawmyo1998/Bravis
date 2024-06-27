@@ -13,7 +13,7 @@
             <div class="add-container">
                 <form action="{{ route('store.category')}}" method="POST">
                     @csrf
-                    <div class="row">
+                    <div class="input-row">
                         <label for="name">Category Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name" class="Category Name" placeholder="Category Name">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="input-row">
                         <div class="button-container">
                             <button class="button">Cancel</button>
                             <button type="submit" class="button">Add</button>

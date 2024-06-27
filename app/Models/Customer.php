@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Authenticatable
 {
@@ -28,6 +29,8 @@ class Customer extends Authenticatable
 
     function scopeWithName($query, $name)
     {
+
+
         // Split each Name by Spaces
         $names = explode(" ", $name);
 
@@ -38,5 +41,10 @@ class Customer extends Authenticatable
                 $query->whereIn('lastname', $names);
             });
         });
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

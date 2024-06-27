@@ -24,6 +24,7 @@
     align-items: flex-start;
     position: relative;
     gap: 50px;
+
 }
 #staff-list .header>h1 {
     font-size: 30px;

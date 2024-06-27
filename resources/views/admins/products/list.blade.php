@@ -12,7 +12,7 @@
             <div class="search-icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <a href="{{ route('add.product')}}" class="add-button button"><i class="fa-solid fa-plus"></i>Add Product</a>
+            <a href="{{ route('add.product')}}" style="text-decoration: none" class="add-button button"><i class="fa-solid fa-plus"></i>Add Product</a>
         </div>
         {{-- <div class="search-container"> --}}
             <div class="search-form">
@@ -31,14 +31,14 @@
                     </div>
                     <div class="search-button">
                         <button type="submit" class="button " >Filter</button>
-                        <a href="" class="button res-btn">Resect</a>
+                        <a href="{{ route('product.list')}}" style="text-decoration: none" class="button res-btn">Resect</a>
                     </div>
                 </form>
             </div>
-            <div class="list">
-                <table>
+            <div class="product-list">
+                <table class="list-table">
                     <thead >
-                        <tr class="table-header">
+                        <tr class="header-row">
                             <th>Product</th>
                             <th>Supplier</th>
                             <th>Category</th>
@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         @foreach ($products as $product )
-                            <tr>
+                            <tr class="data-row">
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->suppliers->name}}</td>
                                 <td>{{$product->categories->name}}</td>

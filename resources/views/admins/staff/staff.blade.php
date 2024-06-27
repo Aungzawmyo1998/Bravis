@@ -11,7 +11,7 @@
             <div class="search-icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <a href="{{route('admin.add.staff.show')}}" class="cat-add-button button"><i class="fa-solid fa-plus"></i>Add Staff</a>
+            <a href="{{route('admin.add.staff.show')}}" style="text-decoration: none;" class="cat-add-button button"><i class="fa-solid fa-plus"></i>Add Staff</a>
 
         </div>
         <div class="search-form">

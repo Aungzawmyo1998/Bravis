@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripePaymentController;
@@ -126,7 +127,7 @@ Route::middleware(['admin'])->group( function () {
     Route::get('/supplier/search', [SupplierController::class, 'search'])->name('supplier.search');
 
     // Order
-    Route::get('/order/list', [OrderProduct::class, 'order'])->name('order.list');
+    Route::get('/order/list', [OrderController::class, 'orderList'])->name('order.list');
 
     // customer
     Route::get('/customer/list', [CustomerController::class, 'customer'])->name('customer.list');

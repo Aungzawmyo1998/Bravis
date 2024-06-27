@@ -14,7 +14,7 @@
                 <h2>Basic Information</h2>
                 <form class="form-container" action="{{ route('store.product')}}" method="post" enctype="multipart/form-data" >
                     @csrf
-                    <div class="row">
+                    <div class="input-row">
                         <label for="name">Product Title/Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name" placeholder="Product Title/Name">
@@ -23,7 +23,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="input-row">
                         <label for="description">Product Description</label>
                         <div class="input">
                             <textarea name="description" id="description" cols="30" rows="5" placeholder="please type description about your product" >
@@ -35,7 +35,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="input-row">
                         <label for="image">Product Image</label>
                         <div class="input">
                             <input type="file" name="image" id="image">
@@ -44,7 +44,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="input-row">
                         <label for="brand">Brand Name</label>
                         <div class="input">
                             <select name="brand" id="brand">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="input-row">
                         <label for="category">Category</label>
                         <div class="input">
                             <select name="category" id="category">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="input-row">
                         <label for="gender">Gender</label>
                         <div class="input">
                             <select name="gender" id="gender">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="input-row">
                         <label for="price">Product Price</label>
                         <div class="input">
                             <div class="price-container">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="input-row">
                         <label for="">Size</label>
                         <div class="input">
                             <div class="size-container">
@@ -103,7 +103,7 @@
                                 <div class="size-item">
                                     <label for="medium">M</label>
                                     <input type="number" name="medium" id="medium"><br>
-                                   
+
                                 </div>
                                 <div class="size-item">
                                     <label for="large">L</label>
@@ -113,7 +113,7 @@
 
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="input-row">
                         <div class="button-container">
                             <button class="button">Cancel</button>
                             <button class="button" type="submit" >Add Product</button>

@@ -13,7 +13,7 @@
             <div class="add-container">
                 <form action="{{ route('store.supplier') }}" method="post">
                     @csrf
-                    <div class="row">
+                    <div class="input-row">
                         <label for="name">Supplier Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name"  placeholder="Supplier Name">
@@ -22,7 +22,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="input-row">
                         <label for="brand">Brand</label>
                         <div class="input">
                             <input type="text" name="brand" id="brand"  placeholder="Brand">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="input-row">
                         <div class="button-container">
                             <button class="button">Cancel</button>
                             <button type="submit" class="button">Add</button>

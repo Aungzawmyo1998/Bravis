@@ -16,7 +16,7 @@
                 <form class="form-container" action="{{ url('supplier/'.$supplier->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="row">
+                    <div class="input-row">
                         <label for="name">Supplier Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name"  placeholder="Supplier Name" value="{{ $supplier->name }}">
@@ -25,7 +25,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="input-row">
                         <label for="brand">Brand</label>
                         <div class="input">
                             <input type="text" name="brand" id="brand"  placeholder="Brand" value="{{ $supplier->brandname }}">
@@ -34,7 +34,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="input-row">
                         <div class="button-container">
                             <button class="button">Cancel</button>
                             <button type="submit" class="button">Update</button>

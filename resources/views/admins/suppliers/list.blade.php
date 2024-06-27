@@ -11,7 +11,7 @@
             <div class="search-icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <a href="{{ route('add.supplier')}}" class="add-button button">
+            <a href="{{ route('add.supplier')}}" style="text-decoration: none;" class="add-button button">
                 <i class="fa-solid fa-plus"></i>
                 Add Supplier
             </a>

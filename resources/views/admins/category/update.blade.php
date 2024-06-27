@@ -15,7 +15,7 @@
                 <form action="{{ url('category/'.$category->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="row">
+                    <div class="input-row">
                         <label for="name">Category Name</label>
                         <div class="input">
                             <input type="text" name="name" id="name" class="Category Name" placeholder="Men T-shirt" value="{{ $category->name}}">
@@ -24,7 +24,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="input-row">
                         <div class="button-container">
                             <button class="button">Cancel</button>
                             <button type="submit" class="button">Update</button>

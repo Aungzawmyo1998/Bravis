@@ -40,7 +40,7 @@
 
     background-color: #FFF;
     border-radius: var(--border-radius);
-    padding: 15px;
+    /* padding: 15px; */
  }
  .global-container .logo {
     font-size: 35px;
@@ -52,18 +52,27 @@
  .global-container .logo .sec-logo {
     display: none;
  }
- .global-container .nav-link {
+ .global-container .nav_link {
+    /* border: 1px solid black; */
+    /* width: fit-content; */
     line-height: 2.5;
  }
- .global-container .nav-link li {
+ .global-container .nav_link li {
     color: var(--font-color);
+
  }
- .global-container .nav-link i {
+ .global-container .nav_link i {
     font-size: 15px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
  }
- .global-container .nav-link a {
+ .global-container .nav_link a {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
     color: var(--font-color);
+    text-decoration: none;
  }
 
  .global-container .nav-container .ham-menu {
@@ -172,10 +181,6 @@
 
 
 
-    /* .global-container .nav-container {
-        height: 85px;
-    } */
-
 
     /* hamburger */
 
@@ -223,16 +228,16 @@
         font-size: 40px;
      }
 
-     .global-container .nav-link .link-data1,
-     .global-container .nav-link .link-data2,
-     .global-container .nav-link .link-data3,
-     .global-container .nav-link .link-data4,
-     .global-container .nav-link .link-data5,
-     .global-container .nav-link .link-data6,
-     .global-container .nav-link .link-data7 {
+     .global-container .nav_link .link-data1,
+     .global-container .nav_link .link-data2,
+     .global-container .nav_link .link-data3,
+     .global-container .nav_link .link-data4,
+     .global-container .nav_link .link-data5,
+     .global-container .nav_link .link-data6,
+     .global-container .nav_link .link-data7 {
         display: none;
      }
-     .global-container .nav-link {
+     .global-container .nav_link {
         padding-left: 5px;
      }
 
@@ -244,13 +249,13 @@
         display: none;
 
      }
-     .global-container .nav-link .link-data1.active,
-     .global-container .nav-link .link-data2.active,
-     .global-container .nav-link .link-data3.active,
-     .global-container .nav-link .link-data4.active,
-     .global-container .nav-link .link-data5.active,
-     .global-container .nav-link .link-data6.active,
-     .global-container .nav-link .link-data7.active {
+     .global-container .nav_link .link-data1.active,
+     .global-container .nav_link .link-data2.active,
+     .global-container .nav_link .link-data3.active,
+     .global-container .nav_link .link-data4.active,
+     .global-container .nav_link .link-data5.active,
+     .global-container .nav_link .link-data6.active,
+     .global-container .nav_link .link-data7.active {
         display: inline-block;
      }
 

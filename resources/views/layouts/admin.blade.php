@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- bootstrap link --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     {{-- gooogle font links --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +48,11 @@
     {{-- dashboard --}}
     <link rel="stylesheet" href="{{ asset('css/admins/dashboard/dashboard.css')}}">
 
+    {{-- order css --}}
+    <link rel="stylesheet" href="{{asset('css/admins/order/list.css')}}">
+
+
+
     <title>@yield('title')</title>
 </head>
 <body>
@@ -56,12 +63,12 @@
                     <span class="main-logo">Bravis</span>
                     <span class="sec-logo">B</span>
                 </div>
-                <div class="nav-data off-screen-menu">
-                    <ul class="nav-link">
-                        <li><a href="{{ url('/admin/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span class="link-data1">Dashboard</span></a></li>
+                <div class="nav_data off-screen-menu">
+                    <ul class="nav_link">
+                        <li><a href="{{ url('/admin/dashboard')}}"><span><i class="fa-solid fa-house-user"></i></span><span   class="link-data1">Dashboard</span></a></li>
                         <li><a href="{{ url('/product/list')}}"><span><i class="fa-solid fa-briefcase"></i></span><span class="link-data2">Product</span></a></li>
                         <li><a href="{{ url('/customer/list')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data3">Customer</span> </a></li>
-                        <li><a href="{{ url('/admins/order')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data4">Order</span> </a></li>
+                        <li><a href="{{ url('/order/list')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data4">Order</span> </a></li>
                         <li><a href="{{ url('/staff/list/show')}}"><span><i class="fa-solid fa-user-tie"></i></span><span class="link-data5">Staff</span> </a></li>
                         <li><a href="{{ url('/category/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data6">Category</span> </a></li>
                         <li><a href="{{ url('/supplier/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data7">Supplier</span> </a></li>
@@ -93,8 +100,8 @@
                                 <img src="{{ asset('img/staff/register/'.auth('admin')->user()->image)}}" alt="">
                         </div>
                         <div class="logout-container">
-                            <li><i class="fa-solid fa-gear"></i><a href="{{ url('staff/'.auth('admin')->user()->id.'/edit') }}">Edit Profile</a></li>
-                            <li><i class="fa-solid fa-right-from-bracket"></i><a href="{{ route('staff.logout')}}">Log Out</a></li>
+                            <li><i class="fa-solid fa-gear"></i><a style="text-decoration: none;" href="{{ url('staff/'.auth('admin')->user()->id.'/edit') }}">Edit Profile</a></li>
+                            <li><i class="fa-solid fa-right-from-bracket"></i><a style="text-decoration: none;" href="{{ route('staff.logout')}}">Log Out</a></li>
                         </div>
                     </div>
                 </div>
@@ -106,10 +113,16 @@
         </div>
     </section>
 
+    {{-- JQuery Library --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
         {{-- bootstrap script --}}
         {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
         <script src="{{ asset('script/ham_menu.js')}}"></script>
+
+        {{-- order detailsjs link --}}
+        <script src="{{asset('script/admin/order_details.js')}}"></script>
 
         {{-- chart script --}}
         {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
