@@ -8,13 +8,13 @@
 //     // console.log('click');
 // });
 
-// const search_icon = document.querySelector('.search-icon');
-// const search_form = document.querySelector('.search-form');
-// search_icon.addEventListener('click', ()=>{
+const search_icon = document.querySelector('.search-icon');
+const search_form = document.querySelector('.search-form');
+search_icon.addEventListener('click', ()=>{
 
-//     search_form.classList.toggle('active');
-//     // console.log('search click');
-// });
+    search_form.classList.toggle('active');
+    // console.log('search click');
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById("ham-menu");

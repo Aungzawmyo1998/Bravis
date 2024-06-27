@@ -29,6 +29,7 @@ body {
     background-color: #FFF;
     padding: 1rem;
     padding-left: 0;
+
 }
 
 .nav_container .logo {
@@ -42,12 +43,13 @@ body {
     line-height: 3;
 
 
+
 }
 .nav_data .nav_link> li >a {
     color: #333;
 }
 .nav_data .nav_link> li {
-   /* border: 1px solid black; */
+
    width: fit-content;
    padding-left: 1rem;
    padding-right: 2rem;

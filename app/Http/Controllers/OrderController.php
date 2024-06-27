@@ -14,7 +14,7 @@ class OrderController extends Controller
     public function orderList ()
     {
         $orders = Order::with('customers')
-                        ->paginate(5);
+                        ->paginate(2);
 
         $orderProducts = DB::table('order_products')
                         ->join('products','products.id','=','order_products.product_id')

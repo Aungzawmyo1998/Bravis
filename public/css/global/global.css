@@ -53,9 +53,9 @@
     display: none;
  }
  .global-container .nav_link {
-    /* border: 1px solid black; */
-    /* width: fit-content; */
+
     line-height: 2.5;
+    padding-left: 10px;
  }
  .global-container .nav_link li {
     color: var(--font-color);
@@ -63,7 +63,7 @@
  }
  .global-container .nav_link i {
     font-size: 15px;
-    /* margin-right: 10px; */
+
  }
  .global-container .nav_link a {
 
