@@ -63,6 +63,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="pag-container">
+            {{$categories->links('pagination::bootstrap-5')}}
+        </div>
     </div>
 </section>
 

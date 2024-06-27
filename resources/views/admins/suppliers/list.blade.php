@@ -66,6 +66,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="pag-container">
+            {{$suppliers->links('pagination::bootstrap-5')}}
+        </div>
     </div>
 </section>
 

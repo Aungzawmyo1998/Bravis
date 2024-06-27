@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {   $roles = Role::get();
         $categories = Category::with('staffs')
                     ->orderBy('id','desc')
-                    ->get(); //update category return 'staff'
+                    ->paginate(9); //update category return 'staff'
 
         return view('admins.category.list',compact('categories','roles'));
     }
@@ -84,7 +84,7 @@ class CategoryController extends Controller
 
         if ( empty($search) && $request->position == "default" ) {
 
-            $categories = Category::orderBy('id','desc')->get();
+            $categories = Category::orderBy('id','desc')->paginate(9);
             return view('admins.category.list',compact('categories','roles'));
         }
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
             ->whereAny(['categories.name','admins.name','admins.phone','admins.email'],'LIKE',"%$search%")
             ->where('admins.role_id','=',"$position")
             ->select('categories.*')
-            ->get();
+            ->paginate(9);
 
             // dd($categories);
             return view('admins.category.list', compact('categories','roles'));
@@ -106,7 +106,7 @@ class CategoryController extends Controller
             $categories = Category::join('admins','categories.admin_id','=','admins.id')
                                     ->where('admins.role_id','=',"$position")
                                     ->select('categories.*')
-                                    ->get();
+                                    ->paginate(9);
 
             return view('admins.category.list', compact('categories','roles'));
 
@@ -124,7 +124,7 @@ class CategoryController extends Controller
 
                         ->whereAny(['categories.name','admins.name','admins.phone','admins.email'],'LIKE',"%$search%")
                         ->select('categories.*')
-                        ->get();
+                        ->paginate(9);
 
 
             return view('admins.category.list', compact('categories','roles'));

@@ -14,7 +14,7 @@ class ProductController extends Controller
     //
     public function product ()
     {
-        $products = Product::orderBy('id','desc')->get();
+        $products = Product::orderBy('id','desc')->paginate(8);
         $categories = Category::get();
 
         // $count =
@@ -214,7 +214,7 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    
+
 
 
 }

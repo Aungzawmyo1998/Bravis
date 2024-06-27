@@ -11,7 +11,7 @@ class SupplierController extends Controller
     //
     public function supplier()
     {
-        $suppliers = Supplier::orderBy('id','desc')->get();
+        $suppliers = Supplier::orderBy('id','desc')->paginate(9);
 
         $brands = Supplier::select('brandname')
                 ->groupBy('brandname')
@@ -80,13 +80,13 @@ class SupplierController extends Controller
     {
         $brands = Supplier::select('brandname')
                 ->groupBy('brandname')
-                ->get();
+                ->paginate(9);
 
         $search = $request->search;
         $brand = $request->brand;
 
         if(empty($search) && $brand == "default") {
-            $suppliers = Supplier::orderBy('id','desc')->get();
+            $suppliers = Supplier::orderBy('id','desc')->paginate(9);
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }
 
@@ -94,7 +94,7 @@ class SupplierController extends Controller
 
             $suppliers = Supplier::where('name','LIKE',"%$search%")
                         ->where('brandname','LIKE',"$brand")
-                        ->get();
+                        ->paginate(9);
 
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }
@@ -102,14 +102,14 @@ class SupplierController extends Controller
         if(empty($search) && $brand != "default") {
 
             $suppliers = Supplier::where('brandname','LIKE',"$brand")
-                        ->get();
+                        ->paginate(9);
 
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }
         if(!empty($search) && $brand == "default") {
 
             $suppliers = Supplier::where('name','LIKE',"%$search%")
-                        ->get();
+                        ->paginate(9);
 
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }

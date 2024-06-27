@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section id="product-main" class="product-list">
+<section id="product">
 
     <div class="main-container">
         <div class="header">
@@ -74,6 +74,9 @@
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="pagi-container">
+                {{ $products->links('pagination::bootstrap-5')}}
             </div>
         {{-- </div> --}}
 

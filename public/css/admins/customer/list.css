@@ -33,6 +33,7 @@
     background-color: #FFF;
     border-radius: var(--border-radius);
     padding: 25px 20px;
+    margin-bottom: 2rem;
 }
 
 #cus-list .form-container {
@@ -72,7 +73,11 @@
 }
 
 #cus-list .list  {
-    padding-top: 50px;
+
+    width: 100%;
+    height: calc(100vh - 400px);
+    /* border: 1px solid black; */
+    /* margin-bottom: .8rem; */
 }
 #cus-list .list table {
 
@@ -87,14 +92,22 @@
 }
 #cus-list .list thead th {
     color: #fff;
-    padding: 15px;
-    font-size: 20px;
+    padding: 1rem;
+    /* font-size: 20px; */
+    font-weight: 600;
     text-align: left;
 }
+/* #cus-list .data-row {
+    padding: 10px;
+} */
 #cus-list .list tbody td {
     color: var(--font-color);
-    padding: 15px;
-    font-size: 18px;
+
+    padding: 13px;
+
+    font-weight: 600;
+}#cus-list .list tbody tr:nth-child(odd) {
+    background-color: #DFEAFD;
 }
 #cus-list .list tbody tr:nth-child(even) {
     background-color: #fff;

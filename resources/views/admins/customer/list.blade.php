@@ -11,7 +11,7 @@
                 <h1>Customer</h1>
                 <div class="search-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    
+
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
                     </thead>
                     <tbody>
                         @foreach ($customers as $customer )
-                            <tr>
+                            <tr class="data-row">
                                 <td>{{ $customer->id }}</td>
                                 <td>{{ $customer->firstname."\t". $customer->lastname}}</td>
                                 <td>{{ $customer->email}}</td>
@@ -60,6 +60,9 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="pag-container">
+                {{$customers->links('pagination::bootstrap-5')}}
             </div>
         </div>
 

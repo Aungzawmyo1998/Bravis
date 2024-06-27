@@ -56,6 +56,7 @@
     background-color: #FFF;
     border-radius: var(--border-radius);
     padding: 25px 20px;
+    margin-bottom: 2rem;
 }
 #staff-list .search-form .form-container {
     display: flex;
@@ -94,7 +95,9 @@
 
 /* table list  */
 #staff-list .list  {
-    padding-top: 50px;
+   width: 100%;
+   height: calc(100vh - 430px);
+   /* border: 1px solid black; */
 }
 #staff-list .list table {
 
@@ -106,17 +109,21 @@
 #staff-list .list  tr th {
     color: #fff;
     padding: 15px;
-    font-size: 20px;
+    font-weight: 600;
     text-align: left;
 }
 #staff-list .list table tr td {
     color: var(--font-color);
-    padding: 15px;
-    font-size: 18px;
+    font-weight: 600;
+    padding: .8rem;
+
 }
 #staff-list .list .table-header {
     background-color: var(--primary-color);
     border-radius: 10px;
+}
+#staff-list .list tbody tr:nth-child(odd) {
+    background-color: #DFEAFD;
 }
 #staff-list .list tbody tr:nth-child(even) {
     background-color: #fff;

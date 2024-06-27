@@ -21,24 +21,24 @@
 }
 /* header */
 
-.product-list .header {
+#product .header {
     display: flex;
     padding: 20px 5px ;
     justify-content: space-between;
     align-items: flex-start;
     position: relative;
 }
-.product-list .header .search-icon {
+#product .header .search-icon {
     display: none;
 }
 
-.product-list .header>h1 {
+#product .header>h1 {
     font-size: 30px;
     font-weight: 600;
     color: var(--header-color);
 }
 /* all button */
-.product-list .button {
+#product .button {
     font-size: 15px;
     font-weight: 600;
     padding: 15px;
@@ -49,12 +49,12 @@
     text-align: center;
     cursor: pointer;
 }
-.product-list .add-button > i {
+#product .add-button > i {
     margin-right: 10px;
 }
 
 /* search container */
-.product-list .search-form {
+#product .search-form {
     width: 100%;
     background-color: #FFF;
     border-radius: var(--border-radius);
@@ -62,21 +62,21 @@
     margin-bottom: 2rem;
 
 }
-.product-list .form-container {
+#product .form-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.product-list .search-item {
+#product .search-item {
     width: 50%;
     display: flex;
     justify-content: space-between;
     gap: 70px;
 }
 
-.product-list .search-form input,
-.product-list .search-form select
+#product .search-form input,
+#product .search-form select
 {
 
     width: 250px;
@@ -88,11 +88,11 @@
     font-size: 20px;
 
 }
-.product-list .search-button  .button {
+#product .search-button  .button {
     width: 200px;
 
 }
-.product-list .search-button .res-btn {
+#product .search-button .res-btn {
     display: inline-block;
     width: 200px;
     margin-left: 30px;
@@ -100,7 +100,11 @@
 
 
 /* table list */
-
+#product .product-list {
+    width: 100%;
+    height: calc(100vh - 420px);
+    /* border: 1px solid black; */
+}
 .product-list .list-table {
     width: 100%;
     border-collapse: collapse;
@@ -110,6 +114,7 @@
 
  .product-list .header-row>th {
     padding: 1rem;
+    font-weight: 600;
     background-color: var(--primary-color);
     color: #FFF;
  }

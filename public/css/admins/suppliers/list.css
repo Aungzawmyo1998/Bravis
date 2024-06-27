@@ -55,6 +55,7 @@
     background-color: #FFF;
     border-radius: var(--border-radius);
     padding: 25px 20px;
+    margin-bottom: 2rem;
 }
 #sup-list .search-form .form-container {
     display: flex;
@@ -95,7 +96,9 @@
 
 /* table list  */
 #sup-list .list  {
-    padding-top: 50px;
+    width: 100%;
+    height: calc(100vh - 440px);
+    /* border: 1px solid black; */
 }
 #sup-list .list table {
 
@@ -106,19 +109,23 @@
 }
 #sup-list .list  tr th {
     color: #fff;
-    padding: 15px;
-    font-size: 20px;
+    padding: 1rem;
+    font-weight: 600;
     text-align: left;
 }
 #sup-list .list table tr td {
     color: var(--font-color);
-    padding: 15px;
-    font-size: 18px;
+    padding: .6rem;
+    font-weight: 600;
 }
 #sup-list .list .table-header {
     background-color: var(--primary-color);
     border-radius: 10px;
 }
+#sup-list .list tbody tr:nth-child(odd) {
+    background-color: #DFEAFD;
+}
+
 #sup-list .list tbody tr:nth-child(even) {
     background-color: #fff;
 }

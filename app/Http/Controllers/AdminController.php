@@ -35,14 +35,14 @@ class AdminController extends Controller
 
             $staffs = Admin::with('role')
                 ->orderBy('id','desc')
-                ->get();
+                ->paginate(9);
             return view('admins.staff.staff',compact('staffs','roles'));
 
         } elseif ($request->has('search') && $role == 'default') {
             $staffs = Admin::with('role')
                 ->whereAny(['name','email','phone',],'LIKE',"%$search%")
                 ->orderBy('id','desc')
-                ->get();
+                ->paginate(9);
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -51,7 +51,7 @@ class AdminController extends Controller
             $staffs = Admin::with('role')
                 ->where('role_id','=',"$role")
                 ->orderBy('id','desc')
-                ->get();
+                ->paginate(9);
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -61,7 +61,7 @@ class AdminController extends Controller
             ->whereAny(['name','email','phone',],'LIKE',"%$search%")
             ->where('role_id','=',"$role")
                 ->orderBy('id','desc')
-                ->get();
+                ->paginate(9);
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -74,7 +74,7 @@ class AdminController extends Controller
    public function staffListShow ()
    {
 
-    $staffs = Admin::with('role')->orderBy('id','desc')->get();
+    $staffs = Admin::with('role')->orderBy('id','desc')->paginate(9);
     $roles = Role::get();
 
     return view('admins.staff.staff',compact('staffs','roles'));

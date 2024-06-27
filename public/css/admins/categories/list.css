@@ -55,6 +55,7 @@
     background-color: #FFF;
     border-radius: var(--border-radius);
     padding: 25px 20px;
+    margin-bottom: 2rem;
 }
 #cat-list .search-form .form-container {
     display: flex;
@@ -94,7 +95,9 @@
 
 /* table list  */
 #cat-list .list  {
-    padding-top: 50px;
+    width: 100%;
+    height: calc(100vh - 440px);
+
 }
 #cat-list .list table {
 
@@ -105,19 +108,23 @@
 }
 #cat-list .list  tr th {
     color: #fff;
-    padding: 15px;
-    font-size: 20px;
+    padding: 1rem;
+    font-weight: 700;
     text-align: left;
 }
 #cat-list .list table tr td {
     color: var(--font-color);
-    padding: 15px;
-    font-size: 18px;
+    padding: .6rem;
+    font-weight: 600;
 }
 #cat-list .list .table-header {
     background-color: var(--primary-color);
     border-radius: 10px;
 }
+#cat-list .list tbody tr:nth-child(odd) {
+    background-color: #DFEAFD;
+}
+
 #cat-list .list tbody tr:nth-child(even) {
     background-color: #fff;
 }

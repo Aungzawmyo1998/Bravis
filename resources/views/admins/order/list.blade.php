@@ -90,9 +90,10 @@
 
 
             </table>
-           <div class="pagi-container">
-            {{ $orders->links()}}
-           </div>
+
+        </div>
+        <div class="pagi-container">
+            {{ $orders->links('pagination::bootstrap-5')}}
         </div>
     </div>
 </div>

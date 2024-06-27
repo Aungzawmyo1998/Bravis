@@ -15,7 +15,7 @@ class CustomerController extends Controller
 
     public function customer ()
     {
-        $customers = Customer::orderBy('id','desc')->get();
+        $customers = Customer::orderBy('id','desc')->paginate(9);
         // dd($customers);
         return view('admins.customer.list',compact('customers'));
     }
@@ -27,7 +27,7 @@ class CustomerController extends Controller
 
         // dd($search);
         if (empty($search)) {
-            $customers = Customer::orderBy('id','desc')->get();
+            $customers = Customer::orderBy('id','desc')->paginate(9);
 
             return view('admins.customer.list',compact('customers'));
 
@@ -36,7 +36,7 @@ class CustomerController extends Controller
         if (!empty($search)) {
             $customers = Customer::withName($search)
                         ->orWhereAny(['email','phonenumber','address'],'LIKE',"%$search%")
-                        ->get();
+                        ->paginate(9);
             return view('admins.customer.list',compact('customers'));
 
         }
