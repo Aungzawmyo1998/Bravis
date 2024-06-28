@@ -15,7 +15,4 @@ man_parent.addEventListener("click", ()=> {
     won_sub.classList.remove("active");
 });
 
-// window.addEventListener("click", ()=>{
-//     man_sub.classList.remove("active");
-//     won_sub.classList.remove("active");
-// })
+

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Admin;
+use App\Models\Customer;
+use App\Models\Order;
 use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +21,19 @@ class AdminController extends Controller
 
    public function dashboard ()
    {
-    return view('admins.dashboard.dashboard');
+
+    $orderCount = Order::count();
+
+    $orderPending = Order::where('status','=','pending')->count();
+
+    $orderProcessing = Order::where('status','=','processing')->count();
+
+    $orderDeliever = Order::where('status','=','delivered')->count();
+
+    $clientCount = Customer::count();
+
+
+    return view('admins.dashboard.dashboard',compact('orderCount','orderPending','orderProcessing','orderDeliever','clientCount'));
    }
 
 

@@ -30,4 +30,15 @@ class OrderController extends Controller
         return view('admins.order.list',compact('orders','orderProducts'));
     }
 
+    public function orderEdit (Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->status = $request->orderState;
+        $order->update();
+
+        return redirect()->route('order.list');
+    }
+
 }
+
+

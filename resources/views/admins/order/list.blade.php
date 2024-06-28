@@ -50,7 +50,16 @@
                         <td> {{$order->created_at}} </td>
                         <td> {{ $order->paymentmethod}}</td>
                         <td class="detail-container" >
-                            <button class="detail-btn"><i class="fa-solid fa-circle-info"></i></button> <span>Pending</span>
+                            <button class="detail-btn"><i class="fa-solid fa-circle-info"></i></button>
+                            <span class="status">
+                                @if ($order->status == "pending")
+                                    <p style="background-color: #F3D950";>Pending</p>
+                                @elseif ($order->status == "processing")
+                                    <p style="background-color: #63C7FF";>Processing</p>
+                                @elseif ($order->status == "delivered")
+                                    <p style="background-color: #6DD4B1";>Delivered</p>
+                                @endif
+                            </span>
 
                             <div class="order-details">
                                 <table class="detail-table">
@@ -80,7 +89,39 @@
                             `</table>
                             </div>
                         </td>
-                        <td><a href="" class="action" >edit</a></td>
+                        <td id="order-edit">
+                            <button class="edit-btn" >Edit</button>
+                            <div>
+                                <div class="edit-container">
+                                    <button id="orderEditClose" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                                    <div class="main-container">
+                                        <div class="header">
+                                            <h3>Update Status</h3>
+
+                                        </div>
+                                        <div class="info" >
+                                            <p><b>Pending</b> - Customer ordered items and haven't checked by the admins</p>
+                                            <p><b>Processing</b> - Order has been checked and start delivering</p>
+                                            <p><b>Delivered</b> - Order had been reached to customer</p>
+                                        </div>
+                                    </div>
+                                    <form action="{{ url('/order/edit/'.$order->id)}}" method="get" class="change-form">
+                                        @csrf
+                                        <div class="select-item">
+                                            <label for=""><b>Change:</b></label>
+                                            <select name="orderState" id="" class="item">
+                                                <option value="pending">Pending</option>
+                                                <option value="processing">Processing</option>
+                                                <option value="delivered">Delivered</option>
+                                            </select>
+                                        </div>
+                                        <div class="btn-container" style="">
+                                            <button type="submit" class="change-btn">Change</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
 

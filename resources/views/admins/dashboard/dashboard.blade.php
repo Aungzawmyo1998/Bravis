@@ -17,7 +17,7 @@
                 </div>
                 <div class="item">
                     <h4>Client</h4>
-                    <span class="count">5000</span>
+                    <span class="count">{{$clientCount}}</span>
                 </div>
                 <div class="item">
                     <h4>Page Visitor</h4>
@@ -30,28 +30,28 @@
                     <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
                     <div class="inner-item">
                         <h4>Total Order</h4>
-                        <span class="count">500</span>
+                        <span style="font-weight: 700; font-size: 20px" class="count">{{$orderCount}}</span>
                     </div>
                 </div>
                 <div class="item item-two">
                     <div class="icon"><i class="fa-solid fa-circle-notch"></i></div>
                     <div class="inner-item">
                         <h4>Order Pending</h4>
-                        <span class="count">500</span>
+                        <span style="font-weight: 700; font-size: 20px" class="count">{{$orderPending}}</span>
                     </div>
                 </div>
                 <div class="item item-three">
                     <div class="icon"><i class="fa-solid fa-truck-moving"></i></div>
                     <div class="inner-item">
                         <h4>Order Processing</h4>
-                        <span class="count">500</span>
+                        <span style="font-weight: 700; font-size: 20px" class="count">{{$orderProcessing}}</span>
                     </div>
                 </div>
                 <div class="item item-four">
                     <div class="icon"><i class="fa-regular fa-clock"></i></div>
                     <div class="inner-item">
                         <h4>Order Delivered</h4>
-                        <span class="count">500</span>
+                        <span style="font-weight: 700; font-size: 20px" class="count">{{$orderDeliever}}</span>
                     </div>
                 </div>
             </div>

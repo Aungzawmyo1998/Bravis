@@ -102,13 +102,12 @@ class PaymentController extends Controller
             $order->totalprice = $totalPrice * 0.25;
             $order->shippingfee = $del_fee;
             $order->uuid = $uuid;
-            $order->status = "active";
+            $order->status = "pending";
 
             $order->save();
 
-
-
         }
+
         if(auth('customer')->user() == null )
         {
 
@@ -164,11 +163,9 @@ class PaymentController extends Controller
             $order->totalprice = $totalPrice;
             $order->shippingfee = $del_fee;
             $order->uuid = $uuid;
-            $order->status = "active";
+            $order->status = "pending";
 
             $order->save();
-
-
 
         }
 

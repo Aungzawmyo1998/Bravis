@@ -60,7 +60,6 @@ Route::middleware(['customer'])->group(function (){
 });
 
 
-
 Route::post('/product/{id}/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/delete', [CartController::class, 'deleteProduct'])->name('cart.delefte');
@@ -128,6 +127,7 @@ Route::middleware(['admin'])->group( function () {
 
     // Order
     Route::get('/order/list', [OrderController::class, 'orderList'])->name('order.list');
+    Route::get('/order/edit/{id}',[OrderController::class, 'orderEdit'])->name('order.edit');
 
     // customer
     Route::get('/customer/list', [CustomerController::class, 'customer'])->name('customer.list');
