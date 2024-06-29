@@ -62,14 +62,17 @@
                             <h3>Top selling product</h3>
                         </div>
                         <div class="switch-container">
-                            <div onclick="selectItem('menDoughnutChart','men-item')" style="background-color: #63C7FF; box-shadow: 2px 2px 5px #777777;" class="switch-item men-item" id="men-item" >Men </div>
-                            <div onclick="selectItem('womenDoughnutChart','women-item')" style="background-color: transparent; box-shadow: 2px 2px 5px #777777 inset;" class="switch-item women-item"   id="women-item">Women </div>
+                            {{-- <div onclick="selectItem('menDoughnutChart','men-item')" style="background-color: #63C7FF; box-shadow: 2px 2px 5px #777777;" class="switch-item men-item" id="men-item" >Men </div> --}}
+                            {{-- <div onclick="selectItem('womenDoughnutChart','women-item')" style="background-color: transparent; box-shadow: 2px 2px 5px #777777 inset;" class="switch-item women-item"   id="women-item">Women </div> --}}
                         </div>
                     </div>
                     <div class="inner-item">
-                        <canvas id="menDoughnutChart" style="display: block;" class="sale" ></canvas>
-                        <canvas id="womenDoughnutChart" style="display: none;" class="sale" ></canvas>
-
+                        <input type="hidden" id="menCount" value=" {{$menSellCount}} ">
+                        <input type="hidden" name="" id="womenCount" value="{{$womenSellCount}} ">
+                        <input type="hidden" name="" id="sportCount" value="{{$sportCount}}">
+                        <input type="hidden" name="" id="accessoresCount" value="{{$accessoriesCount}}">
+                        <canvas id="DoughnutChart" style="display: block;" class="sale" ></canvas>
+                        {{-- <canvas id="womenDoughnutChart" style="display: none;" class="sale" ></canvas> --}}
                     </div>
                 </div>
                 <div class="item sale-static">

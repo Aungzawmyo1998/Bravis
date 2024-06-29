@@ -10,15 +10,15 @@
 
         <div class="search-container">
 
-            <form action="" method="" class="search-form">
+            <form action="{{ route('order.search') }}" method="get" class="search-form">
                 <div class="search-data">
                     <div class="start-date">
                         <label class="label" for="startDate">Order Start Date </label>
-                        <input type="text" name="startDate" id="startDate" class="search-input" placeholder="dd/mm/yyyy">
+                        <input type="text" name="startDate" id="startDate" class="search-input" placeholder="yyyy-mm-dd">
                     </div>
                     <div class="end-date">
                         <label class="label" for="endDate">Order End Date </label>
-                        <input type="text" name="endDate" id="endDate" class="search-input" placeholder="dd/mm/yyyy">
+                        <input type="text" name="endDate" id="endDate" class="search-input" placeholder="yyyy-mm-dd">
                     </div>
                     <input type="text" name="searchValue" class="search-input" id="" placeholder="search">
                 </div>
@@ -44,7 +44,7 @@
                     @foreach ($orders as $order )
                     <tr class="data-row">
                         <td>{{ $order->id}}</td>
-                        <td> <span>{{ $order->customers->firstname}}</span> <span>{{ $order->customers->lastname}}</span> </td>
+                        <td> <span>{{ $order->fname/*customers->firstname */}}</span> <span>{{ $order->lname/*customers->lastname*/}}</span> </td>
 
                         <td> {{ $order->totalprice}} </td>
                         <td> {{$order->created_at}} </td>

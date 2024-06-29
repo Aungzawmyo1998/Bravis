@@ -18,19 +18,27 @@ function selectItem(item,switchBtn) {
 
 
 
-// men top sale
+// all top sale
 
-const menLabels = ["Italy", "France", "Spain", "USA", "Argentina"];
-const menData = [55, 49, 44, 24, 15];
-const menColor = ["#b91d47","#00aba9","#2b5797","#e8c3b9","#1e7145"];
+var menCount = document.getElementById('menCount').value;
+var womenCount = document.getElementById('womenCount').value;
+var sportCount = document.getElementById('sportCount').value;
+var accessoresCount = document.getElementById('accessoresCount').value;
 
-new Chart("menDoughnutChart", {
+// console.log(sportCount);
+
+
+const Labels = ["Women", "Men", "Accessories", "Sport"];
+const Data = [womenCount, menCount, accessoresCount, sportCount];
+const Color = ["#b91d47","#00aba9","#2b5797","#e8c3b9"];
+
+new Chart("DoughnutChart", {
     type: "doughnut",
     data: {
-        labels: menLabels,
+        labels: Labels,
         datasets: [{
-            backgroundColor: menColor,
-            data: menData
+            backgroundColor: Color,
+            data: Data
         }]
     },
     Option: {
@@ -41,6 +49,7 @@ new Chart("menDoughnutChart", {
         }
     }
 });
+
 const womenLabels = ["TShirt", "France", "Spain", "USA", "Argentina"];
 const womenData = [55, 49, 44, 24, 15];
 const womenColor = ["#b91d47","#00aba9","#2b5797","#e8c3b9","#1e7145"];

@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Admin;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -32,8 +33,64 @@ class AdminController extends Controller
 
     $clientCount = Customer::count();
 
+    $men = DB::table('products')
+                    // ->join('categories','categories.id','=','products.category_id')
+                    ->join('order_products','order_products.product_id','=','products.id')
+                    ->where('products.gender','Male')
+                    ->select(DB::raw("SUM(order_products.small_qty) as smallQty"),
+                             DB::raw("SUM(order_products.median_qty) as medianQty"),
+                             DB::raw("SUM(order_products.large_qty) as largeQty"),
+                    )
+                    ->get();
 
-    return view('admins.dashboard.dashboard',compact('orderCount','orderPending','orderProcessing','orderDeliever','clientCount'));
+    $menSellCount = $men[0]->smallQty + $men[0]->medianQty + $men[0]->largeQty;
+
+
+    $women = DB::table('products')
+                    // ->join('categories','categories.id','=','products.category_id')
+                    ->join('order_products','order_products.product_id','=','products.id')
+                    ->where('products.gender','Female')
+                    ->select(DB::raw("SUM(order_products.small_qty) as smallQty"),
+                             DB::raw("SUM(order_products.median_qty) as medianQty"),
+                             DB::raw("SUM(order_products.large_qty) as largeQty"),
+                    )
+                    ->get();
+
+    $womenSellCount = $women[0]->smallQty + $women[0]->medianQty + $women[0]->largeQty;
+
+
+
+    $accessories = DB::table('products')
+                    ->join('categories','categories.id','=','products.category_id')
+                    ->join('order_products','order_products.product_id','=','products.id')
+                    ->where('categories.name','LIKE','accessories')
+                    ->select(DB::raw("SUM(order_products.small_qty) as smallQty"),
+                             DB::raw("SUM(order_products.median_qty) as medianQty"),
+                             DB::raw("SUM(order_products.large_qty) as largeQty"),
+                    )
+                    ->get();
+
+    $accessoriesCount  = $accessories[0]->smallQty + $accessories[0]->medianQty + $accessories[0]->largeQty;
+
+    $sport = DB::table('products')
+                    ->join('categories','categories.id','=','products.category_id')
+                    ->join('order_products','order_products.product_id','=','products.id')
+                    ->where('categories.name','LIKE','sport')
+                    // ->select('order_products.*')
+                    // ->count('order_products.product_id');
+                    // ->sum('order_products.median_qty');
+                    ->select(DB::raw("SUM(order_products.small_qty) as smallQty"),
+                             DB::raw("SUM(order_products.median_qty) as medianQty"),
+                             DB::raw("SUM(order_products.large_qty) as largeQty"),
+                    )
+                    ->get();
+                    // ->groupBy('order_products.product_id');
+
+    $sportCount = $sport[0]->smallQty + $sport[0]->medianQty + $sport[0]->largeQty;
+
+    // dd($sportCount);
+
+    return view('admins.dashboard.dashboard',compact('orderCount','orderPending','orderProcessing','orderDeliever','clientCount','menSellCount','womenSellCount','accessoriesCount','sportCount'));
    }
 
 

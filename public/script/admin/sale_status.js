@@ -18,10 +18,6 @@ new Chart("monthlyChart",{
           text: "Monthly Data for the Year"
         }
     },
-    // scales: {
-    //     y: {
-    //       beginAtZero: true
-    //     }
-    // }
+
 
 } );

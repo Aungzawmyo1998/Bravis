@@ -128,6 +128,7 @@ Route::middleware(['admin'])->group( function () {
     // Order
     Route::get('/order/list', [OrderController::class, 'orderList'])->name('order.list');
     Route::get('/order/edit/{id}',[OrderController::class, 'orderEdit'])->name('order.edit');
+    Route::get('/order/search', [OrderController::class, 'search'])->name('order.search');
 
     // customer
     Route::get('/customer/list', [CustomerController::class, 'customer'])->name('customer.list');
