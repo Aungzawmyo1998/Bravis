@@ -33,6 +33,54 @@ class AdminController extends Controller
 
     $clientCount = Customer::count();
 
+    $currentYear = Carbon::now()->year;
+
+    // PIE CHART
+
+    $saleStatues = Order::select(
+                        DB::raw('MONTH(created_at) as month'),
+                        DB::raw('COUNT(*) as count')
+                    )
+                    ->whereYear('created_at',$currentYear)
+                    ->groupBy(DB::raw('MONTH(created_at)'))
+                    ->orderBy('month')
+                    ->get();
+
+    $lables = [];
+    $data = [];
+    $color = ["#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9"];
+
+    for( $i=1; $i<=12; $i++)
+    {
+        $moth = date('F',mktime(0,0,0,$i,1));
+        $count = 0;
+
+        foreach($saleStatues as $saleStatue)
+        {
+            if($saleStatue->month == $i )
+            {
+                $count = $saleStatue->count;
+                break;
+            }
+        }
+
+        array_push($lables,$moth);
+        array_push($data, $count);
+    }
+
+    $datasets = [
+        [
+            'label' => 'mothly',
+            'data' => $data,
+            'backgroundColor' => $color,
+        ]
+    ];
+
+
+    // dd($counts);
+
+    // DOUGHNUT CHART
+
     $men = DB::table('products')
                     // ->join('categories','categories.id','=','products.category_id')
                     ->join('order_products','order_products.product_id','=','products.id')
@@ -90,7 +138,7 @@ class AdminController extends Controller
 
     // dd($sportCount);
 
-    return view('admins.dashboard.dashboard',compact('orderCount','orderPending','orderProcessing','orderDeliever','clientCount','menSellCount','womenSellCount','accessoriesCount','sportCount'));
+    return view('admins.dashboard.dashboard',compact('orderCount','orderPending','orderProcessing','orderDeliever','clientCount','menSellCount','womenSellCount','accessoriesCount','sportCount','datasets','lables'));
    }
 
 

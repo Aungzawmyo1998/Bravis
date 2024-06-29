@@ -92,3 +92,29 @@
 
 @endsection
 
+@section('script')
+
+<script>
+    // pie chart
+            var ctx = document.getElementById('monthlyChart').getContext('2d');
+
+            var monthlyChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: {!! json_encode($lables) !!},
+                datasets: {!! json_encode($datasets)!!}
+            },
+
+
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+</script>
+
+@endsection
+

@@ -51,6 +51,11 @@
     <link rel="stylesheet" href="{{asset('css/admins/order/list.css')}}">
 
 
+    {{-- Chart script --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+
+
+
 
     <title>@yield('title')</title>
 </head>
@@ -129,7 +134,9 @@
 
 
         {{--  sale status script --}}
-        <script src="{{ asset('script/admin/sale_status.js')}}"></script>
+        {{-- <script src="{{ asset('script/admin/sale_status.js')}}"></script> --}}
+
+        @yield('script')
         {{-- top sale --}}
         <script src="{{ asset('script/admin/top_sale.js')}}"></script>
 
@@ -142,6 +149,8 @@
             profile.addEventListener('click', ()=>{
                 logoutContainer.classList.toggle("active");
             });
+
+
         </script>
 
 </body>
