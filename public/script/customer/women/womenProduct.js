@@ -15,25 +15,31 @@ $(document).ready(function (){
                 'searchValue': searchValue,
             },
             success:  function( data ) {
-                // function createProductCard(product) {
-
-                // }
-                // alert(JSON.stringify(data));
 
                 var items  = '';
                 $('#womenProduct').html('');
                 $.each(data, function(index, product) {
 
-                    console.log(product.image);
-                    items = '<a href="'+product.id+'/detail" class="card"><div class="img-container"><img src="/img/products/register/'+product.image+'"></div></a>';
+                    // console.log(product.image);
+                    // items = '<a href="'+product.id+'/detail" class="card"><div class="img-container"><img src="/img/products/register/'+product.image+'"></div></a>';
 
-                    // alert(items);
+                    items = `<a href="${product.id}/detail" class="card">
+                            <div class="img-container">
 
+                                <img src="/img/products/register/${product.image}" alt="">
+                            </div>
+                            <div class="data">
+                                <p>${ product.name}</p>
+                                <p class="price" style="font-weight: 500" >${ product.price } MMK</p>
+                            </div>
+                        </a>`
 
                     $('#womenProduct').append(items);
                 });
             }
         });
     });
+
+    // $(document).
 
 });

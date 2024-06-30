@@ -64,7 +64,10 @@
                                         @csrf
                                         @method('DELETE')
 
-                                        <a href="{{ url('product/'.$product->id.'/edit')}}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        {{-- @if ()
+
+                                        @endif --}}
+                                            <a href="{{ url('product/'.$product->id.'/edit')}}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
                                         <button type="submit" class="action-btn del-btn" onclick="return confirm('Are you sure want to delete')">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>

@@ -16,6 +16,7 @@ class CategoryController extends Controller
     {   $roles = Role::get();
         $categories = Category::with('staffs')
                     ->orderBy('id','desc')
+                    ->where('status','active')
                     ->paginate(9); //update category return 'staff'
 
         return view('admins.category.list',compact('categories','roles'));
@@ -69,7 +70,9 @@ class CategoryController extends Controller
 
     public function destroy (Request $request,$id)
     {
-        Category::find($id)->delete();
+        $category = Category::find($id);
+        $category->status = 'inactive';
+        $category->update();
         return redirect()->back();
     }
 
@@ -84,16 +87,19 @@ class CategoryController extends Controller
 
         if ( empty($search) && $request->position == "default" ) {
 
-            $categories = Category::orderBy('id','desc')->paginate(9);
+            $categories = Category::orderBy('id','desc')
+                        ->where('status','active')
+                        ->paginate(9);
             return view('admins.category.list',compact('categories','roles'));
         }
 
         if (!empty($search) && $position != "default") {
             $categories = Category::join('admins','admins.id','=','categories.admin_id')
-            ->whereAny(['categories.name','admins.name','admins.phone','admins.email'],'LIKE',"%$search%")
-            ->where('admins.role_id','=',"$position")
-            ->select('categories.*')
-            ->paginate(9);
+                        ->whereAny(['categories.name','admins.name','admins.phone','admins.email'],'LIKE',"%$search%")
+                        ->where('categories.status','active')
+                        ->where('admins.role_id','=',"$position")
+                        ->select('categories.*')
+                        ->paginate(9);
 
             // dd($categories);
             return view('admins.category.list', compact('categories','roles'));
@@ -105,6 +111,7 @@ class CategoryController extends Controller
         if( empty($search) &&  $position != "default") {
             $categories = Category::join('admins','categories.admin_id','=','admins.id')
                                     ->where('admins.role_id','=',"$position")
+                                    ->where('categories.status','active')
                                     ->select('categories.*')
                                     ->paginate(9);
 
@@ -123,6 +130,7 @@ class CategoryController extends Controller
             $categories = Category::join('admins','admins.id', '=','categories.admin_id')
 
                         ->whereAny(['categories.name','admins.name','admins.phone','admins.email'],'LIKE',"%$search%")
+                        ->where('categories.status','active')
                         ->select('categories.*')
                         ->paginate(9);
 

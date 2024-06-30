@@ -31,13 +31,14 @@ class HomeController extends Controller
     }
 
     public function allProduct ( )
-    {   $products = Product::orderBY('id','desc')->get();
+    {   $products = Product::orderBY('id','desc')->where('status','active')->get();
 
         return view('customers.product.all_product',compact('products'));
     }
     public function menProduct ()
     {
         $products = Product::where('gender','=','Male')
+                            ->where('status','active')
                             ->orderBy('id','desc')
                             ->get();
 
@@ -46,6 +47,7 @@ class HomeController extends Controller
     public function womenProduct ()
     {
         $products = Product::where('gender','=','Female')
+                            ->where('status','active')
                             ->orderBy('id','desc')
                             ->get();
 
@@ -59,6 +61,7 @@ class HomeController extends Controller
         $products = Product::join('categories','categories.id','=','products.category_id')
                     ->select('products.*')
                     ->where('categories.name','LIKE','%accessories%')
+                    ->where('products.status','active')
                     ->orderBy('products.id','desc')
                     ->get();
 
@@ -71,6 +74,7 @@ class HomeController extends Controller
         $products = Product::join('categories','categories.id','=','products.category_id')
                     ->select('products.*')
                     ->where('categories.name','LIKE','%sport%')
+                    ->where('products.status','active')
                     ->orderBy('products.id','desc')
                     ->get();
 
@@ -89,6 +93,7 @@ class HomeController extends Controller
             $items = Product::select('*')
                             ->where('gender','=','Male')
                             ->where('category_id','=',"$products->category_id")
+                            ->where('status','active')
                             ->limit(4)
                             ->orderBy('id','desc')
                             ->get();
@@ -102,6 +107,7 @@ class HomeController extends Controller
             $items = Product::select('*')
                             ->where('gender','=','Female')
                             ->where('category_id','=',"$products->category_id")
+                            ->where('status','active')
                             ->limit(4)
                             ->orderBy('id','desc')
                             ->get();
@@ -124,6 +130,7 @@ class HomeController extends Controller
                     ->join('suppliers','products.supplier_id','=','suppliers.id')
                     ->select('products.*')
                     ->where('products.gender','=','Female')
+                    ->where('products.status','active')
                     ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                     ->get();
         // dd($products);
@@ -133,9 +140,24 @@ class HomeController extends Controller
     // MEN SEARCH
     public function menSearch(Request $request)
     {
-        // dd($request->all());
+
         $sort = $request->sort;
         $search = $request->searchValue;
+
+        // MEN LIVE SEARCH
+
+        // dd($request->searchValue);
+
+        $products = DB::table('products')
+                    ->join('suppliers','products.supplier_id','=','suppliers.id')
+                    ->select('products.*')
+                    ->where('products.gender','=','Male')
+                    ->where('products.status','active')
+                    ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                    ->get();
+        // dd($products);
+        return json_encode($products);
+        // return json_encode($products);
 
 
         if($sort == "htl")
@@ -144,6 +166,8 @@ class HomeController extends Controller
                         ->join('suppliers','products.supplier_id','=','suppliers.id')
                         ->select('products.*')
                         ->where('products.gender','=','Male')
+                        ->where('products.status','active')
+
                         ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price','desc')
                         ->get();
@@ -156,6 +180,8 @@ class HomeController extends Controller
                         ->join('suppliers','products.supplier_id','=','suppliers.id')
                         ->select('products.*')
                         ->where('products.gender','=','Male')
+                        ->where('products.status','active')
+
                         ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price')
                         ->get();
@@ -167,6 +193,8 @@ class HomeController extends Controller
         {
             $products = DB::table('products')
                         ->where('gender','=','Male')
+                        ->where('status','active')
+
                         ->get();
 
             return view('customers.product.men_product', compact('products'));
@@ -191,6 +219,8 @@ class HomeController extends Controller
                         ->join('categories','categories.id','=','products.category_id')
                         ->select('products.*')
                         ->where('categories.name','LIKE','%accessories%')
+                        ->where('products.status','active')
+
                         ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price','desc')
                         ->get();
@@ -204,6 +234,8 @@ class HomeController extends Controller
                         ->join('categories','categories.id','=','products.category_id')
                         ->select('products.*')
                         ->where('categories.name','LIKE','%accessories%')
+                        ->where('products.status','active')
+
                         ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price')
                         ->get();
@@ -215,6 +247,8 @@ class HomeController extends Controller
         {
             $products = DB::table('products')
                         ->join('categories','categories.id','=','products.category_id')
+                        ->where('products.status','active')
+
                         ->where('categories.name','LIKE','%accessories%')
                         ->get();
 
@@ -237,6 +271,8 @@ class HomeController extends Controller
                         ->join('categories','categories.id','=','products.category_id')
                         ->select('products.*')
                         ->where('categories.name','LIKE','%sport%')
+                        ->where('products.status','active')
+
                         ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price','desc')
                         ->get();
@@ -250,6 +286,8 @@ class HomeController extends Controller
                         ->join('categories','categories.id','=','products.category_id')
                         ->select('products.*')
                         ->where('categories.name','LIKE','%sport%')
+                        ->where('products.status','active')
+
                         ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price')
                         ->get();
@@ -261,6 +299,8 @@ class HomeController extends Controller
         {
             $products = DB::table('products')
                         ->join('categories','categories.id','=','products.category_id')
+                        ->where('products.status','active')
+
                         ->where('categories.name','LIKE','%accessories%')
                         ->get();
 

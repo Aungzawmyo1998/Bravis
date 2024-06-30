@@ -24,7 +24,7 @@
                     </div>
                     <div class="search-button">
                         <button type="submit" class="button">Search</button>
-                        <button class="button">Reset</button>
+                        <a href=" {{ route('customer.list')}} " class="button">Reset</a>
                     </div>
                 </form>
             </div>

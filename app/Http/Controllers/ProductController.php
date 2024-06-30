@@ -14,7 +14,7 @@ class ProductController extends Controller
     //
     public function product ()
     {
-        $products = Product::orderBy('id','desc')->paginate(8);
+        $products = Product::where('status','active')->orderBy('id','desc')->paginate(8);
         $categories = Category::get();
 
         // $count =
@@ -32,7 +32,7 @@ class ProductController extends Controller
         // dd($price);
 
         if($request->product == null && $request->category == 'default' && $request->price == null) {
-            $products = Product::orderBy('id','desc')->get();
+            $products = Product::orderBy('id','desc')->where('status','active')->paginate(8);
             // dd("1");
             return view('admins.products.list',compact('products','categories'));
         }
@@ -41,8 +41,9 @@ class ProductController extends Controller
         elseif($request->has('product') && $request->category != 'default' && $request->price == null) {
             $products = Product::where('name','LIKE',"%$product%")
                                 ->where('category_id','=',"$category")
+                                ->where('status','active')
                                 ->orderBy('id','desc')
-                                ->get();
+                                ->paginate(8);
 
                                 // dd("2");
 
@@ -51,8 +52,9 @@ class ProductController extends Controller
         elseif ($request->has('product') && $request->category == 'default' && $request->price == null) {
 
             $products = Product::where('name','LIKE',"%$product%")
+                        ->where('status','active')
                         ->orderBy('id','desc')
-                        ->get();
+                        ->paginate(8);
 
                         // dd("3");
 
@@ -63,8 +65,9 @@ class ProductController extends Controller
 
             // dd($price);
             $products = Product::where('price','=',"$price")
+                        ->where('status','active')
                         ->orderBy('price')
-                        ->get();
+                        ->paginate(8);
 
                         // dd("5");
 
@@ -75,8 +78,9 @@ class ProductController extends Controller
             // dd($product);
             $products = Product::where('price','<=',"$price")
                         ->where('name','LIKE',"%$product%")
+                        ->where('status','active')
                         ->orderBy('price','desc')
-                        ->get();
+                        ->paginate(8);
 
                         // dd("4");
 
@@ -87,8 +91,9 @@ class ProductController extends Controller
         elseif ($request->product == null && $request->category != 'default' && $request->has('price')) {
             $products = Product::where('price','=<',"$price")
                         ->where('category_id','=',"$category")
+                        ->where('status','active')
                         ->orderBy('price','desc')
-                        ->get();
+                        ->paginate(8);
 
                         // dd("6");
 
@@ -98,8 +103,9 @@ class ProductController extends Controller
         elseif ($request->has('product') && $request->category != 'default' && $request->has('price')) {
             $products = Product::where('price','=<',"$price")
                         ->where('name','LIKE',"%$product%")
+                        ->where('status','active')
                         ->orderBy('price','desc')
-                        ->get();
+                        ->paginate(8);
 
 
                         // dd("7");
@@ -209,7 +215,9 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        Product::find($id)->delete();
+        $product = Product::find($id);
+        $product->status = 'inactive';
+        $product->update();
 
         return redirect()->back();
     }

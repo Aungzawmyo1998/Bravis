@@ -61,7 +61,7 @@
                         @foreach ($products as $product )
 
 
-                            <a href="" class="card">
+                            <a href="{{ url('customer/product/'.$product->id.'/detail') }}" class="card">
                                 <div class="img">
                                     <img src="{{asset('img/products/register/'.$product->image)}}" alt="">
                                 </div>

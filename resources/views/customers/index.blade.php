@@ -216,7 +216,11 @@
     <script src="{{asset('script/customer/index.js')}}" ></script>
     <script src="{{ asset('script/customer/home/slide.js')}}"></script>
     <script src="{{ asset('script/customer/addToCart.js')}}"> </script>
+    {{-- women search --}}
     <script src="{{ asset('script/customer/women/womenProduct.js')}}"></script>
+    {{-- men search --}}
+    <script src="{{ asset('script/customer/men/menProduct.js')}}"></script>
+
 
 </body>
 </html>

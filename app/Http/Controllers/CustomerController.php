@@ -15,7 +15,9 @@ class CustomerController extends Controller
 
     public function customer ()
     {
-        $customers = Customer::orderBy('id','desc')->paginate(9);
+        $customers = Customer::orderBy('id','desc')
+                            ->where('status','active')
+                            ->paginate(9);
         // dd($customers);
         return view('admins.customer.list',compact('customers'));
     }
@@ -27,7 +29,9 @@ class CustomerController extends Controller
 
         // dd($search);
         if (empty($search)) {
-            $customers = Customer::orderBy('id','desc')->paginate(9);
+            $customers = Customer::orderBy('id','desc')
+                                ->where('status','active')
+                                ->paginate(9);
 
             return view('admins.customer.list',compact('customers'));
 
@@ -35,6 +39,7 @@ class CustomerController extends Controller
 
         if (!empty($search)) {
             $customers = Customer::withName($search)
+                        ->where('status','active')
                         ->orWhereAny(['email','phonenumber','address'],'LIKE',"%$search%")
                         ->paginate(9);
             return view('admins.customer.list',compact('customers'));
@@ -103,7 +108,9 @@ class CustomerController extends Controller
 
     public function destroy ($id)
     {
-        Customer::find($id)->delete();
+        $customer = Customer::find($id);
+        $customer->status = 'inactive';
+        $customer->update();
         return redirect()->route('customer.list');
     }
 

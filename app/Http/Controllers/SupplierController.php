@@ -11,7 +11,9 @@ class SupplierController extends Controller
     //
     public function supplier()
     {
-        $suppliers = Supplier::orderBy('id','desc')->paginate(9);
+        $suppliers = Supplier::orderBy('id','desc')
+                    ->where('status','active')
+                    ->paginate(9);
 
         $brands = Supplier::select('brandname')
                 ->groupBy('brandname')
@@ -47,7 +49,9 @@ class SupplierController extends Controller
 
     public function destroy($id)
     {
-        Supplier::find($id)->delete();
+        $supplier = Supplier::find($id);
+        $supplier->status = 'inactive';
+        $supplier->update();
         return redirect()->back();
     }
 
@@ -86,13 +90,14 @@ class SupplierController extends Controller
         $brand = $request->brand;
 
         if(empty($search) && $brand == "default") {
-            $suppliers = Supplier::orderBy('id','desc')->paginate(9);
+            $suppliers = Supplier::orderBy('id','desc')->where('status','active')->paginate(9);
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }
 
         if(!empty($search) && $brand != "default") {
 
             $suppliers = Supplier::where('name','LIKE',"%$search%")
+                        ->where('status','active')
                         ->where('brandname','LIKE',"$brand")
                         ->paginate(9);
 
@@ -102,6 +107,7 @@ class SupplierController extends Controller
         if(empty($search) && $brand != "default") {
 
             $suppliers = Supplier::where('brandname','LIKE',"$brand")
+                        ->where('status','active')
                         ->paginate(9);
 
             return view('admins.suppliers.list',compact('suppliers','brands'));
@@ -109,6 +115,7 @@ class SupplierController extends Controller
         if(!empty($search) && $brand == "default") {
 
             $suppliers = Supplier::where('name','LIKE',"%$search%")
+                        ->where('status','active')
                         ->paginate(9);
 
             return view('admins.suppliers.list',compact('suppliers','brands'));

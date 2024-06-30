@@ -142,6 +142,8 @@ class AdminController extends Controller
    }
 
 
+//    SEARCH
+
 
    public function search (Request $request)
    {
@@ -154,12 +156,14 @@ class AdminController extends Controller
 
             $staffs = Admin::with('role')
                 ->orderBy('id','desc')
+                ->where('status','active')
                 ->paginate(9);
             return view('admins.staff.staff',compact('staffs','roles'));
 
         } elseif ($request->has('search') && $role == 'default') {
             $staffs = Admin::with('role')
                 ->whereAny(['name','email','phone',],'LIKE',"%$search%")
+                ->where('status','active')
                 ->orderBy('id','desc')
                 ->paginate(9);
 
@@ -169,6 +173,7 @@ class AdminController extends Controller
 
             $staffs = Admin::with('role')
                 ->where('role_id','=',"$role")
+                ->where('status','active')
                 ->orderBy('id','desc')
                 ->paginate(9);
 
@@ -177,8 +182,9 @@ class AdminController extends Controller
         } elseif($request->has('search') && $role != 'default') {
 
             $staffs = Admin::with('role')
-            ->whereAny(['name','email','phone',],'LIKE',"%$search%")
-            ->where('role_id','=',"$role")
+                ->whereAny(['name','email','phone',],'LIKE',"%$search%")
+                ->where('role_id','=',"$role")
+                ->where('status','active')
                 ->orderBy('id','desc')
                 ->paginate(9);
 
@@ -193,7 +199,9 @@ class AdminController extends Controller
    public function staffListShow ()
    {
 
-    $staffs = Admin::with('role')->orderBy('id','desc')->paginate(9);
+    $staffs = Admin::with('role')->orderBy('id','desc')
+            ->where('status','active')
+            ->paginate(9);
     $roles = Role::get();
 
     return view('admins.staff.staff',compact('staffs','roles'));
@@ -312,7 +320,9 @@ class AdminController extends Controller
    public function destroy ($id)
    {
         // dd(Admin::find($id));
-        Admin::destroy($id);
+        $staff = Admin::find($id);
+        $staff->status = 'inactive';
+        $staff-> update();
         return redirect()->back();
    }
 
