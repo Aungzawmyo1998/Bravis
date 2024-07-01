@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
 
 class HomeController extends Controller
 {
@@ -120,6 +121,7 @@ class HomeController extends Controller
     }
 
     // SUCH FUNCTION
+    // WOMEN SEARCH
 
     public function womenSearch (Request $request)
     {
@@ -136,12 +138,46 @@ class HomeController extends Controller
         // dd($products);
         return json_encode($products);
     }
+    // WOMEN SORTING
+    public function womenSorting (Request $request)
+    {
+        // dd($request->sortingValue);
+        $sort = $request->sortingValue;
+        if($sort == "htl")
+        {
+            $products = DB::table('products')
+                        ->join('suppliers','products.supplier_id','=','suppliers.id')
+                        ->select('products.*')
+                        ->where('products.gender','=','Female')
+                        ->where('products.status','active')
+
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        ->orderBy('products.price','desc')
+                        ->get();
+
+            return json_encode($products);
+        }
+        elseif($sort == "lth")
+        {
+            $products = DB::table('products')
+                        ->join('suppliers','products.supplier_id','=','suppliers.id')
+                        ->select('products.*')
+                        ->where('products.gender','=','Female')
+                        ->where('products.status','active')
+
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        ->orderBy('products.price')
+                        ->get();
+
+            return json_encode($products);
+        }
+    }
 
     // MEN SEARCH
     public function menSearch(Request $request)
     {
 
-        $sort = $request->sort;
+        // $sort = $request->sort;
         $search = $request->searchValue;
 
         // MEN LIVE SEARCH
@@ -157,9 +193,14 @@ class HomeController extends Controller
                     ->get();
         // dd($products);
         return json_encode($products);
-        // return json_encode($products);
 
 
+    }
+    // MEN SORTING
+
+    public function menSorting(Request $request)
+    {
+        $sort = $request->sortingValue;
         if($sort == "htl")
         {
             $products = DB::table('products')
@@ -168,11 +209,11 @@ class HomeController extends Controller
                         ->where('products.gender','=','Male')
                         ->where('products.status','active')
 
-                        ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price','desc')
                         ->get();
 
-            return view('customers.product.men_product', compact('products'));
+            return json_encode($products);
         }
         elseif($sort == "lth")
         {
@@ -182,36 +223,37 @@ class HomeController extends Controller
                         ->where('products.gender','=','Male')
                         ->where('products.status','active')
 
-                        ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price')
                         ->get();
 
-        return view('customers.product.men_product', compact('products'));
-
+            return json_encode($products);
         }
-        else
-        {
-            $products = DB::table('products')
-                        ->where('gender','=','Male')
-                        ->where('status','active')
-
-                        ->get();
-
-            return view('customers.product.men_product', compact('products'));
-        }
-
-
-
     }
 
     //  ACCESSORIES SEARCH
     public function accessoriesSearch(Request $request)
     {
         // dd($request->all());
-        $sort = $request->sort;
+        // $sort = $request->sort;
         $search = $request->searchValue;
+        $products = DB::table('products')
+                        ->join('suppliers','products.supplier_id','=','suppliers.id')
+                        ->join('categories','categories.id','=','products.category_id')
+                        ->select('products.*')
+                        ->where('categories.name','LIKE','%accessories%')
+                        ->where('products.status','active')
 
+                        ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        // ->orderBy('products.price','desc')
+                        ->get();
+        return json_encode($products);
 
+    }
+    // ACCESSORIES SORTING
+    public function accessoriesSorting (Request $request)
+    {
+        $sort = $request->sortingValue;
         if($sort == "htl")
         {
             $products = DB::table('products')
@@ -221,11 +263,11 @@ class HomeController extends Controller
                         ->where('categories.name','LIKE','%accessories%')
                         ->where('products.status','active')
 
-                        ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price','desc')
                         ->get();
 
-            return view('customers.product.accessories_product', compact('products'));
+            return json_encode($products);
         }
         elseif($sort == "lth")
         {
@@ -236,37 +278,25 @@ class HomeController extends Controller
                         ->where('categories.name','LIKE','%accessories%')
                         ->where('products.status','active')
 
-                        ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price')
                         ->get();
 
-            return view('customers.product.accessories_product', compact('products'));
+            return json_encode($products);
 
         }
-        else
-        {
-            $products = DB::table('products')
-                        ->join('categories','categories.id','=','products.category_id')
-                        ->where('products.status','active')
 
-                        ->where('categories.name','LIKE','%accessories%')
-                        ->get();
 
-            return view('customers.product.accessories_product', compact('products'));
-        }
     }
 
     // SPORT SEARCH
     public function sportSearch(Request $request)
     {
         // dd($request->all());
-        $sort = $request->sort;
+        // dd($request->searchValue);
+        // $sort = $request->sort;
         $search = $request->searchValue;
-
-
-        if($sort == "htl")
-        {
-            $products = DB::table('products')
+        $products = DB::table('products')
                         ->join('suppliers','products.supplier_id','=','suppliers.id')
                         ->join('categories','categories.id','=','products.category_id')
                         ->select('products.*')
@@ -277,7 +307,28 @@ class HomeController extends Controller
                         ->orderBy('products.price','desc')
                         ->get();
 
-            return view('customers.product.sport', compact('products'));
+        return json_encode($products);
+
+
+    }
+// SPORT SORTING
+    public function sprotSorting (Request $request)
+    {
+        $sort = $request->sortingValue;
+        if($sort == "htl")
+        {
+            $products = DB::table('products')
+                        ->join('suppliers','products.supplier_id','=','suppliers.id')
+                        ->join('categories','categories.id','=','products.category_id')
+                        ->select('products.*')
+                        ->where('categories.name','LIKE','%sport%')
+                        ->where('products.status','active')
+
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        ->orderBy('products.price','desc')
+                        ->get();
+
+                        return json_encode($products);
         }
         elseif($sort == "lth")
         {
@@ -288,27 +339,13 @@ class HomeController extends Controller
                         ->where('categories.name','LIKE','%sport%')
                         ->where('products.status','active')
 
-                        ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
+                        // ->whereAny(['suppliers.brandname','products.name'],'LIKE',"%$search%")
                         ->orderBy('products.price')
                         ->get();
 
-            return view('customers.product.sport', compact('products'));
+                        return json_encode($products);
 
         }
-        else
-        {
-            $products = DB::table('products')
-                        ->join('categories','categories.id','=','products.category_id')
-                        ->where('products.status','active')
-
-                        ->where('categories.name','LIKE','%accessories%')
-                        ->get();
-
-            return view('customers.product.sport', compact('products'));
-        }
-
-
-
     }
 
 

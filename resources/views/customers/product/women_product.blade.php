@@ -20,9 +20,9 @@
                         </div>
                         <div class="search-price">
                             <label for="">Sort By : </label>
-                            <select class="select" name="" id="">
-                                <option value="">Price, low to height</option>
-                                <option value="">Price, height to low</option>
+                            <select class="select" name="" id="sorting">
+                                <option value="lth">Price, low to height</option>
+                                <option value="htl">Price, height to low</option>
                                 <option value="">Top Sale</option>
                             </select>
                         </div>

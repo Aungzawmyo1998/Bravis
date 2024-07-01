@@ -61,9 +61,9 @@
                                         <h2>{{$details["name"]}}</h2>
 
                                         <div class="price-container ">
-                                            <input type="text" name="size" value="{{$details["size"]}}" class="size">
+                                            <div><span>Size :</span><input type="text" name="size" value="{{$details["size"]}}" class="size"></div>
                                             <input type="hidden" id="unit-price" name="price" value="{{ $details["price"]}}" class="price">
-                                            <input  type="text" disabled class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span>
+                                            <div><span>Price :</span><input  type="text" disabled class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span></div>
                                         </div>
                                         <div class="button">
 
@@ -151,7 +151,7 @@
                 <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                 <div class="cart-icon">
                     <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
-                    <span id="count-priduct">0</span>
+                    <input type="number" class="countProduct" disabled min="0" value="0" id="count-product">
                 </div>
             </div>
 
@@ -220,7 +220,9 @@
     <script src="{{ asset('script/customer/women/womenProduct.js')}}"></script>
     {{-- men search --}}
     <script src="{{ asset('script/customer/men/menProduct.js')}}"></script>
-
-
+    {{-- accessories search --}}
+    <script src="{{asset('script/customer/accessories/accessoriesProduct.js')}}"></script>
+    {{-- sport search --}}
+    <script src="{{asset('script/customer/sport/sportProduct.js')}}"></script>
 </body>
 </html>

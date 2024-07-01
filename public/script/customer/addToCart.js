@@ -108,7 +108,10 @@ $(document).ready(function (){
 
     });
     // INC VALUE
-    // $(document).on('click','#btn', function(){
-    //     var
-    // });
+    // $(document).on('click', '#add-btn', function (){
+
+    //     var countProduct = $('.countProduct');
+
+    //     countProduct.val() = 3;
+    // })
 });

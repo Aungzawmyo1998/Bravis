@@ -34,7 +34,11 @@ Route::get('/men/search', [HomeController::class, 'menSearch'])->name('men.searc
 Route::get('/accessories/search', [HomeController::class, 'accessoriesSearch'])->name('accessories.search');
 Route::get('/sport/search', [HomeController::class, 'sportSearch'])->name('sport.search');
 
-
+// SORTING
+Route::get('/women/sotring', [HomeController::class, 'womenSorting'])->name('women.sorting');
+Route::get('/men/sotring', [HomeController::class, 'menSorting'])->name('men.sorting');
+Route::get('/accessories/sorting', [HomeController::class, 'accessoriesSorting'])->name('accessories.sorting');
+Route::get('/sport/sorting', [HomeController::class, 'sprotSorting'])->name('sport.sorting');
 // Customers
 Route::get('/customer/login', [LoginController::class, 'customerLogin'])->name('customer.login');
 Route::post('/customer/login', [LoginController::class, 'customerLoginProcess'])->name('customer.login.process');

@@ -1,16 +1,16 @@
 
-// women search
+
 
 $(document).ready(function (){
 
-    $('.women').on('keyup','#searchValue', function() {
+    $('.sport').on('keyup','#searchValue', function() {
 
         var searchValue = $(this).val();
-        // var sortingValue = $(this)
-        // console.log($searchValue);
+
+        console.log(searchValue);
         $.ajax({
             method: 'GET',
-            url: '/women/search',
+            url: '/sport/search',
             dataType: 'json',
             data: {
                 'searchValue': searchValue,
@@ -18,7 +18,7 @@ $(document).ready(function (){
             success:  function( data ) {
 
                 var items  = '';
-                $('#womenProduct').html('');
+                $('#sportProduct').html('');
                 $.each(data, function(index, product) {
 
                     // console.log(product.image);
@@ -35,7 +35,7 @@ $(document).ready(function (){
                             </div>
                         </a>`
 
-                    $('#womenProduct').append(items);
+                    $('#sportProduct').append(items);
                 });
             }
         });
@@ -43,13 +43,13 @@ $(document).ready(function (){
     });
 
     $(document).ready(function(){
-        $('.women').on('change', '#sorting', function () {
+        $('.sport').on('change', '#sorting', function () {
             var sortingValue = $(this).val();
             console.log(sortingValue);
 
             $.ajax({
                 method: 'GET',
-                url: '/women/sotring',
+                url: '/sport/sorting',
                 dataType: 'json',
                 data: {
                     'sortingValue': sortingValue,
@@ -57,7 +57,7 @@ $(document).ready(function (){
                 success:  function( data ) {
 
                     var items  = '';
-                    $('#womenProduct').html('');
+                    $('#sportProduct').html('');
                     $.each(data, function(index, product) {
 
                         // console.log(product.image);
@@ -74,7 +74,7 @@ $(document).ready(function (){
                                 </div>
                             </a>`
 
-                        $('#womenProduct').append(items);
+                        $('#sportProduct').append(items);
                     });
                 }
             });

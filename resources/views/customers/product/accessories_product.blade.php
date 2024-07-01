@@ -6,28 +6,28 @@
 @section('content')
 
     <div id="product">
-        <div class="main-container">
+        <div class="main-container accessories">
             <div class="header" style="background-image: url({{ asset('img/customers/home/accessories-bg.jpg')}})">
                 <h1>Accessories</h1>
             </div>
             <div class="product-container">
                 <div class="search-container">
-                    <form action="{{ route('accessories.search')}}" class="search-form" method="GET">
+                    <div  class="search-form" >
                         <div class="search-bar" >
-                            <input type="text" name="searchValue" class="input" placeholder="Search.....">
+                            <input type="text" name="searchValue" id="searchValue" class="input" placeholder="Search.....">
                             <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <div class="search-price">
                             <label for="">Sort By : </label>
-                            <select class="select" name="sort" id="">
+                            <select class="select" name="sort" id="sorting">
                                 <option value="lth">Price, low to height</option>
                                 <option value="htl">Price, height to low</option>
                                 <option value="">Top Sale</option>
                             </select>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="item-container">
+                <div class="item-container" id="accessoriesProduct">
                     @foreach ($products as $product )
 
 

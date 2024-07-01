@@ -12,20 +12,20 @@
             </div>
             <div class="product-container">
                 <div class="search-container">
-                    <form action="{{ route('men.search')}}" class="search-form" method="GET">
+                    <div  class="search-form" >
                         <div class="search-bar" >
                             <input type="text" id="searchValue" name="searchValue" class="input" placeholder="Search.....">
                             <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <div class="search-price">
                             <label for="">Sort By : </label>
-                            <select class="select" name="sort" id="">
+                            <select class="select" name="sort" id="sorting">
                                 <option value="lth">Price, low to height</option>
                                 <option value="htl">Price, height to low</option>
                                 <option value="">Top Sale</option>
                             </select>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="item-container" id="menProduct">
                     @foreach ($products as $product )

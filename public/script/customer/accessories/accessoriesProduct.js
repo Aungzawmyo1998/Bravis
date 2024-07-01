@@ -3,14 +3,14 @@
 
 $(document).ready(function (){
 
-    $('.women').on('keyup','#searchValue', function() {
+    $('.accessories').on('keyup','#searchValue', function() {
 
         var searchValue = $(this).val();
         // var sortingValue = $(this)
         // console.log($searchValue);
         $.ajax({
             method: 'GET',
-            url: '/women/search',
+            url: '/accessories/search',
             dataType: 'json',
             data: {
                 'searchValue': searchValue,
@@ -18,7 +18,7 @@ $(document).ready(function (){
             success:  function( data ) {
 
                 var items  = '';
-                $('#womenProduct').html('');
+                $('#accessoriesProduct').html('');
                 $.each(data, function(index, product) {
 
                     // console.log(product.image);
@@ -35,7 +35,7 @@ $(document).ready(function (){
                             </div>
                         </a>`
 
-                    $('#womenProduct').append(items);
+                    $('#accessoriesProduct').append(items);
                 });
             }
         });
@@ -43,13 +43,13 @@ $(document).ready(function (){
     });
 
     $(document).ready(function(){
-        $('.women').on('change', '#sorting', function () {
+        $('.accessories').on('change', '#sorting', function () {
             var sortingValue = $(this).val();
-            console.log(sortingValue);
+            // console.log(sortingValue);
 
             $.ajax({
                 method: 'GET',
-                url: '/women/sotring',
+                url: '/accessories/sorting',
                 dataType: 'json',
                 data: {
                     'sortingValue': sortingValue,
@@ -57,7 +57,7 @@ $(document).ready(function (){
                 success:  function( data ) {
 
                     var items  = '';
-                    $('#womenProduct').html('');
+                    $('#accessoriesProduct').html('');
                     $.each(data, function(index, product) {
 
                         // console.log(product.image);
@@ -74,7 +74,7 @@ $(document).ready(function (){
                                 </div>
                             </a>`
 
-                        $('#womenProduct').append(items);
+                        $('#accessoriesProduct').append(items);
                     });
                 }
             });
