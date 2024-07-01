@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -226,6 +227,20 @@ class PaymentController extends Controller
 
             $order_product->save();
         }
+
+        foreach( $product as $value)
+        {
+            $id = $value['id'];
+            $delProduct = Product::find($id);
+
+            $delProduct -> small_qty -= $value["small_qty"];
+            $delProduct -> medium_qty -= $value["median_qty"];
+            $delProduct -> large_qty -= $value["large_qty"];
+
+            $delProduct->update();
+
+        }
+
 
 
         session()->forget(['cart','product']);
