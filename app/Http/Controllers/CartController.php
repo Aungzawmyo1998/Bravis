@@ -25,7 +25,7 @@ class CartController extends Controller
         $size = $request->size;
         $cartkey = $id.'_'.$size;
 
-        // $price = $cart[$id]["qty"] * $product->price;
+
 
         if(isset($cart[$cartkey]))
         {
@@ -51,7 +51,8 @@ class CartController extends Controller
 
 
 
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->back()->with('key',$product);
     }
 
     public function updateCart (Request $request) {

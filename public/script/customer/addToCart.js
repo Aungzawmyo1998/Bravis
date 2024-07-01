@@ -30,9 +30,14 @@ $(document).ready(function (){
 
 
         var qty = $(this).closest('.product_data').find('.qty-value').val();
-
         var value = parseInt(qty);
-        value ++;
+        var sizeQty = $(this).closest('.product_data').find('#sizeQty').val();
+        var sizeQtyValue = parseInt(sizeQty);
+
+        if(value < sizeQtyValue) {
+            value ++;
+        }
+        // value ++;
 
         $(this).closest('.product_data').find('.qty-value').val(value);
 
@@ -55,7 +60,6 @@ $(document).ready(function (){
     });
 
     // price
-
 
     // increase qty in session
 

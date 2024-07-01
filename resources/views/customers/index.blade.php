@@ -60,15 +60,30 @@
                                     <div class="data-container ">
                                         <h2>{{$details["name"]}}</h2>
 
-                                        <div class="price-container ">
+                                        <div class="price-container">
                                             <div><span>Size :</span><input type="text" name="size" value="{{$details["size"]}}" class="size"></div>
                                             <input type="hidden" id="unit-price" name="price" value="{{ $details["price"]}}" class="price">
                                             <div><span>Price :</span><input  type="text" disabled class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span></div>
                                         </div>
                                         <div class="button">
 
+                                            {{-- stop over qty order --}}
+                                            @if (session('key'))
+                                                @if ($details["size"] == "small")
+                                                    <input type="hidden" id="sizeQty" value="{{session('key')->small_qty}}" >
+
+                                                @elseif ($details["size"] == "median")
+                                                    <input type="hidden" id="sizeQty" value="{{session('key')->medium_qty}}" >
+
+                                                @elseif ($details["size"] == "large")
+                                                    <input type="hidden" id="sizeQty" value="{{session('key')->large_qty}}" >
+
+                                                @endif
+                                            @endif
+
+
                                             <div class="qty-btn ">
-                                                <button type="button"    class="increase-btn updateQty" value="{{ $details['id']}}" >+</button>
+                                                <button type="button" class="increase-btn updateQty" value="{{ $details['id']}}" >+</button>
                                                 <input type="text" disabled min="1" name="qty" id="number-input" value="{{ $details["qty"]}}" class="qty-value quantity">
                                                 <button type="button"   class="decrease-btn updateQty" value="{{ $details['id']}}" >-</button>
                                             </div>

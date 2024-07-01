@@ -23,11 +23,17 @@
                             <label for="">Size</label>
                             <div class="size-item">
                                 <input type="radio" checked  name="size" id="small" value="small">
-                                <label class="label-1" for="small">S</label>
+                                @if ($products->small_qty > 0)
+                                    <label class="label-1" for="small">S</label>
+                                @endif
                                 <input  type="radio"  name="size" id="median" value="median">
-                                <label class="label-2" for="median">M</label>
+                                @if($products->medium_qty > 0 )
+                                    <label class="label-2" for="median">M</label>
+                                @endif
                                 <input type="radio" name="size" id="large" value="large">
-                                <label class="label-3" for="large">L</label>
+                                @if($products->large_qty > 0 )
+                                    <label class="label-3" for="large">L</label>
+                                @endif
                             </div>
                         </div>
                         <div class="description">
