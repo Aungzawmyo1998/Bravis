@@ -16,16 +16,14 @@ class CartController extends Controller
 
     public function addCart (Request $request,$id)
     {
-
+        // dd($request->size);
         $product = Product::find($id);
 
-
+        // dd($id);
 
         $cart = session()->get('cart',[]);
         $size = $request->size;
         $cartkey = $id.'_'.$size;
-
-
 
         if(isset($cart[$cartkey]))
         {
@@ -46,13 +44,19 @@ class CartController extends Controller
             ];
         }
 
-       session()->put('cart',$cart);
+        session()->put('cart',$cart);
 
+        session()->get('count');
+        foreach( $cart as $value)
+        {
+            $total[] = $value['qty'];
+        }
+        $total = array_sum($total);
 
+        session()->put('count', $total);
 
-
-        // return redirect()->back();
         return redirect()->back()->with('key',$product);
+
     }
 
     public function updateCart (Request $request) {
@@ -79,12 +83,23 @@ class CartController extends Controller
         }
         session()->put('cart',$cart);
 
+
+
+        session()->get('count');
+        foreach( $cart as $value)
+        {
+            $total[] = $value['qty'];
+        }
+        $total = array_sum($total);
+
+
+        session()->put('count', $total);
+
+
     }
 
     public function deleteProduct(Request $request)
     {
-
-        // dd($request->all());
 
         $id = $request->id;
         $size = $request->size;
@@ -96,6 +111,16 @@ class CartController extends Controller
             unset($cart[$cartkey]);
             session()->put('cart',$cart);
         }
+
+        session()->get('count');
+        foreach( $cart as $value)
+        {
+            $total[] = $value['qty'];
+        }
+        $total = array_sum($total);
+
+        session()->put('count', $total);
+
     }
 
 

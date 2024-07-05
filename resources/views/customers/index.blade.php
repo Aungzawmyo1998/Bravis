@@ -49,7 +49,7 @@
                     @if (session()->get('cart') != null)
 
 
-                         @foreach (session('cart') as $id => $details )
+                        @foreach (session('cart') as $id => $details )
                             <div class="product_data">
 
                                 <div class="add-item  cart-item">
@@ -66,6 +66,8 @@
                                             <div><span>Price :</span><input  type="text" disabled class="total-price" value="{{ $details["price"] * $details["qty"]}}"  name="" id=""><span>MMK</span></div>
                                         </div>
                                         <div class="button">
+
+                                            <div id="product-data"></div>
 
                                             {{-- stop over qty order --}}
                                             @if (session('key'))
@@ -145,7 +147,7 @@
                             <li><a href="">Women's Hoodies & Sweet Shirts </a></li>
                             <li><a href="">Women's Pen & Shorts</a></li>
                         </ul> --}}
-                     </li>
+                    </li>
 
                     <li class="man-parent"><a href="{{ route('customer.men.product')}}">Men</a>
 
@@ -166,7 +168,10 @@
                 <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                 <div class="cart-icon">
                     <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
-                    <input type="number" class="countProduct" disabled min="0" value="0" id="count-product">
+
+                    @if (session()->get('count') != null)
+                        <input type="text" class="countProduct" disabled min="1" value="{{ session('count') }}"  id="count-product">
+                    @endif
                 </div>
             </div>
 
