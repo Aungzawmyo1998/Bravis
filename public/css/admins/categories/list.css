@@ -97,6 +97,8 @@
 #cat-list .list  {
     width: 100%;
     height: calc(100vh - 440px);
+    overflow-x: scroll;
+    scrollbar-width: none;
 
 }
 #cat-list .list table {
@@ -185,13 +187,7 @@
         width: 120px;
         padding: 13px;
     }
-    /* #cat-list .list  {
-        width: 100%;
-        overflow-x: scroll;
-    }
-    #cat-list .list table  {
-        width: 800px;
-    } */
+
     #cat-list .list  tr th  {
         /* padding: 10px; */
         font-size: 16px;
@@ -207,7 +203,7 @@
         font-size: 27px;
     }
     #cat-list .add-button {
-        /* width: 130px; */
+
         font-size: 16px;
         padding: 12px;
     }
@@ -221,8 +217,6 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
-        /* border: 1px solid black; */
         width: 60%;
     }
     #cat-list .search-form input,
@@ -239,14 +233,15 @@
     #cat-list .search-button {
 
         height: 100px;
-        /* border: 1px solid black; */
     }
     #cat-list .search-button .button {
         width: 130px;
         padding: 13px;
 
     }
-
+    #cat-list .list table {
+        width: 768px;
+    }
     #cat-list .list  tr th  {
         /* padding: 10px; */
         font-size: 16px;
@@ -293,6 +288,9 @@
         top: 30px;
         right: 170px;
         font-size: 20px;
+    }
+    #cat-list .search-icon.active {
+        top: 50px;
     }
     #cat-list .search-form .form-container {
         position: relative;
@@ -342,14 +340,9 @@
         font-size: 23px;
     }
 
-    /*  */
-    /* #cat-list .list  {
-        width: 100%;
-        overflow-x: scroll;
+    #cat-list .list table {
+        width: 500px;
     }
-    #cat-list .list table  {
-        width: 750px;
-    } */
     #cat-list .list  tr th  {
         /* padding: 10px; */
         font-size: 16px;
@@ -367,5 +360,8 @@
         top: 30px;
         left: 120px;
         font-size: 20px;
+    }
+    #cat-list .list table {
+        width: 400px;
     }
 }

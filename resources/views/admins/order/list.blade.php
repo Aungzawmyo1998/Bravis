@@ -7,10 +7,14 @@
 <div id="order">
     <div class="main-container">
         <h1 class="header">Order</h1>
+        <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-        <div class="search-container">
+        </div>
 
-            <form action="{{ route('order.search') }}" method="get" class="search-form">
+        <div class="search-form">
+
+            <form action="{{ route('order.search') }}" method="get" class="form-container">
                 <div class="search-data">
                     <div class="start-date">
                         <label class="label" for="startDate">Order Start Date </label>

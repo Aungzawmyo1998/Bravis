@@ -98,7 +98,11 @@
 #sup-list .list  {
     width: 100%;
     height: calc(100vh - 440px);
-    /* border: 1px solid black; */
+   overflow-x: scroll;
+   scrollbar-width: none;
+}
+#sup-list .list::-webkit-scrollbar {
+    display: none;
 }
 #sup-list .list table {
 
@@ -163,7 +167,7 @@
         font-size: 16px;
     }
     #sup-list .list  tr th  {
-        /* padding: 10px; */
+
         font-size: 16px;
     }
     #sup-list .list table tr td {
@@ -188,7 +192,7 @@
     }
 
     #sup-list .list  tr th  {
-        /* padding: 10px; */
+
         font-size: 16px;
     }
     #sup-list .list table tr td {
@@ -202,11 +206,9 @@
         font-size: 27px;
     }
     #sup-list .add-button {
-        /* width: 130px; */
         font-size: 16px;
         padding: 12px;
     }
-    /* category add btn */
     #sup-list .add-button {
         width: 150px;
         padding: 13px 5px;
@@ -232,16 +234,17 @@
     #sup-list .search-button {
 
         height: 100px;
-        /* border: 1px solid black; */
     }
     #sup-list .search-button .button {
         width: 130px;
         padding: 13px;
 
     }
+    #sup-list .list table{
+        width: 700px;
+    }
 
     #sup-list .list  tr th  {
-        /* padding: 10px; */
         font-size: 16px;
     }
     #sup-list .list table tr td {
@@ -263,11 +266,14 @@
     }
     #sup-list .search-form {
         display: none;
+        margin-bottom: inherit;
+        padding: 20px;
     }
     /*  */
     #sup-list .search-form.active {
         display: block;
         cursor: pointer;
+        /* gap: 10px; */
     }
     #sup-list .list  {
         padding-top: 30px;
@@ -277,9 +283,7 @@
 
     #sup-list .add-button {
         width: 150px;
-
         padding: 13px 5px;
-
     }
 
     #sup-list .search-icon {
@@ -288,6 +292,9 @@
         top: 30px;
         right: 170px;
         font-size: 20px;
+    }
+    #sup-list .search-icon.active {
+        top: 50px;
     }
     #sup-list .search-form .form-container {
         position: relative;
@@ -330,13 +337,16 @@
         width: 100%;
         padding: 11px;
         font-size: 13px;
-        /* background-color: red; */
+
 
     }
     #sup-list .header>h1 {
         font-size: 23px;
     }
 
+    #sup-list .list table{
+        width: 500px;
+    }
 
     #sup-list .list  tr th  {
         /* padding: 10px; */
@@ -358,7 +368,10 @@
         display: block;
         position: absolute;
         top: 30px;
-        left: 115px;
+        /* left: 115px; */
         font-size: 20px;
+    }
+    #sup-list .list table{
+        width: 400px;
     }
 }

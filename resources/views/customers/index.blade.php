@@ -70,7 +70,7 @@
                                             <div id="product-data"></div>
 
                                             {{-- stop over qty order --}}
-                                            @if (session('key'))
+                                            @if (session()->get('key') != null)
                                                 @if ($details["size"] == "small")
                                                     <input type="hidden" id="sizeQty" value="{{session('key')->small_qty}}" >
 
@@ -140,7 +140,6 @@
             <div class="nav-data">
                 <ul class="nav-link">
                     <li class="won-parent"><a href="{{ route('customer.women.product')}}">Women</a>
-
                         {{-- <ul class="sub-nav won-sub" >
                             <li><a href="">Women's Tees </a></li>
                             <li><a href="">Women's T-Shirts </a></li>
@@ -148,9 +147,7 @@
                             <li><a href="">Women's Pen & Shorts</a></li>
                         </ul> --}}
                     </li>
-
                     <li class="man-parent"><a href="{{ route('customer.men.product')}}">Men</a>
-
                         {{-- <ul class="sub-nav man-sub" >
                             <li><a href="">Men's Tees </a></li>
                             <li><a href="">Men's T-Shirts </a></li>
@@ -168,14 +165,12 @@
                 <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                 <div class="cart-icon">
                     <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
-
+                    {{-- session()->get('count') != null --}}
                     @if (session()->get('count') != null)
-                        <input type="text" class="countProduct" disabled min="1" value="{{ session('count') }}"  id="count-product">
+                        <input type="text" style="background-color: green;" class="countProduct" disabled min="0" value="{{ session('count') }}"  id="count-product">
                     @endif
                 </div>
             </div>
-
-
             <button class="hambuger">
                 <div class="bar"></div>
             </button>
@@ -244,5 +239,7 @@
     <script src="{{asset('script/customer/accessories/accessoriesProduct.js')}}"></script>
     {{-- sport search --}}
     <script src="{{asset('script/customer/sport/sportProduct.js')}}"></script>
+    {{-- allproduct search --}}
+    <script src="{{ asset('script/customer/allProduct/allProduct.js')}}"></script>
 </body>
 </html>

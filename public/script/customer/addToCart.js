@@ -14,47 +14,107 @@ closeCartBtn.addEventListener('click', ()=> {
 
 // ADD TO CART
 
-
+/*
 
 $(document).ready(function () {
 
+    $.ajaxSetup(
+        {
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-    $(document).on('click','#detail-product #addToCart', function () {
+    var smallQty = parseInt($('#smallQty').val());
+    var mediumQty = parseInt($('#mediumQty').val());
+    var largeQty = parseInt($('#largeQty').val());
 
-        // e.preventDefault();
+    var sizeSmallQty = parseInt($('#sizeSmallQty').val());
+    var sizeMediumQty = parseInt($('#sizeMediumQty').val());
+    var sizeLargeQty = parseInt($('#sizeLargeQty').val());
+
+
+
+
+    $(document).on('click','#detail-product #addToCart', function (e) {
+
+        e.preventDefault();
+        // console.log($("#sizeSmallQty"));
+
+        var productId = parseInt($('#productId').val());
+
+        var size = $('input[name="size"]:checked').val();
 
         var countProduct = $(".cart-icon #count-product");
         var countValue = parseInt(countProduct.val());
 
-        $(".cart-icon #count-product").val(countValue);
+        // $(".cart-icon #count-product").val(countValue);
+        if(size == "small" ) {
+            // var smallCountValue = 1;
+            if(sizeSmallQty <= smallQty) {
+                countValue ++;
+                $.ajax({
+                    type: 'POST',
+                    url: `/product/${productId}/add/cart`,
+                    data: {
+                        "size": size,
+                    },
+                });
+                $(".cart-icon #count-product").val(countValue);
+            }
+            sizeSmallQty ++;
+            // alert(sizeSmallQty);
+        }
+
+        if(size == "median") {
+
+            if(sizeMediumQty <= mediumQty) {
+                sizeMediumQty ++;
+                alert("median");
+                countValue ++;
+                $.ajax({
+                    type: 'POST',
+                    url: `/product/${productId}/add/cart`,
+                    data: {
+                        "size": size,
+                    },
+                });
+                $(".cart-icon #count-product").val(countValue);
+            }
+        }
+
+        if(size == "large") {
+            // alert("large");
+            if(sizeLargeQty <= largeQty) {
+                countValue ++;
+                sizeLargeQty ++;
+                $.ajax({
+                    type: 'POST',
+                    url: `/product/${productId}/add/cart`,
+                    data: {
+                        "size": size,
+                    },
+                });
+                $(".cart-icon #count-product").val(countValue);
+
+            }
+        }
+            // $.ajax({
+            //     type: 'POST',
+            //     url: `/product/${productId}/add/cart`,
+            //     data: {
+            //         "size": size,
+
+            //     },
+
+            // });
 
 
     });
-    // $(document).on('click', '.product_data .increase-btn', function(){
 
-    //     var countProduct = $(".cart-icon #count-product");
-    //     var countValue = parseInt(countProduct.val());
-    //     countValue ++;
-    //     $(".cart-icon #count-product").val(countValue);
-
-
-    // });
-    // $(document).on('click', '.product_data .decrease-btn', function(){
-
-    //     var countProduct = $(".cart-icon #count-product");
-    //     var countValue = parseInt(countProduct.val());
-    //     countValue --;
-    //     $(".cart-icon #count-product").val(countValue);
-    // });
-    // $(document).on('click', '.product_data .updateQty', function(){
-
-    //     var countProduct = $(".cart-icon #count-product");
-    //     var countValue = parseInt(countProduct.val());
-    //     countValue --;
-    //     $(".cart-icon #count-product").val(countValue);
-    // });
 
 });
+*/
 
 
 
@@ -83,7 +143,6 @@ $(document).ready(function (){
         var countValue = parseInt(countProduct.val());
 
         // alert(sizeQty);
-
         if(value < sizeQtyValue) {
             value ++;
             countValue ++;
@@ -162,9 +221,6 @@ $(document).ready(function (){
         var qty = $(this).closest('.product_data').find('.qty-value').val();
         var value = parseInt(qty);
         $(".cart-icon #count-product").val(countValue-value);
-
-
-
 
         $.ajax({
             type: 'POST',

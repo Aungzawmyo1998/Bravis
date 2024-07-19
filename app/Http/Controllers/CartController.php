@@ -17,10 +17,10 @@ class CartController extends Controller
     public function addCart (Request $request,$id)
     {
         // dd($request->size);
+        // dd($id);
         $product = Product::find($id);
 
         // dd($id);
-
         $cart = session()->get('cart',[]);
         $size = $request->size;
         $cartkey = $id.'_'.$size;
@@ -28,7 +28,6 @@ class CartController extends Controller
         if(isset($cart[$cartkey]))
         {
             $cart[$cartkey]["qty"]++;
-
         }
         else
         {
@@ -40,30 +39,26 @@ class CartController extends Controller
                 "size" => $request->size,
                 "qty" => 1,
                 // "totalPrice" => $cart["qty"] * $cart["price"],
-
             ];
         }
 
         session()->put('cart',$cart);
 
-        session()->get('count');
         foreach( $cart as $value)
         {
             $total[] = $value['qty'];
         }
         $total = array_sum($total);
-
         session()->put('count', $total);
 
-        return redirect()->back()->with('key',$product);
+        session()->put('key',$product);
+
+
+        return redirect()->back();
 
     }
 
     public function updateCart (Request $request) {
-
-        // dd($request->all());
-
-
 
         $cart = session()->get('cart');
         $qty = $request->qty;
@@ -71,29 +66,23 @@ class CartController extends Controller
         $size = $request->size;
 
         $cartkey = $id.'_'.$size;
-
         $product = Product::find($id);
 
 
         if(isset($cart[$cartkey]))
         {
-
             $cart[$cartkey]["qty"] = $qty;
-
         }
         session()->put('cart',$cart);
 
 
-
-        session()->get('count');
         foreach( $cart as $value)
         {
             $total[] = $value['qty'];
         }
         $total = array_sum($total);
-
-
         session()->put('count', $total);
+
 
 
     }
@@ -112,7 +101,7 @@ class CartController extends Controller
             session()->put('cart',$cart);
         }
 
-        session()->get('count');
+        // session()->get('count');
         foreach( $cart as $value)
         {
             $total[] = $value['qty'];
@@ -120,10 +109,9 @@ class CartController extends Controller
         $total = array_sum($total);
 
         session()->put('count', $total);
+        // dd(session('count'));
+
 
     }
-
-
-
 
 }

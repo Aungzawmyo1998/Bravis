@@ -243,7 +243,8 @@ class PaymentController extends Controller
 
 
 
-        session()->forget(['cart','product']);
+        session()->forget(['cart','product','count']);
+        // session()->forget()
 
         return redirect()->route('payment.success')->with('success', 'Payment successful!');
     }

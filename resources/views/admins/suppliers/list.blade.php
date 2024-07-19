@@ -26,14 +26,12 @@
                         @foreach ($brands as $brand )
                             <option value="{{ $brand->brandname}}">{{ $brand->brandname}}</option>
                         @endforeach
-
                     </select>
                 </div>
                 <div class="search-button">
                     <button type="submit" class="button " >Search</button>
                 </div>
             </form>
-
         </div>
         <div class="list">
             <table>

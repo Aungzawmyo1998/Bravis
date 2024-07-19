@@ -6,28 +6,28 @@
 @section('content')
 
     <div id="product">
-        <div class="main-container">
+        <div class="main-container allProduct">
             <div class="header" style="background-image: url({{ asset('img/customers/home/Title_image.png')}})">
                 <h1>All Product</h1>
             </div>
             <div class="product-container">
                 <div class="search-container">
-                    <form action="" class="search-form">
+                    <div action="" class="search-form">
                         <div class="search-bar" >
-                            <input type="text" name="search" class="input" placeholder="Search.....">
+                            <input type="text" id="searchValue" name="searchValue" class="input" placeholder="Search.....">
                             <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <div class="search-price">
                             <label for="">Sort By : </label>
-                            <select class="select" name="" id="">
-                                <option value="">Price, low to height</option>
-                                <option value="">Price, height to low</option>
+                            <select class="select" name="" id="sorting">
+                                <option value="lth">Price, low to height</option>
+                                <option value="htl">Price, height to low</option>
                                 <option value="">Top Sale</option>
                             </select>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="item-container">
+                <div class="item-container" id="allProduct">
                     @foreach ($products as $product )
 
 

@@ -25,6 +25,8 @@
                             <input type="hidden" id="smallQty" value="{{ $products->small_qty}}">
                             <input type="hidden" id="mediumQty" value="{{ $products->medium_qty}}">
                             <input type="hidden" id="largeQty" value="{{ $products->large_qty}}">
+
+
                             {{-- hidden container --}}
 
                             <label for="">Size</label>
