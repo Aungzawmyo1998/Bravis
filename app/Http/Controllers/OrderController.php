@@ -18,7 +18,7 @@ class OrderController extends Controller
         $orders = DB::table('orders')
                     ->join('customers','customers.id','=','orders.customer_id')
                     ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
-                    ->paginate(9);
+                    ->paginate(6);
         // dd($orders);
 
         $orderProducts = DB::table('order_products')
@@ -72,7 +72,7 @@ class OrderController extends Controller
         {
 
             $name = $searchValue;
-            // dd($name);
+
         }
 
 
@@ -94,7 +94,7 @@ class OrderController extends Controller
                     // ->orWhere('customers.lastname','LIKE',"%$name%")
                     ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
-                    ->paginate(9);
+                    ->paginate(6);
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -111,7 +111,7 @@ class OrderController extends Controller
             ->orWhereAny(['customers.firstname','customers.lastname'],'LIKE',"%$name%")
             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
-            ->paginate(9);
+            ->paginate(6);
         }
         elseif($startDate == null && $searchValue != null && $endDate != null) // 011 -
         {
@@ -126,7 +126,7 @@ class OrderController extends Controller
 
             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
-            ->paginate(9);
+            ->paginate(6);
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -148,7 +148,7 @@ class OrderController extends Controller
             // ->orWhere('customers.lastname','LIKE',"%$name%")
             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
-            ->paginate(9);
+            ->paginate(6);
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -166,7 +166,7 @@ class OrderController extends Controller
             // ->orWhere('customers.lastname','LIKE',"%$lastname%")
             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
-            ->paginate(9);
+            ->paginate(6);
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -182,7 +182,7 @@ class OrderController extends Controller
             // ->orWhere('customers.lastname','LIKE',"%$lastname%")
             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
-            ->paginate(9);
+            ->paginate(6);
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -198,7 +198,7 @@ class OrderController extends Controller
             // ->orWhere('customers.lastname','LIKE',"%$lastname%")
             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
-            ->paginate(9);
+            ->paginate(6);
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -210,7 +210,7 @@ class OrderController extends Controller
             $orders = DB::table('orders')
                     ->join('customers','customers.id','=','orders.customer_id')
                     ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
-                    ->paginate(9);
+                    ->paginate(6);
 
             return view('admins.order.list',compact('orders','orderProducts'));
         }

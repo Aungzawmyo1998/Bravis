@@ -66,6 +66,9 @@
                             </span>
 
                             <div class="order-details">
+                                <div class="button-container">
+                                    <button id="detailCloseBtn" class="detail-close-btn"><i class="fa-solid fa-xmark"></i></button>
+                                </div>
                                 <table class="detail-table">
                                     <tr class="header-row">
                                         {{-- <th>Order ID</th> --}}
@@ -83,7 +86,7 @@
                                         <tr class="data-row">
                                             {{-- <td> {{$orderProduct->order_id}} </td> --}}
                                             <td> {{$orderProduct->pname}} </td>
-                                            <td> <img width="100px" src="{{asset('img/products/register/'.$orderProduct->pimage)}}" alt=""> </td>
+                                            <td> <img  src="{{asset('img/products/register/'.$orderProduct->pimage)}}" alt=""> </td>
                                             <td> {{ $orderProduct->small_qty }} </td>
                                             <td> {{ $orderProduct->median_qty}} </td>
                                             <td> {{ $orderProduct->large_qty}}</td>
@@ -101,7 +104,6 @@
                                     <div class="main-container">
                                         <div class="header">
                                             <h3>Update Status</h3>
-
                                         </div>
                                         <div class="info" >
                                             <p><b>Pending</b> - Customer ordered items and haven't checked by the admins</p>
@@ -137,7 +139,7 @@
             </table>
 
         </div>
-        <div class="pagi-container">
+        <div class="pag-container">
             {{ $orders->links('pagination::bootstrap-5')}}
         </div>
     </div>

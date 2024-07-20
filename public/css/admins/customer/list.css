@@ -5,24 +5,25 @@
     --font-color: #6d6d6d;
     --header-color: #504F54;
     --input-background-color: #F7FAFF;
- }
+}
  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
- }
+}
 
- #cus-list .header {
+#cus-list .header {
 
     padding: 20px 5px ;
 
- }
- #cus-list .search-icon {
+}
+
+#cus-list .search-icon {
     display: none;
- }
- #cus-list .header>h1 {
+}
+#cus-list .header>h1 {
     font-size: 30px;
     font-weight: 600;
     color: var(--header-color);
@@ -76,8 +77,11 @@
 
     width: 100%;
     height: calc(100vh - 400px);
-    /* border: 1px solid black; */
-    /* margin-bottom: .8rem; */
+    scrollbar-width: none;
+}
+
+#cus-list .list::-webkit-scrollbar {
+    display: none;
 }
 #cus-list .list table {
 
@@ -93,18 +97,15 @@
 #cus-list .list thead th {
     color: #fff;
     padding: 1rem;
-    /* font-size: 20px; */
+
     font-weight: 600;
     text-align: left;
 }
-/* #cus-list .data-row {
-    padding: 10px;
-} */
+
 #cus-list .list tbody td {
+    
     color: var(--font-color);
-
     padding: 13px;
-
     font-weight: 600;
 }#cus-list .list tbody tr:nth-child(odd) {
     background-color: #DFEAFD;
@@ -159,6 +160,9 @@
 
         width: 150px;
         padding: 13px;
+    }
+    #cus-list .list .table-list {
+        width: 1000px;
     }
     #cus-list .list thead th {
         padding: 15px;

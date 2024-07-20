@@ -76,12 +76,12 @@
 
  }
  #order .order-list {
-    position: relative;
+    /* position: relative; */
     width: 100%;
     height: calc(100vh - 440px);
     /* border: 1px solid black; */
+    overflow-y: hidden;
     overflow-x: scroll;
-
     scrollbar-width: none;
  }
  #order .order-list::-webkit-scrollbar {
@@ -139,16 +139,40 @@
 #order .order-details {
     display: none;
     background-color: rgba(255, 255, 255, 0.8);
+    /* background-color: green; */
     position: absolute;
-    top: -80px;
-    right: 400px;
+    top: 230px;
+    left: 50px;
     width: 700px;
-    height: 500px;
+    height: 400px;
     z-index: 10;
-    overflow-y: scroll;
+    overflow: scroll;
     scrollbar-width: none;
+    border-radius: var(--border-radius);
+}
+
+#order .order-details>.button-container {
+    position: fixed;
+    z-index: 50;
 
 }
+
+#order .detail-close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    border-radius: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+}
+
 #order .order-details::-webkit-scrollbar {
     display: none;
 }
@@ -158,21 +182,27 @@
     object-fit: fill;
 }
 #order .order-details .detail-table {
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 100%;
+    height: auto;
     border-collapse: collapse;
 }
 #order .detail-table .header-row {
     position: sticky;
     top: 0;
 }
+#order .order-details .data-row td>img {
+    width: 100px;
+}
 
 /* order Edit */
 
 #order-edit .edit-container {
     position: absolute;
-    top: 0;
-    right: 400px;
+    top: 230px;
+    left: 50px;
     display: none;
     width: 500px;
     height: 400px;
@@ -182,6 +212,7 @@
     font-weight: 500;
     padding: 1rem;
     border-radius: var(--border-radius);
+    z-index: 50;
 }
 #order-edit .header {
     width: 100%;
@@ -241,7 +272,7 @@
     padding-right: 5px;
     border-radius: 15px;
 }
-
+/* .edit-container */
 @media (max-width: 1284px) and (min-width: 1034px ) {
     #order .form-container {
         flex-direction: column;
@@ -255,6 +286,10 @@
 
     #order .list-table {
         width: 1300px;
+    }
+
+    #order .order-details {
+        top: 300px;
     }
 }
 
@@ -287,6 +322,22 @@
     #order .list-table .data-row>td {
         padding: .5rem;
     }
+
+    #order-edit .edit-container {
+
+        width: 300px;
+    }
+    #order .order-details {
+        top: 280px;
+        width: 500px;
+        overflow: scroll;
+
+    }
+    #order .order-details .detail-table {
+        position: inherit;
+        /* width: 600px; */
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -339,5 +390,53 @@
         padding: .5rem;
     }
 
+    #order-edit .edit-container {
+
+        width: 300px;
+        top: 150px;
+        left: 0;
+    }
+
+    #order .order-details {
+        top: 150px;
+        left: 20px;
+        width: 300px;
+        overflow: scroll;
+        /* position: relative; */
+    }
+    #order .order-details .detail-table {
+        position: inherit;
+        width: 600px;
+        position: relative;
+    }
+
+    #order .order-details .header-row {
+
+    }
+    #order .order-details .header-row>th {
+        font-size: 16px;
+        padding: .5rem;
+    }
+    #order .order-details .data-row td>img {
+        width: 70px;
+    }
+    #order .order-details .data-row td {
+        font-size: 13px;
+        padding: .5rem;
+    }
+
+}
+@media (max-width: 400px) {
+    #order-edit .edit-container {
+
+        width: 250px;
+        padding: .5rem;
+        top: 150px;
+        left: 0;
+    }
+    #order .order-details {
+        width: 200px;
+        height: 300px;
+    }
 
 }

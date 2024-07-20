@@ -30,7 +30,7 @@
             </div>
 
             <div class="list">
-                <table>
+                <table class="table-list">
                     <thead>
                         <tr class="table-header">
                             <th>ID </th>
