@@ -212,7 +212,8 @@ class OrderController extends Controller
                     ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
                     ->paginate(6);
 
-            return view('admins.order.list',compact('orders','orderProducts'));
+            // return view('admins.order.list',compact('orders','orderProducts'));
+            return redirect()->route('order.list');
         }
     }
 

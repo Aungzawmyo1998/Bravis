@@ -16,6 +16,7 @@
  }
 #sup-list .search-icon {
     display: none;
+    cursor: pointer;
 }
 #sup-list .header {
     display: flex;
@@ -98,8 +99,8 @@
 #sup-list .list  {
     width: 100%;
     height: calc(100vh - 440px);
-   overflow-x: scroll;
-   scrollbar-width: none;
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 #sup-list .list::-webkit-scrollbar {
     display: none;
@@ -149,6 +150,11 @@
     font-size: 20px;
 }
 
+#sup-list .pag-container {
+    width: 80%;
+    position: absolute;
+    bottom: 0;
+}
 /* responsive */
 
 @media (max-width: 1200px) and (min-width: 1000px) {
@@ -199,9 +205,35 @@
         color: var(--font-color);
         font-size: 16px;
     }
+
+    #sup-list .pag-container {
+        width: 70%;
+        position: absolute;
+        bottom: 0;
+    }
 }
 @media (min-width: 500px ) and (max-width: 768px) {
 
+    #sup-list .search-form .form-container {
+        display: flex;
+        flex-direction: column;
+    }
+    #sup-list .search-form .form-container .search-item {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #sup-list .search-form .search-button  {
+        width: 100%;
+        height: fit-content;
+
+    }
+    #sup-list .search-form .search-button .button {
+        /* justify-content: flex-end; */
+        width: 160px;
+        float: right;
+    }
     #sup-list .header>h1 {
         font-size: 27px;
     }
@@ -375,3 +407,4 @@
         width: 400px;
     }
 }
+

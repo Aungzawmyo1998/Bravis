@@ -13,7 +13,7 @@ class SupplierController extends Controller
     {
         $suppliers = Supplier::orderBy('id','desc')
                     ->where('status','active')
-                    ->paginate(9);
+                    ->paginate(7);
 
         $brands = Supplier::select('brandname')
                 ->groupBy('brandname')
@@ -90,8 +90,9 @@ class SupplierController extends Controller
         $brand = $request->brand;
 
         if(empty($search) && $brand == "default") {
-            $suppliers = Supplier::orderBy('id','desc')->where('status','active')->paginate(9);
-            return view('admins.suppliers.list',compact('suppliers','brands'));
+            // $suppliers = Supplier::orderBy('id','desc')->where('status','active')->paginate(9);
+            // return view('admins.suppliers.list',compact('suppliers','brands'));
+            return redirect()->route('supplier.list');
         }
 
         if(!empty($search) && $brand != "default") {

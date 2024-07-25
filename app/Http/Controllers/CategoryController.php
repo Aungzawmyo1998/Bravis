@@ -63,6 +63,8 @@ class CategoryController extends Controller
         ]);
         $category = Category::find($id);
         $category->name = $request->name;
+        // dd(auth('admin')->user()->name);
+        // $category->staffs->name = auth('admin')->user()->name;
 
         $category->update();
         return redirect()->route('category.list');
@@ -90,7 +92,8 @@ class CategoryController extends Controller
             $categories = Category::orderBy('id','desc')
                         ->where('status','active')
                         ->paginate(9);
-            return view('admins.category.list',compact('categories','roles'));
+            // return view('admins.category.list',compact('categories','roles'));
+            return redirect()->route('category.list');
         }
 
         if (!empty($search) && $position != "default") {

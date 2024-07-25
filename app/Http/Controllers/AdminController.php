@@ -104,6 +104,7 @@ class AdminController extends Controller
                     )
                     ->get();
 
+
     $womenSellCount = $women[0]->smallQty + $women[0]->medianQty + $women[0]->largeQty;
 
 
@@ -154,18 +155,19 @@ class AdminController extends Controller
 
         if ($search == null && $role == 'default') {
 
-            $staffs = Admin::with('role')
-                ->orderBy('id','desc')
-                ->where('status','active')
-                ->paginate(9);
-            return view('admins.staff.staff',compact('staffs','roles'));
+            // $staffs = Admin::with('role')
+            //     ->orderBy('id','desc')
+            //     ->where('status','active')
+            //     ->paginate(1);
+            // return view('admins.staff.staff',compact('staffs','roles'));
+            return redirect()->route('staff.list.show');
 
         } elseif ($request->has('search') && $role == 'default') {
             $staffs = Admin::with('role')
                 ->whereAny(['name','email','phone',],'LIKE',"%$search%")
                 ->where('status','active')
                 ->orderBy('id','desc')
-                ->paginate(9);
+                ->paginate(6);
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -175,7 +177,7 @@ class AdminController extends Controller
                 ->where('role_id','=',"$role")
                 ->where('status','active')
                 ->orderBy('id','desc')
-                ->paginate(9);
+                ->paginate(6);
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -186,7 +188,7 @@ class AdminController extends Controller
                 ->where('role_id','=',"$role")
                 ->where('status','active')
                 ->orderBy('id','desc')
-                ->paginate(9);
+                ->paginate(6);
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -201,7 +203,7 @@ class AdminController extends Controller
 
     $staffs = Admin::with('role')->orderBy('id','desc')
             ->where('status','active')
-            ->paginate(9);
+            ->paginate(6);
     $roles = Role::get();
 
     return view('admins.staff.staff',compact('staffs','roles'));

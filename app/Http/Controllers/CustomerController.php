@@ -17,7 +17,7 @@ class CustomerController extends Controller
     {
         $customers = Customer::orderBy('id','desc')
                             ->where('status','active')
-                            ->paginate(9);
+                            ->paginate(8);
         // dd($customers);
         return view('admins.customer.list',compact('customers'));
     }
@@ -31,9 +31,10 @@ class CustomerController extends Controller
         if (empty($search)) {
             $customers = Customer::orderBy('id','desc')
                                 ->where('status','active')
-                                ->paginate(9);
+                                ->paginate(8);
 
-            return view('admins.customer.list',compact('customers'));
+            // return view('admins.customer.list',compact('customers'));
+            return redirect()->route('customer.list');
 
         }
 

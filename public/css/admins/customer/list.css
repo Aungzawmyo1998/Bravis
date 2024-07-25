@@ -103,7 +103,7 @@
 }
 
 #cus-list .list tbody td {
-    
+
     color: var(--font-color);
     padding: 13px;
     font-weight: 600;
@@ -196,6 +196,9 @@
      #cus-list .search-form.active {
         display: block;
      }
+     #cus-list .list table {
+        width: 800px;
+     }
 }
 @media (max-width: 768px) and (min-width: 700px) {
 
@@ -269,7 +272,7 @@
         overflow-x: scroll;
     }
     #cus-list .list table {
-        width: 700px;
+        width: 800px;
     }
     #cus-list .list thead th {
         padding: 15px;

@@ -83,6 +83,7 @@ class CartController extends Controller
         $total = array_sum($total);
         session()->put('count', $total);
 
+        // dd($total);
 
 
     }

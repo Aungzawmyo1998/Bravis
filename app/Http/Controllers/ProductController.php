@@ -33,8 +33,9 @@ class ProductController extends Controller
 
         if($request->product == null && $request->category == 'default' && $request->price == null) {
             $products = Product::orderBy('id','desc')->where('status','active')->paginate(8);
-            // dd("1");
-            return view('admins.products.list',compact('products','categories'));
+
+            // return view('admins.products.list',compact('products','categories'));
+            return redirect()->route('product.list');
         }
 
 

@@ -146,6 +146,12 @@
     font-size: 20px;
 }
 
+#cat-list .pag-container {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+}
+
 /* responsive */
 
 @media (max-width: 1200px) and (min-width: 1000px) {
@@ -195,6 +201,11 @@
     #cat-list .list table tr td {
         color: var(--font-color);
         font-size: 16px;
+    }
+    #cat-list .pag-container {
+        position: absolute;
+        bottom: 0;
+        width: 70%;
     }
 }
 @media (min-width: 500px ) and (max-width: 768px) {
@@ -272,6 +283,12 @@
     #cat-list .list  {
         padding-top: 30px;
     }
+
+    /* #cat-list .pag-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    } */
 }
 @media (max-width: 500px) {
 
