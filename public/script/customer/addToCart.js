@@ -1,6 +1,7 @@
 const openCartBtn = document.getElementById("open-cart");
 const closeCartBtn = document.getElementById("close-cart");
 const showCart = document.querySelector(".add-to-cart");
+// const countProduct = document.querySelector("#countProduct");
 
 openCartBtn.addEventListener("click", ()=>{
 
@@ -208,6 +209,15 @@ $(document).ready(function (){
 
         });
 
+        $.ajax({
+            type: 'GET',
+            url: '/cart/count',
+            success: function(response) {
+                // countProduct.innerHTML = response;
+                console.log(response);
+            }
+        });
+
     });
 
     $(document).on('click','.remove-btn', function(){
@@ -228,6 +238,15 @@ $(document).ready(function (){
             data: {
                 "id": productID,
                 "size": size,
+            }
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: '/cart/count',
+            success: function(response) {
+                // countProduct.innerHTML = response;
+                console.log(response);
             }
         });
 

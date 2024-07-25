@@ -65,6 +65,7 @@ Route::middleware(['customer'])->group(function (){
     Route::get('/customer/logout', [CustomerController::class, 'logout']) -> name('custoemr.logout');
 
 });
+Route::get('/cart/count', [CartController::class, 'getCount'])->name('get.count');
 
 
 Route::post('/product/{id}/add/cart', [CartController::class, 'addCart'])->name('product.add.cart');

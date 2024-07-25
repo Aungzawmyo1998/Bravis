@@ -167,8 +167,9 @@
                     <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
                     {{-- session()->get('count') != null --}}
                     @if (session()->get('count') != null)
-                        <input type="text" style="background-color: green;" class="countProduct" disabled min="0" value="{{ session('count') }}"  id="count-product">
-                    @endif
+                        <input type="text" style="background-color: green; color: #CCC;" class="countProduct" disabled min="0" value="{{ session('count') }}"  id="count-product">
+                        {{-- <span id="countProduct" class="countProduct"></span> --}}
+                        @endif
                 </div>
             </div>
             <button class="hambuger">
