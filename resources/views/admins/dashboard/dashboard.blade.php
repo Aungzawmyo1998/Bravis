@@ -9,15 +9,15 @@
             <div class="row-one">
                 <div class="item">
                     <h4>Total Earning</h4>
-                    <span class="count">K 100000</span>
+                    <span class="count"> {{ $totalEarn }} Ks</span>
                 </div>
                 <div class="item">
-                    <h4>Total Expenses</h4>
-                    <span class="count">K 100000</span>
+                    <h4>This Month Earning</h4>
+                    <span class="count">{{$thisMonthEarn}} Ks</span>
                 </div>
                 <div class="item">
                     <h4>Client</h4>
-                    <span class="count">{{$clientCount}}</span>
+                    <span  class="count">{{$clientCount}}</span>
                 </div>
                 <div class="item">
                     <h4>Page Visitor</h4>

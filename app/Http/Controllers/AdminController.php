@@ -31,6 +31,17 @@ class AdminController extends Controller
 
     $orderDeliever = Order::where('status','=','delivered')->count();
 
+    $totalEarn = Order::sum('totalprice');
+
+    $currentMonth = date('m');
+    // dd($currentMonth);
+    $thisMonthEarn = Order::whereMonth('created_at',$currentMonth)->sum('totalprice');
+
+
+    // dd($thisMonthEarn);
+
+    // dd($totalEarn);
+
     $clientCount = Customer::count();
 
     $currentYear = Carbon::now()->year;
@@ -39,7 +50,8 @@ class AdminController extends Controller
 
     $saleStatues = Order::select(
                         DB::raw('MONTH(created_at) as month'),
-                        DB::raw('COUNT(*) as count')
+                        // DB::raw('COUNT(*) as count')
+                        DB::raw('SUM(totalprice) as count')
                     )
                     ->whereYear('created_at',$currentYear)
                     ->groupBy(DB::raw('MONTH(created_at)'))
@@ -139,7 +151,7 @@ class AdminController extends Controller
 
     // dd($sportCount);
 
-    return view('admins.dashboard.dashboard',compact('orderCount','orderPending','orderProcessing','orderDeliever','clientCount','menSellCount','womenSellCount','accessoriesCount','sportCount','datasets','lables'));
+    return view('admins.dashboard.dashboard',compact('orderCount','totalEarn','thisMonthEarn','orderPending','orderProcessing','orderDeliever','clientCount','menSellCount','womenSellCount','accessoriesCount','sportCount','datasets','lables'));
    }
 
 
