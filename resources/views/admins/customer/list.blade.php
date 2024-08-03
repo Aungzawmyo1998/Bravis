@@ -51,8 +51,13 @@
                                     <form action="{{ url('customer/'.$customer->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
-                                        <button type="submit" class="action-btn del-btn" onclick="return confirm('Are You Sure Want to Delete')" ><i class="fa-regular fa-trash-can"></i></button>
+                                        {{-- <a href="" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a> --}}
+                                        @if ( auth('admin')->user()->role->name === "Admin")
+                                            <button type="submit" class="action-btn del-btn" onclick="return confirm('Are You Sure Want to Delete')" ><i class="fa-regular fa-trash-can"></i></button>
+                                        @else
+                                            Not Allow
+                                        @endif
+                                        {{-- <button type="submit" class="action-btn del-btn" onclick="return confirm('Are You Sure Want to Delete')" ><i class="fa-regular fa-trash-can"></i></button> --}}
 
                                     </form>
                                 </td>

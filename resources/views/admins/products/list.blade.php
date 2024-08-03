@@ -64,13 +64,22 @@
                                         @csrf
                                         @method('DELETE')
 
-                                        {{-- @if ()
+                                        {{-- @dd(auth('admin')->user()->role->name) --}}
 
-                                        @endif --}}
+                                        @if ( (auth('admin')->user()->role->name === "Admin" ) || (auth('admin')->user()->role->name === "Manager" ))
                                             <a href="{{ url('product/'.$product->id.'/edit')}}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
-                                        <button type="submit" class="action-btn del-btn" onclick="return confirm('Are you sure want to delete')">
-                                            <i class="fa-regular fa-trash-can"></i>
-                                        </button>
+                                            <button type="submit" class="action-btn del-btn" onclick="return confirm('Are you sure want to delete')">
+                                                <i class="fa-regular fa-trash-can"></i>
+                                            </button>
+                                        @endif
+
+                                        @if ( auth('admin')->user()->role->name === "Supervisor" )
+                                            <a href="{{ url('product/'.$product->id.'/edit')}}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        @endif
+
+                                        @if ( auth('admin')->user()->role->name === "Staff" )
+                                            Not Allow
+                                        @endif
                                     </form>
                                 </td>
                             </tr>

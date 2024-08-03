@@ -39,7 +39,7 @@
     <header>
         <div id="cart-data" class="add-to-cart">
             <div class="header">
-                <h2>Cart</h2>
+                <h2 class="card-head">Cart</h2>
                 <i id="close-cart" class="fa-solid fa-xmark close-cart"></i>
             </div>
 
@@ -48,11 +48,10 @@
 
                     @if (session()->get('cart') != null)
 
-
                         @foreach (session('cart') as $id => $details )
                             <div class="product_data">
 
-                                <div class="add-item  cart-item">
+                                <div class="add-item cart-item">
                                     <div class="img-container">
                                         <img  src="{{ asset('img/products/register/'.$details["image"])}}" alt="">
                                     </div>
@@ -97,12 +96,19 @@
                             </div>
                         @endforeach
 
+                    @else
+                            <h4>Your Cart Is Currently Empty</h4>
                     @endif
                 </div>
 
                 <div class="btn-container">
                     {{-- <a href="{{ auth('customer') == null ? url('customer/checkout') : url('customer/checkout/'.auth('customer')->user()->id) }}"  class="check-btn">Check Out</a> --}}
-                    <a href="{{ route('checkout')}}" class="check-btn">Check Out</a>
+                    @if (session()->get('cart') != null)
+                        <a href="{{ route('checkout')}}" class="check-btn">Check Out</a>
+                    @else
+                        <a href="{{ route('customer.allproduct')}}" class="check-btn"> Return to shop</a>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -162,14 +168,14 @@
                 </ul>
             </div>
             <div class="icon-container">
-                <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                {{-- <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span> --}}
                 <div class="cart-icon">
                     <span class="icon" id="open-cart"><i class="fa-solid fa-cart-plus"></i></span>
                     {{-- session()->get('count') != null --}}
                     @if (session()->get('count') != null)
                         <input type="text" style="background-color: green; color: #CCC;" class="countProduct" disabled min="0" value="{{ session('count') }}"  id="count-product">
                         {{-- <span id="countProduct" class="countProduct"></span> --}}
-                        @endif
+                    @endif
                 </div>
             </div>
             <button class="hambuger">

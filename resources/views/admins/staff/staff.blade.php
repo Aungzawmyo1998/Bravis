@@ -53,14 +53,25 @@
                             <td>{{$staff->role->name}}</td>
                             <td class="action">
                                 {{-- @dd(auth('admin')->user()->role) --}}
-                                {{-- @if((auth('admin')->id() == $staff->id && auth('admin')->user()->role->name == 'Admin') || auth('admin')->user()->role->name !== 'Staff') --}}
-                                    <form action="{{ url('staff/'.$staff->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
+                                {{-- @if((auth('admin')->id() === $staff->id && auth('admin')->user()->role->name == 'Admin') || auth('admin')->user()->role->name !== 'Staff') --}}
+                                <form action="{{ url('staff/'.$staff->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    @if ( auth('admin')->user()->role->name === "Admin" || auth('admin')->user()->role->name === "Manager")
                                         <a href="{{ url('staff/'.$staff->id.'/edit') }}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
                                         <button type="submit" class="action-btn del-btn" onclick="return confirm('Are You Sure Want to Delete')" ><i class="fa-regular fa-trash-can"></i></button>
-                                    </form>
+                                    @elseif (auth('admin')->user()->id === $staff->id && ( auth('admin')->user()->role->name === "Staff" || auth('admin')->user()->role->name === "Supervisor"))
+                                        <a href="{{ url('staff/'.$staff->id.'/edit') }}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    @else
+                                        Not Allow
+                                    @endif
+
+
                                 {{-- @endif --}}
+
+
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -40,7 +41,12 @@ class LoginController extends Controller
             }
 
         }
-        return back()->withErrors('email and password is incorect');
+        return back()
+        ->withErrors([
+            'detail' => 'The email and password is incorrect.',
+
+        ])
+        ->withInput($request->only('password','email'));
     }
 
     public function customerLogin () {
@@ -55,8 +61,9 @@ class LoginController extends Controller
             'password' => 'required',
         ],[
             'email.required' => 'email is required',
-            'email.email' => 'email is invilade',
+            'email.email' => 'email is incorrect',
             'password.required' => 'password is required',
+            // 'password.confirmed' => 'password does not match',
         ]);
 
 
@@ -81,8 +88,15 @@ class LoginController extends Controller
         {
             Auth::logout();
             session()->flush();
-            return back()->withErrors('error','email and password is incorect');
+            return back()
+            ->withErrors([
+                'detail' => 'The email and password is incorrect.',
+
+            ])
+            ->withInput($request->only('password','email'));
         }
+
+
 
     }
 

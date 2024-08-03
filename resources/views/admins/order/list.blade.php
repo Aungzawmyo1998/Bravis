@@ -97,7 +97,11 @@
                             </div>
                         </td>
                         <td id="order-edit">
-                            <button class="edit-btn" >Edit</button>
+                            @if ( auth('admin')->user()->role->name !== "Staff" )
+                                <button class="edit-btn" >Edit</button>
+                            @else
+                                Not Allow
+                            @endif
                             <div>
                                 <div class="edit-container">
                                     <button id="orderEditClose" class="close-btn"><i class="fa-solid fa-xmark"></i></button>

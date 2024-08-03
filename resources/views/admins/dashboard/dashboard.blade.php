@@ -16,13 +16,14 @@
                     <span class="count">{{$thisMonthEarn}} Ks</span>
                 </div>
                 <div class="item">
+                    <h4>This Year Earning</h4>
+                    <span class="count">{{$thisYearEarning}} Ks</span>
+                </div>
+                <div class="item">
                     <h4>Client</h4>
                     <span  class="count">{{$clientCount}}</span>
                 </div>
-                <div class="item">
-                    <h4>Page Visitor</h4>
-                    <span class="count">2000000</span>
-                </div>
+
             </div>
 
             <div class="row-two">

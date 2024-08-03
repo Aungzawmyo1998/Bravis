@@ -93,6 +93,14 @@ body {
     width: 100%;
 
  }
+ #cus-reg .eye {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+ }
+ #visible {
+    display: none;
+ }
  #cus-reg .state {
     display: flex;
     flex-direction: row;

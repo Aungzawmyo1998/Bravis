@@ -34,13 +34,15 @@ class AdminController extends Controller
     $totalEarn = Order::sum('totalprice');
 
     $currentMonth = date('m');
+
+    $thisYear = date('Y');
+
+    // dd($thisYear);
     // dd($currentMonth);
     $thisMonthEarn = Order::whereMonth('created_at',$currentMonth)->sum('totalprice');
 
+    $thisYearEarning = Order::whereYear('created_at', $thisYear)->sum('totalprice');
 
-    // dd($thisMonthEarn);
-
-    // dd($totalEarn);
 
     $clientCount = Customer::count();
 
@@ -151,7 +153,7 @@ class AdminController extends Controller
 
     // dd($sportCount);
 
-    return view('admins.dashboard.dashboard',compact('orderCount','totalEarn','thisMonthEarn','orderPending','orderProcessing','orderDeliever','clientCount','menSellCount','womenSellCount','accessoriesCount','sportCount','datasets','lables'));
+    return view('admins.dashboard.dashboard',compact('orderCount','totalEarn','thisMonthEarn','thisYearEarning','orderPending','orderProcessing','orderDeliever','clientCount','menSellCount','womenSellCount','accessoriesCount','sportCount','datasets','lables'));
    }
 
 

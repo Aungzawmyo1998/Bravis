@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>customer register</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     <link rel="stylesheet" href="{{ asset('css/customers/register.css')}}">
 </head>
 <body>
@@ -56,8 +59,14 @@
 
                     <div class="row">
                         <label for="password">Password</label>
-                        <div class="input">
+                        <div class="input" style="position: relative;">
                             <input class="input-item" type="password" name="password" id="password" >
+
+                            <span class="eye">
+
+                                <span id="visible"><i class="fa-regular fa-eye"></i></span>
+                                <span id="hidden"><i class="fa-regular fa-eye-slash"></i></span>
+                            </span>
                         </div>
                         @error('password')
                             <p style="color: red;">{{$message}}</p>
@@ -116,5 +125,28 @@
             </div>
         </div>
     </section>
+
+    <script>
+        const visible = document.querySelector("#visible");
+        const hidden = document.querySelector("#hidden");
+        const password = document.querySelector("#password");
+
+        visible.addEventListener("click", (e)=>{
+            // e.stopPropergation();
+            password.setAttribute("type","password");
+            hidden.style.display = "inline";
+            visible.style.display = "none";
+        })
+
+        hidden.addEventListener("click", ()=>{
+            password.setAttribute("type","text");
+            hidden.style.display = "none";
+            visible.style.display = "inline";
+        })
+
+        if (visible.style.display === "inline" ) {
+            assword.setAttribute("type","text");
+        }
+    </script>
 </body>
 </html>

@@ -45,6 +45,17 @@ body {
     margin-bottom: 2rem;
     text-align: left;
 }
+#cus-login .row .for-pas {
+    position: relative;
+}
+#cus-login .row .for-pas .eye {
+    position: absolute;
+    top: 12px;
+    right: 5px;
+}
+#visible {
+    display: none;
+}
 #cus-login .form .input {
     width: 100%;
     padding: 13px;

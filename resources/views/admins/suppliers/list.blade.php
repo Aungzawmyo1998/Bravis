@@ -52,11 +52,15 @@
                                 <form action="{{ url('supplier/'.$supplier->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
+                                    @if (auth('admin')->user()->role->name === "Admin" || auth('admin')->user()->role->name === "Manager")
+                                        <a href="{{ url('supplier/'.$supplier->id.'/edit')}}" class="btn"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <button class="action-btn del-btn" type="submit" onclick="return confirm('Are you sure want to delete')">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    @else
+                                        Not Allow
+                                    @endif
 
-                                    <a href="{{ url('supplier/'.$supplier->id.'/edit')}}" class="btn"><i class="fa-regular fa-pen-to-square"></i></a>
-                                    <button class="action-btn del-btn" type="submit" onclick="return confirm('Are you sure want to delete')">
-                                        <i class="fa-regular fa-trash-can"></i>
-                                    </button>
                                 </form>
                             </td>
                         </tr>

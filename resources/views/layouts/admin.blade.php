@@ -74,8 +74,8 @@
                         <li><a href="{{ url('/customer/list')}}"><span><i class="fa-regular fa-user"></i></span><span class="link-data3">Customer</span> </a></li>
                         <li><a href="{{ url('/order/list')}}"><span><i class="fa-solid fa-cart-shopping"></i></span><span class="link-data4">Order</span> </a></li>
                         <li><a href="{{ url('/staff/list/show')}}"><span><i class="fa-solid fa-user-tie"></i></span><span class="link-data5">Staff</span> </a></li>
-                        <li><a href="{{ url('/category/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data6">Category</span> </a></li>
-                        <li><a href="{{ url('/supplier/list')}}"><span><i class="fa-solid fa-lock"></i></span><span class="link-data7">Supplier</span> </a></li>
+                        <li><a href="{{ url('/category/list')}}"><span><i class="fa-solid fa-list"></i></span><span class="link-data6">Category</span> </a></li>
+                        <li><a href="{{ url('/supplier/list')}}"><span><i class="fa-solid fa-person"></i></span><span class="link-data7">Supplier</span> </a></li>
 
                     </ul>
                 </div>
