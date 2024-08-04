@@ -46,7 +46,7 @@ class LoginController extends Controller
             'detail' => 'The email and password is incorrect.',
 
         ])
-        ->withInput($request->only('password','email'));
+        ->withInput($request->only('password'));
     }
 
     public function customerLogin () {

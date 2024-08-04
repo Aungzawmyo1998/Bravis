@@ -248,5 +248,13 @@
     <script src="{{asset('script/customer/sport/sportProduct.js')}}"></script>
     {{-- allproduct search --}}
     <script src="{{ asset('script/customer/allProduct/allProduct.js')}}"></script>
+
+    {{-- For Contact us  --}}
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('script/customer/contact/contact.js')}}"></script>
+
+
+
 </body>
 </html>

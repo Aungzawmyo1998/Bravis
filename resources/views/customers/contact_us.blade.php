@@ -10,7 +10,7 @@
             <div class="office-data">
                 <h1>You Can Contact Us Directly At:</h1>
                 <div class="data-row">
-                    <p>Email : bravismy@gmail.com</p>
+                    <p>Email : bravisazm@gmail.com</p>
                     <p>Contact No: (+95)9234535987</p>
                 </div>
                 <div class="data-row">
@@ -31,11 +31,26 @@
                     <div class="header">
                         <h1>Contact Us</h1>
                     </div>
-                    <div class="input-row"><input class="input-data" type="text" placeholder="Enter Your Name"></div>
-                    <div class="input-row"><input class="input-data" type="email" placeholder="Enter Valid Email Address"></div>
-                    <div class="input-row"><textarea class="address" name="" id="" cols="30" rows="10" placeholder="Enter Your Message"></textarea></div>
+                    <div class="input-row">
+                        <input id="cname" class="input-data" type="text" placeholder="Enter Your Name">
+                        <div class="error">
+                            The name cann't black
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <input id="cemail" class="input-data" type="email" placeholder="Enter Valid Email Address">
+                        <div class="error">
+                            The name cann't black
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <textarea class="address" name="" id="cmessage" cols="30" rows="10" placeholder="Enter Your Message"></textarea>
+                        <div class="error">
+                            The name cann't black
+                        </div>
+                    </div>
 
-                    <button class="sub-btn">Submit</button>
+                    <button class="sub-btn" type="submit">Submit</button>
                 </form>
             </div>
         </div>

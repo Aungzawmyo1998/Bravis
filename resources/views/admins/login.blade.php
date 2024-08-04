@@ -23,6 +23,10 @@
                 @error('detail')
                     <p class="error" > {{ $message}}</p>
                 @enderror
+                {{-- @if ($errors->has('p'))
+                <p class="error" > The password is incorrect</p>
+
+                @endif --}}
                 <div class="input_container">
 
                     <span class="">
