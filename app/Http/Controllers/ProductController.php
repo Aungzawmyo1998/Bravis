@@ -183,7 +183,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
             'price' => 'required|integer',
             'small' => 'required|integer',
             'medium' => 'required|integer',
@@ -191,7 +191,19 @@ class ProductController extends Controller
 
         ]);
         $uuid = Str::uuid()->toString();
-        $image = $uuid.'.'.$request->image->extension();
+
+
+        if ($request->image === null )
+        {
+            $p = Product::find($id);
+            $image = $p["image"];
+        }
+        else
+        {
+            $image = $uuid.'.'.$request->image->extension();
+        }
+
+        // dd($image);
 
         $product = Product::find($id);
 
@@ -210,6 +222,8 @@ class ProductController extends Controller
         $product->status = 'active';
 
         $product->update();
+
+        $request->image->move(public_path('img/products/register'),$image);
 
         return redirect()->route('product.list');
     }

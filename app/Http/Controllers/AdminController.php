@@ -294,7 +294,7 @@ class AdminController extends Controller
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email',
-        // 'password' => 'required|min:8',
+        'password' => 'required|min:8',
         // 'image' => 'required',
         'phone' => 'required',
         'address' => 'required',
@@ -304,6 +304,16 @@ class AdminController extends Controller
 
 
     $uuid = Str::uuid()->toString();
+
+    if ($request->image === null )
+    {
+        $s = Admin::find($id);
+        $image = $s["image"];
+    }
+    else
+    {
+        $image = $uuid.'.'.$request->image->extension();
+    }
 
     $staff =Admin::find($id);
     $staff -> name = $request -> name;
@@ -315,21 +325,14 @@ class AdminController extends Controller
     $staff -> address = $request -> address;
     $staff -> role_id = $request -> position;
     $staff -> uuid = $uuid;
-    if($request->hasFile('image')) {
-
-        $image = $uuid.'.'.$request -> image->extension();
-
-        $staff -> image = $image;
-        $request->image->move(public_path('img/staff/register'),$image);
-
-    }
+    $staff ->image = $image;
     $staff -> status = 'active';
 
     $staff->update();
-    // $request->image->move(public_path('img/staff/register'),$image);
+    $request->image->move(public_path('img/staff/register'),$image);
     return redirect()->route('staff.list.show');
 
-    print_r($request);
+    // print_r($request);
 
    }
 
