@@ -27,9 +27,10 @@
                 <div class="input-row">
                     <label for="description">Product Description</label>
                     <div class="input">
-                        <textarea name="description" id="description" cols="30" rows="5" placeholder="please type description about your product" >
+                        <textarea name="description" id="description"   >
                             {{$products[2]->description}}
                         </textarea>
+
                         @error('description')
                             <p style="color: red;"> {{ $message }}</p>
                         @enderror

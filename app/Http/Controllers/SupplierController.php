@@ -16,6 +16,7 @@ class SupplierController extends Controller
                     ->paginate(7);
 
         $brands = Supplier::select('brandname')
+                ->where('status','active')
                 ->groupBy('brandname')
                 ->get();
         return view('admins.suppliers.list',compact('suppliers','brands'));

@@ -15,7 +15,10 @@ class ProductController extends Controller
     public function product ()
     {
         $products = Product::where('status','active')->orderBy('id','desc')->paginate(8);
-        $categories = Category::get();
+        $categories = Category::select('name')
+                    ->where('status','active')
+                    ->groupBy('name')
+                    ->get();
 
         // $count =
 
@@ -121,8 +124,8 @@ class ProductController extends Controller
     public function addProduct ()
     {
 
-        $categories = Category::select('id','name')->get();
-        $brands = Supplier::select('id','brandname')->get();
+        $categories = Category::select('id','name')->where('status','active')->get();
+        $brands = Supplier::select('id','brandname')->where('status','active')->get();
 
         $products = [$categories,$brands];
 
@@ -197,6 +200,8 @@ class ProductController extends Controller
         {
             $p = Product::find($id);
             $image = $p["image"];
+
+            // dd($image);
         }
         else
         {
@@ -223,7 +228,11 @@ class ProductController extends Controller
 
         $product->update();
 
-        $request->image->move(public_path('img/products/register'),$image);
+        if ( $request->image !== null) {
+            $request->image->move(public_path('img/products/register'),$image);
+        }
+
+
 
         return redirect()->route('product.list');
     }
