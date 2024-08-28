@@ -33,20 +33,20 @@
                     </div>
                     <div class="input-row">
                         <input id="cname" class="input-data" type="text" placeholder="Enter Your Name">
-                        <div class="error">
-                            The name cann't black
+                        <div  id="nameError" class="error">
+
                         </div>
                     </div>
                     <div class="input-row">
                         <input id="cemail" class="input-data" type="email" placeholder="Enter Valid Email Address">
-                        <div class="error">
-                            The name cann't black
+                        <div id="emailError" class="error">
+
                         </div>
                     </div>
                     <div class="input-row">
                         <textarea class="address" name="" id="cmessage" cols="30" rows="10" placeholder="Enter Your Message"></textarea>
-                        <div class="error">
-                            The name cann't black
+                        <div id="messError" class="error">
+                            
                         </div>
                     </div>
 

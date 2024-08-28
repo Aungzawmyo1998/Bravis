@@ -29,9 +29,63 @@ function sendEmail () {
     );
 }
 
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const messError = document.getElementById("messError");
+
 form.addEventListener("submit", (e)=>{
+
+    const nameTrim = cname.value.trim();
+    const emailTrim = email.value.trim();
+    const messTrim = mess.value.trim();
     e.preventDefault();
 
-    sendEmail();
+    let errorDetail = true;
+    let submitState = true;
+
+    if (errorDetail) {
+        if ( nameTrim == "" ) {
+            // nameError.style.display = "block"
+            nameError.innerText = "The name field is required";
+            // console.log(nameError.style.display)
+            // submitState = false;
+
+        } else {
+            nameError.innerText = "";
+            // submitState = true;
+
+        }
+        if ( emailTrim == "" ) {
+            emailError.innerText = "The email field is required";
+            // submitState = false;
+        } else {
+            emailError.innerText = "";
+            // submitState = true;
+        }
+        if ( messTrim == "") {
+            messError.innerText = "The message field is required";
+            // submitState = false;
+        } else {
+            messError.innerText = "";
+            // submitState = true;
+        }
+
+        if ( nameTrim != "" && emailTrim != "" && messTrim != "") {
+            sendEmail();
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
 })
+
+
 
