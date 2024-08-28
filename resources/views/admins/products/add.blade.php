@@ -58,8 +58,11 @@
                         <label for="category">Category</label>
                         <div class="input">
                             <select name="category" id="category">
-                                @foreach ($products[0] as $category )
+                                {{-- @foreach ($products[0] as $category )
                                     <option value="{{ $category->id}}">{{ $category->name}}</option>
+                                @endforeach --}}
+                                @foreach ($products[0] as $category )
+                                    <option value="{{ $category->id}}" >{{ $category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
