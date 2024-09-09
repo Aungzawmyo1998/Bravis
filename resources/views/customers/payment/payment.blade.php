@@ -137,13 +137,32 @@
                                </tr>
                                <tr>
                                     <td>Discount (available for registered user)</td>
-                                    <td> MMK</td>
+                                    <td>
+                                        @if(auth('customer')->user() != null)
+                                            {{ $totalPrice * 0.25 }}
+                                        @else
+                                            0
+                                        @endif
+                                        MMK
+                                    </td>
                                </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Total</th>
-                                    <td><span id="totalPrice">{{ $totalPrice+2500 }}</span> MMK</td>
+                                    {{-- <td><span id="totalPrice">{{ $totalPrice+2500 }}</span> MMK</td> --}}
+                                    <td>
+                                        <span id="totalPrice">
+                                            @if (auth('customer')->user() != null)
+                                                <input type="hidden" id="disc_total" value={{ $totalPrice * 0.75}}>
+                                            {{ $totalPrice * 0.75 +2500 }}
+
+                                            @else
+                                            <input type="text" id="disc_total" value={{ $totalPrice }}>
+                                            {{ $totalPrice+2500 }}
+                                            @endif
+                                        </span> MMK
+                                    </td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -188,17 +207,22 @@
         var otherFee = document.getElementById('other-region');
         const delFee = document.getElementById('delfee');
         const totalPrice = document.getElementById('totalPrice');
-        const productTotalPrice = document.getElementById('total').innerHTML;
+        // const productTotalPrice = document.getElementById('total').innerHTML;
+        const productTotalPrice = document.getElementById('disc_total').value;
+
 
         ygnFee.addEventListener("change", ()=>{
             delFee.innerHTML = ygnFee.value;
 
             totalPrice.innerHTML = parseInt(productTotalPrice) + parseInt(ygnFee.value);
+            // totalPrice.innerHTML = parseInt(totalPrice.innerHTML) + parseInt(ygnFee.value);
+            console.log(totalPrice.innerHTML)
         });
         otherFee.addEventListener("change", ()=>{
             delFee.innerHTML = otherFee.value;
             totalPrice.innerHTML = parseInt(productTotalPrice) + parseInt(otherFee.value);
-
+            // totalPrice.innerHTML = parseInt(totalPrice.innerHTML) + parseInt(otherFee.value);
+            console.log(totalPrice.innerHTML)
         });
 
         // PAYMENT

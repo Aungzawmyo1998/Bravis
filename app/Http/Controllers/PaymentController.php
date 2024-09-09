@@ -87,7 +87,7 @@ class PaymentController extends Controller
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
             Stripe\Charge::create ([
-                "amount" => $totalPrice * 0.25 ,
+                "amount" => $totalPrice * 0.75 ,
                 "currency" => "usd",
                 "source" => $request->stripeToken,
                 "description" => "Test payment from itsolutionstuff.com."
@@ -100,7 +100,7 @@ class PaymentController extends Controller
             $order->customer_id = $customer_id;
             $order->paymentmethod = "Account Transitioin";
             $order->qty = $totalItem;
-            $order->totalprice = $totalPrice * 0.25;
+            $order->totalprice = $totalPrice * 0.75;
             $order->shippingfee = $del_fee;
             $order->uuid = $uuid;
             $order->status = "pending";
