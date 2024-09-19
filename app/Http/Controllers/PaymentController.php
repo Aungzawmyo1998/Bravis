@@ -96,9 +96,28 @@ class PaymentController extends Controller
 
             $customer_id = auth('customer')->user()->id;
 
+            $customer_order = new CustomerOrder();
+            // $customer_order->order_id = $customer_order[0]->id;
+            $customer_order->fname = $request->fname;
+            $customer_order->lname = $request->lname;
+            $customer_order->phone = $request->phno;
+            $customer_order->address = $request->address;
+            $customer_order->state = $request->state;
+            $customer_order->zip_code = $request->zipcode;
+            $customer_order->uuid = $uuid;
+
+            $customer_order->save();
+
+            $customer_order = CustomerOrder::where('uuid','=',"$uuid")
+                    ->select('id')
+                    ->get();
+
+                    // dd($customer_order[0]->id);
+
             $order = new Order();
 
             $order->customer_id = $customer_id;
+            $order->co_id = $customer_order[0]->id;
             $order->paymentmethod = "Account Transitioin";
             $order->qty = $totalItem;
             $order->totalprice = $totalPrice * 0.75;
@@ -113,7 +132,6 @@ class PaymentController extends Controller
             ->get();
 
             $customer_order = new CustomerOrder();
-            $customer_order->order_id = $order[0]->id;
             $customer_order->fname = $request->fname;
             $customer_order->lname = $request->lname;
             $customer_order->phone = $request->phno;
@@ -167,31 +185,17 @@ class PaymentController extends Controller
 
             $customer->save();
 
+
             $customer = Customer::where('uuid','=',"$uuid")
                             ->select('id')
                             ->get();
 
             $customer_id = $customer[0]->id;
-            // dd($customer_id);
-            // TO STORE ONE TIME PAYMENT ORDER
-            $order = new Order();
-            $order->customer_id = $customer_id;
-            $order->paymentmethod = "One Time Transitioin";
-            $order->qty = $totalItem;
-            $order->totalprice = $totalPrice;
-            $order->shippingfee = $del_fee;
-            $order->uuid = $uuid;
-            $order->status = "pending";
 
-            $order->save();
 
-            $order = Order::where('uuid','=',"$uuid")
-                            ->select('id')
-                            ->get();
-            // dd($order[0]->id);
 
             $customer_order = new CustomerOrder();
-            $customer_order->order_id = $order[0]->id;
+            // $customer_order->order_id = $customer_order[0]->id;
             $customer_order->fname = $request->fname;
             $customer_order->lname = $request->lname;
             $customer_order->phone = $request->phno;
@@ -201,6 +205,28 @@ class PaymentController extends Controller
             $customer_order->uuid = $uuid;
 
             $customer_order->save();
+
+            $customer_order = CustomerOrder::where('uuid','=',"$uuid")
+                    ->select('id')
+                    ->get();
+
+
+            $order = new Order();
+            $order->customer_id = $customer_id;
+            $order->co_id = $customer_order[0]->id;
+            $order->paymentmethod = "One Time Transitioin";
+            $order->qty = $totalItem;
+            $order->totalprice = $totalPrice;
+            $order->shippingfee = $del_fee;
+            $order->uuid = $uuid;
+            $order->status = "pending";
+
+            $order->save();
+
+
+            // dd($order[0]->id);
+
+
 
         }
 

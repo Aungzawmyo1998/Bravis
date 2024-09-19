@@ -36,6 +36,11 @@
                     <tr class="header-row">
                         <th>Order Id </th>
                         <th>Customer </th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>State/Region</th>
+                        <th>Zip Code</th>
+
                         <th>Price </th>
                         <th>Date </th>
                         <th>Payment Info </th>
@@ -49,7 +54,10 @@
                     <tr class="data-row">
                         <td>{{ $order->id}}</td>
                         <td> <span>{{ $order->fname/*customers->firstname */}}</span> <span>{{ $order->lname/*customers->lastname*/}}</span> </td>
-
+                        <td>{{ $order->phone }}</td>
+                        <td>{{ $order->address }}</td>
+                        <td>{{ $order->state }}</td>
+                        <td>{{ $order->zip_code }}</td>
                         <td> {{ $order->totalprice}} </td>
                         <td> {{$order->created_at}} </td>
                         <td> {{ $order->paymentmethod}}</td>

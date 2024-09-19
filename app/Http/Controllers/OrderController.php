@@ -13,13 +13,20 @@ class OrderController extends Controller
 
     public function orderList ()
     {
-        // $orders = Order::with('customers')
-        //                 ->paginate(9);
+        // $orders = DB::table('orders')
+        //             ->join('customers','customers.id','=','orders.customer_id')
+        //             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+        //             ->paginate(6);
+
         $orders = DB::table('orders')
-                    ->join('customers','customers.id','=','orders.customer_id')
-                    ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+                    ->join('customer_orders','customer_orders.id','=','orders.co_id')
+                    ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
                     ->paginate(6);
-        // dd($orders);
+
+
+                    // dd($orders);
+
+
 
         $orderProducts = DB::table('order_products')
                         ->join('products','products.id','=','order_products.product_id')
@@ -28,9 +35,8 @@ class OrderController extends Controller
                         ->get()
                         ->groupBy('order_id');
 
-        // $orderProducts =
+                        // dd($orderProducts);
 
-        // dd($orderProducts);
 
         return view('admins.order.list',compact('orders','orderProducts'));
     }
