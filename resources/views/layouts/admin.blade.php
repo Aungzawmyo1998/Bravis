@@ -22,7 +22,9 @@
     {{-- global linnk --}}
     <link rel="stylesheet" href="{{asset('css/global/global.css')}}">
     <link rel="stylesheet" href="{{ asset('css/global/register.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/global/list.css')}}">
+    {{-- To Check !!! --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/global/list.css')}}"> --}}
+
     {{-- product liink --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/admins/product.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('css/admins/products/list.css')}}">
@@ -33,7 +35,8 @@
     {{-- add staff links css --}}
     {{-- update staff css --}}
     {{-- staff links and   --}}
-    <link rel="stylesheet" href="{{ asset('css/admins/staff/staff_list.css')}}">
+    {{-- To Check !!! --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/admins/staff/staff_list.css')}}"> --}}
 
     {{-- categories link --}}
     <link rel="stylesheet" href="{{ asset('css/admins/categories/list.css')}}">
@@ -132,10 +135,10 @@
 
         @yield('script')
         {{-- top sale --}}
-        <script src="{{ asset('script/admin/top_sale.js')}}"></script>
+            <script src="{{ asset('script/admin/top_sale.js')}}"></script>
 
         {{-- logout script --}}
-        <script>
+        <script defer>
             const profile = document.querySelector(".profile-image");
             const logoutContainer = document.querySelector(".logout-container");
 

@@ -79,7 +79,7 @@
                 <div class="item sale-static">
                     <div class="header-container">
                         <div class="header-text">
-                            <h3>Sale Statics</h3>
+                            <h3>Sale Status</h3>
                         </div>
                     </div>
                     <div class="inner-item">
@@ -95,7 +95,7 @@
 
 @section('script')
 
-<script>
+<script >
     // pie chart
             var ctx = document.getElementById('monthlyChart').getContext('2d');
 

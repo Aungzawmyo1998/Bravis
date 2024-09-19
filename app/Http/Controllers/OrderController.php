@@ -192,10 +192,6 @@ class OrderController extends Controller
             $orders = DB::table('orders')
             ->join('customers','customers.id','=','orders.customer_id')
             ->whereDate('orders.created_at',$startDate)
-            // ->whereDate('orders.updated_at',$endDate)
-            // ->orWhere('orders.id','=',"$searchValue")
-            // ->orWhere('customers.firstname','LIKE',"%$firstname%")
-            // ->orWhere('customers.lastname','LIKE',"%$lastname%")
             ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
 
             ->paginate(6);

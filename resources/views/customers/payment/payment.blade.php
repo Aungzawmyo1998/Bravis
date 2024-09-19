@@ -100,7 +100,7 @@
                         </div>
                         <div class="container shipping">
                             <div class="header">
-                                <h2>Shippong Fees</h2>
+                                <h2>Shipping Fees</h2>
                             </div>
                             <div class="data">
                                 <input type="radio" class="s-fee" checked name="delfee" id="ygn" value="2500">
@@ -127,15 +127,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               <tr>
+                                <tr>
                                     <td> {{ $totalQty }} Item</td>
                                     <td><span id="total">{{ $totalPrice }}</span> MMk</td>
                                 </tr>
-                               <tr>
+                                <tr>
                                     <td>Delivery Fees</td>
                                     <td><span id="delfee">2500</span> MMK</td>
-                               </tr>
-                               <tr>
+                                </tr>
+                                <tr>
                                     <td>Discount (available for registered user)</td>
                                     <td>
                                         @if(auth('customer')->user() != null)
@@ -145,7 +145,7 @@
                                         @endif
                                         MMK
                                     </td>
-                               </tr>
+                                </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -158,7 +158,7 @@
                                             {{ $totalPrice * 0.75 +2500 }}
 
                                             @else
-                                            <input type="text" id="disc_total" value={{ $totalPrice }}>
+                                            <input type="hidden" id="disc_total" value={{ $totalPrice }}>
                                             {{ $totalPrice+2500 }}
                                             @endif
                                         </span> MMK
@@ -198,6 +198,7 @@
         </div>
     </div>
 
+
     {{-- stripe lib --}}
     <script src="https://js.stripe.com/v3/"></script>
 
@@ -207,7 +208,7 @@
         var otherFee = document.getElementById('other-region');
         const delFee = document.getElementById('delfee');
         const totalPrice = document.getElementById('totalPrice');
-        // const productTotalPrice = document.getElementById('total').innerHTML;
+
         const productTotalPrice = document.getElementById('disc_total').value;
 
 
@@ -215,13 +216,13 @@
             delFee.innerHTML = ygnFee.value;
 
             totalPrice.innerHTML = parseInt(productTotalPrice) + parseInt(ygnFee.value);
-            // totalPrice.innerHTML = parseInt(totalPrice.innerHTML) + parseInt(ygnFee.value);
             console.log(totalPrice.innerHTML)
         });
+
         otherFee.addEventListener("change", ()=>{
             delFee.innerHTML = otherFee.value;
             totalPrice.innerHTML = parseInt(productTotalPrice) + parseInt(otherFee.value);
-            // totalPrice.innerHTML = parseInt(totalPrice.innerHTML) + parseInt(otherFee.value);
+
             console.log(totalPrice.innerHTML)
         });
 
@@ -246,7 +247,7 @@
                 document.getElementById('checkout-form').submit();
             }
         });
-    }
+        }
 
 
 

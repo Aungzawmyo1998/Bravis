@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\CustomerOrder;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
@@ -107,6 +108,22 @@ class PaymentController extends Controller
 
             $order->save();
 
+            $order = Order::where('uuid','=',"$uuid")
+            ->select('id')
+            ->get();
+
+            $customer_order = new CustomerOrder();
+            $customer_order->order_id = $order[0]->id;
+            $customer_order->fname = $request->fname;
+            $customer_order->lname = $request->lname;
+            $customer_order->phone = $request->phno;
+            $customer_order->address = $request->address;
+            $customer_order->state = $request->state;
+            $customer_order->zip_code = $request->zipcode;
+            $customer_order->uuid = $uuid;
+
+            $customer_order->save();
+
         }
 
         if(auth('customer')->user() == null )
@@ -167,6 +184,23 @@ class PaymentController extends Controller
             $order->status = "pending";
 
             $order->save();
+
+            $order = Order::where('uuid','=',"$uuid")
+                            ->select('id')
+                            ->get();
+            // dd($order[0]->id);
+
+            $customer_order = new CustomerOrder();
+            $customer_order->order_id = $order[0]->id;
+            $customer_order->fname = $request->fname;
+            $customer_order->lname = $request->lname;
+            $customer_order->phone = $request->phno;
+            $customer_order->address = $request->address;
+            $customer_order->state = $request->state;
+            $customer_order->zip_code = $request->zipcode;
+            $customer_order->uuid = $uuid;
+
+            $customer_order->save();
 
         }
 

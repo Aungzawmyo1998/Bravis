@@ -2,23 +2,24 @@
 // const monthData = [65, 59, 80, 81, 56, 55, 40, 45, 60, 70, 75, 90];
 // const monthColors = ["#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9", "#447EA9"];
 
-var ctx = document.getElementById('monthlyChart').getContext('2d');
+// var ctx = document.getElementById('monthlyChart').getContext('2d');
+//=== tocheck//
 
-var registrationsChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-       labels: {!! json_encode($month) !!},
+// var registrationsChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//        labels: {!! json_encode($month) !!},
 
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-
+//     },
+//     options: {
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         }
+//     }
+// });
+//=== tocheck//
 
 // new Chart("monthlyChart",{
 //     type: "bar",

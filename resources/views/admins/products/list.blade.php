@@ -48,6 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{--  --}}
                         @foreach ($products as $product )
                             <tr class="data-row">
                                 <td>{{$product->name}}</td>
@@ -63,8 +64,6 @@
                                     <form action="{{ url('product/'.$product->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-
-                                        {{-- @dd(auth('admin')->user()->role->name) --}}
 
                                         @if ( (auth('admin')->user()->role->name === "Admin" ) || (auth('admin')->user()->role->name === "Manager" ))
                                             <a href="{{ url('product/'.$product->id.'/edit')}}" class="action-btn"><i class="fa-regular fa-pen-to-square"></i></a>

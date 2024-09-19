@@ -44,9 +44,4 @@ $(document).ready(function() {
         $(this).closest('#order-edit').find('.edit-container').css("display","none");
     });
 
-
-
-
-
-
 });
