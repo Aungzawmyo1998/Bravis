@@ -38,7 +38,7 @@
                     <div class="payment">
                         <div class="container contact">
                             <div class="header contact-header">
-                                <h2>Contact</h2>
+                                <h2>Contact Phone</h2>
                                 <span>Have an account?<a href="{{ route('customer.login')}}"> Login</a></span>
                             </div>
                             @auth
@@ -56,7 +56,7 @@
                         </div>
                         <div class="container delivery">
                             <div class="header">
-                                <h2>Delivery</h2>
+                                <h2>Customer Info</h2>
                             </div>
                             {{-- <div class="input-row">
                                 <select name="state" id=""></select>

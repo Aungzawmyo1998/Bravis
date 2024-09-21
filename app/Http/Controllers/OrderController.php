@@ -31,7 +31,7 @@ class OrderController extends Controller
         $orderProducts = DB::table('order_products')
                         ->join('products','products.id','=','order_products.product_id')
                         ->join('orders','orders.id','=','order_products.order_id')
-                        ->select('order_products.*','products.image as pimage','products.name as pname')
+                        ->select('order_products.*','products.id as pid','products.image as pimage','products.name as pname')
                         ->get()
                         ->groupBy('order_id');
 
@@ -64,6 +64,9 @@ class OrderController extends Controller
         $startDate = $request->startDate;
         $endDate = $request->endDate;
         $searchValue = $request->searchValue;
+
+        // dd($searchValue);
+
         $name = $searchValue;
         $fname = $searchValue;
         $lname = $searchValue;
@@ -83,22 +86,19 @@ class OrderController extends Controller
 
 
 
-
         if($startDate != null && $searchValue != null && $endDate != null) // 111 -
         {
 
             // dd("not null");
             $orders = DB::table('orders')
-                    ->join('customers','customers.id','=','orders.customer_id')
+                    ->join('customer_orders','customer_orders.id','=','orders.co_id')
                     ->whereDate('orders.created_at',$startDate)
                     ->whereDate('orders.updated_at',$endDate)
-                    // ->orWhere('orders.id',$name)
-                    ->orWhere('customers.firstname','LIKE',"%$fname%")
-                    ->orWhere('customers.lastname','LIKE',"%$lname%")
-                    ->orWhereAny(['customers.firstname','customers.lastname'],'LIKE',"%$name%")
-                    // ->orWhere('customers.firstname','LIKE',"%$name%")
-                    // ->orWhere('customers.lastname','LIKE',"%$name%")
-                    ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+                    ->orWhere('customer_orders.fname','LIKE',"%$fname%")
+                    ->orWhere('customer_orders.lname','LIKE',"%$lname%")
+                    ->orWhereAny(['customer_orders.fname','customer_orders.lname','customer_orders.address','customer_orders.state'],'LIKE',"%$name%")
+
+                    ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
                     ->paginate(6);
 
@@ -108,29 +108,30 @@ class OrderController extends Controller
         elseif ($startDate != null && $searchValue != null && $endDate == null) // 110 -
         {
             $orders = DB::table('orders')
-            ->join('customers','customers.id','=','orders.customer_id')
+            ->join('customer_orders','customer_orders.id','=','orders.co_id')
             ->whereDate('orders.created_at',$startDate)
-            // ->whereDate('orders.updated_at',$endDate)
-            // ->orWhere('orders.id',$name)
-            ->orWhere('customers.firstname','LIKE',"%$fname%")
-            ->orWhere('customers.lastname','LIKE',"%$lname%")
-            ->orWhereAny(['customers.firstname','customers.lastname'],'LIKE',"%$name%")
-            ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+            ->orWhere('customer_orders.fname','LIKE',"%$fname%")
+            ->orWhere('customer_orders.lname','LIKE',"%$lname%")
+            ->orWhereAny(['customer_orders.fname','customer_orders.lname','customer_orders.address','customer_orders.state'],'LIKE',"%$name%")
+            ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
             ->paginate(6);
         }
         elseif($startDate == null && $searchValue != null && $endDate != null) // 011 -
         {
             $orders = DB::table('orders')
-            ->join('customers','customers.id','=','orders.customer_id')
+            ->join('customer_orders','customer_orders.id','=','orders.co_id')
             // ->whereDate('orders.created_at',$startDate)
             ->whereDate('orders.updated_at',$endDate)
             // ->orWhere('orders.id',$name)
-            ->orWhere('customers.firstname','LIKE',"%$fname%")
-            ->orWhere('customers.lastname','LIKE',"%$lname%")
-            ->orWhereAny(['customers.firstname','customers.lastname'],'LIKE',"%$name%")
+            ->orWhere('customer_orders.fname','LIKE',"%$fname%")
+            ->orWhere('customer_orders.lname','LIKE',"%$lname%")
+            ->orWhereAny(['customer_orders.fname','customer_orders.lname','customer_orders.address','customer_orders.state'],'LIKE',"%$name%")
 
-            ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+            // ->orWhereAny(['customers.firstname','customers.lastname'],'LIKE',"%$name%")
+            // ->orWhereAny(,'LIKE',"%$name%")
+
+            ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
             ->paginate(6);
 
@@ -143,16 +144,18 @@ class OrderController extends Controller
 
             // dd($name);
             $orders = DB::table('orders')
-            ->join('customers','customers.id','=','orders.customer_id')
+            ->join('customer_orders','customer_orders.id','=','orders.co_id')
             // ->whereDate('orders.created_at',$startDate)
             // ->whereDate('orders.updated_at',$endDate)
             // ->orWhere('orders.id',$name)
-            ->orWhere('customers.firstname','LIKE',"%$fname%")
-            ->orWhere('customers.lastname','LIKE',"%$lname%")
-            ->orWhereAny(['customers.firstname','customers.lastname'],'LIKE',"%$name%")
+            ->orWhere('customer_orders.fname','LIKE',"%$fname%")
+            ->orWhere('customer_orders.lname','LIKE',"%$lname%")
+            // ->orWhere('customer_orders.address','LIKE',"%$name%")
+            ->orWhereAny(['customer_orders.fname','customer_orders.lname','customer_orders.address','customer_orders.state'],'LIKE',"%$name%")
+
             // ->orWhere('customers.firstname','LIKE',"%$name%")
             // ->orWhere('customers.lastname','LIKE',"%$name%")
-            ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+            ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
             ->paginate(6);
 
@@ -164,13 +167,11 @@ class OrderController extends Controller
         elseif($startDate != null && $searchValue == null && $endDate != null) // 101 -
         {
             $orders = DB::table('orders')
-            ->join('customers','customers.id','=','orders.customer_id')
+            ->join('customer_orders','customer_orders.id','=','orders.co_id')
             ->whereDate('orders.created_at',$startDate)
             ->whereDate('orders.updated_at',$endDate)
-            // ->orWhere('orders.id','=',"$searchValue")
-            // ->orWhere('customers.firstname','LIKE',"%$firstname%")
-            // ->orWhere('customers.lastname','LIKE',"%$lastname%")
-            ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+
+            ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
             ->paginate(6);
 
@@ -180,13 +181,10 @@ class OrderController extends Controller
         elseif($startDate == null && $searchValue == null && $endDate != null) // 001 -
         {
             $orders = DB::table('orders')
-            ->join('customers','customers.id','=','orders.customer_id')
-            // ->whereDate('orders.created_at',$startDate)
+            ->join('customer_orders','customer_orders.id','=','orders.co_id')
             ->whereDate('orders.updated_at',$endDate)
-            // ->orWhere('orders.id','=',"$searchValue")
-            // ->orWhere('customers.firstname','LIKE',"%$firstname%")
-            // ->orWhere('customers.lastname','LIKE',"%$lastname%")
-            ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+
+            ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
             ->paginate(6);
 
@@ -196,9 +194,9 @@ class OrderController extends Controller
         elseif($startDate != null && $searchValue == null && $endDate == null) // 100 -
         {
             $orders = DB::table('orders')
-            ->join('customers','customers.id','=','orders.customer_id')
+            ->join('customer_orders','customer_orders.id','=','orders.co_id')
             ->whereDate('orders.created_at',$startDate)
-            ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+            ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
             ->paginate(6);
 
@@ -210,8 +208,8 @@ class OrderController extends Controller
         {
             // $orders =
             $orders = DB::table('orders')
-                    ->join('customers','customers.id','=','orders.customer_id')
-                    ->select('orders.*','customers.firstname as fname','customers.lastname as lname')
+                    ->join('customer_orders','customer_orders.id','=','orders.co_id')
+                    ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
                     ->paginate(6);
 
             // return view('admins.order.list',compact('orders','orderProducts'));

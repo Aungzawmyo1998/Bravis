@@ -22,7 +22,7 @@
                             <select class="select" name="" id="sorting">
                                 <option value="lth">Price, low to height</option>
                                 <option value="htl">Price, height to low</option>
-                                <option value="">Top Sale</option>
+                                {{-- <option value="">Top Sale</option> --}}
                             </select>
                         </div>
                     </div>

@@ -112,7 +112,7 @@ Route::middleware(['admin'])->group( function () {
     Route::get('/product/{id}/edit',[ProductController::class, 'edit'])->name('edit.product');
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('update.product');
     Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('destroy.product');
-    Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
+    Route::get('/product/search', [ProductController::class, 'search'])->name('product.search');
 
     // Category List
     Route::get('/category/list', [CategoryController::class, 'category'])->name('category.list');

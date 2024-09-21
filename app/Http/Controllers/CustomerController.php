@@ -55,6 +55,7 @@ class CustomerController extends Controller
 
     public function registerProcess (Request $request)
     {
+        // dd($request);
         $error_message = [
             'fname.required'=>'first name is required',
             'lname.required'=>'last name is requird',
@@ -81,6 +82,8 @@ class CustomerController extends Controller
             'state'=>'required',
             'zipcode'=>'required',
         ],$error_message);
+
+
 
         $uuid = Str::uuid()->toString();
         $image = $uuid.'.'.$request->image->extension();

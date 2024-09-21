@@ -18,7 +18,7 @@
                 <h1>Create account</h1>
             </div>
             <div class="form-container">
-                <form action="{{ route('store.customer')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('store.customer') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -113,8 +113,6 @@
                             @error('zipcode')
                                 <p style="color: red;">{{$message}}</p>
                             @enderror
-
-
 
                     </div>
 

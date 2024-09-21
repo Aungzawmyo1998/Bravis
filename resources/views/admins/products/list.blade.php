@@ -16,7 +16,7 @@
         </div>
         {{-- <div class="search-container"> --}}
             <div class="search-form">
-                <form action="{{ url('/product/search')}}" class="form-container" method="POST">
+                <form action="{{ url('/product/search')}}" class="form-container" method="get">
                     @csrf
 
                     <div class="search-item">

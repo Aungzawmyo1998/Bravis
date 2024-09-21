@@ -80,6 +80,7 @@
                                 <table class="detail-table">
                                     <tr class="header-row">
                                         {{-- <th>Order ID</th> --}}
+                                        <th>Product ID</th>
                                         <th>Product Name</th>
                                         <th>Image</th>
                                         <th>Small Qty</th>
@@ -93,6 +94,7 @@
 
                                         <tr class="data-row">
                                             {{-- <td> {{$orderProduct->order_id}} </td> --}}
+                                            <td> {{ $orderProduct->pid }} </td>
                                             <td> {{$orderProduct->pname}} </td>
                                             <td> <img  src="{{asset('img/products/register/'.$orderProduct->pimage)}}" alt=""> </td>
                                             <td> {{ $orderProduct->small_qty }} </td>
