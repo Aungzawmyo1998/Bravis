@@ -85,7 +85,7 @@ class SupplierController extends Controller
     {
         $brands = Supplier::select('brandname')
                 ->groupBy('brandname')
-                ->paginate(9);
+                ->paginate(9)->appends($request->except('page'));
 
         $search = $request->search;
         $brand = $request->brand;
@@ -101,7 +101,7 @@ class SupplierController extends Controller
             $suppliers = Supplier::where('name','LIKE',"%$search%")
                         ->where('status','active')
                         ->where('brandname','LIKE',"$brand")
-                        ->paginate(9);
+                        ->paginate(9)->appends($request->except('page'));
 
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }
@@ -110,7 +110,7 @@ class SupplierController extends Controller
 
             $suppliers = Supplier::where('brandname','LIKE',"$brand")
                         ->where('status','active')
-                        ->paginate(9);
+                        ->paginate(9)->appends($request->except('page'));
 
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }
@@ -118,7 +118,7 @@ class SupplierController extends Controller
 
             $suppliers = Supplier::where('name','LIKE',"%$search%")
                         ->where('status','active')
-                        ->paginate(9);
+                        ->paginate(9)->appends($request->except('page'));
 
             return view('admins.suppliers.list',compact('suppliers','brands'));
         }

@@ -15,7 +15,7 @@
 
         </div>
         <div class="search-form">
-            <form class="form-container" action="{{ route('staff.search')}}" method="post">
+            <form class="form-container" action="{{ route('staff.search')}}" method="get">
                 @csrf
 
                 <div class="search-item">

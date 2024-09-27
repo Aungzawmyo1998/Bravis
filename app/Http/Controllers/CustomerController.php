@@ -15,7 +15,7 @@ class CustomerController extends Controller
 
     public function customer ()
     {
-        $customers = Customer::orderBy('id','desc')
+        $customers = Customer::orderBy('id')
                             ->where('status','active')
                             ->paginate(8);
         // dd($customers);
@@ -24,8 +24,51 @@ class CustomerController extends Controller
 
     public function search (Request $request)
     {
+        // dd($request->search);
+        $nameParam = explode(" ",$request->search);
+
+        // dd(count($nameParam));
+
+        if ( count($nameParam) > 1 ) {
+            $fname = $nameParam[0];
+            $lname_slice = array_slice($nameParam, 1);
+            $lname = implode(" ", $lname_slice);
+
+            // dd($fname);
+        } else {
+            $fname = $fname = $nameParam[0];
+            $lname = $request->search;
+        }
+
         $search = $request->search;
 
+        // dd($search);
+
+        $query = Customer::where('status','active');
+        if (!is_null($search)) {
+            $query->where(function ($q) use ($fname, $lname, $search) {
+
+                $q->orWhere('phonenumber',"$search")
+                    ->orWhere('address','LIKE',"%$search%")
+                    ->orWhere('email','LIKE',"%$search%")
+                    ->orWhere('firstname', 'LIKE', "%$fname%")
+                    ->orWhere('lastname', 'LIKE', "%$lname%");
+
+            });
+
+        }
+        $customers = $query->paginate(9)->appends($request->except('page'));
+        return view('admins.customer.list',compact('customers'));
+
+        /*
+        if ( !is_null($search) ) {
+            // $query -> WhereAny(['email','phonenumber','address'],'LIKE',"%$search%");
+            $query -> orWhere('firstname','LIKE',"%$fname%")
+                    ->orWhere('lastname', 'like', "%$lname%");
+        }
+                    */
+
+        /*
 
         // dd($search);
         if (empty($search)) {
@@ -46,8 +89,13 @@ class CustomerController extends Controller
             return view('admins.customer.list',compact('customers'));
 
         }
+            */
+
+
+
 
     }
+
     public function register ()
     {
         return view('customers.register.register');
@@ -121,10 +169,10 @@ class CustomerController extends Controller
     public function logout (Request $request)
     {
 
-     Auth::logout();
-     session()->flush();
+    Auth::logout();
+    session()->flush();
 
-     return redirect()->route('home');
+    return redirect()->route('home');
 
     }
 

@@ -16,7 +16,7 @@
             </div>
 
             <div class="search-form">
-                <form action="{{ route('search.customer')}}" class="form-container" method="POST">
+                <form action="{{ route('search.customer')}}" class="form-container" method="get">
                     @csrf
 
                     <div class="search-item">
@@ -36,6 +36,7 @@
                             <th>ID </th>
                             <th>Customer Name </th>
                             <th>Email </th>
+                            <th>Address</th>
                             <th>Phone-no </th>
                             <th>Action</th>
                         </tr>
@@ -46,6 +47,7 @@
                                 <td>{{ $customer->id }}</td>
                                 <td>{{ $customer->firstname."\t". $customer->lastname}}</td>
                                 <td>{{ $customer->email}}</td>
+                                <td>{{ $customer->address}}</td>
                                 <td>{{ $customer->phonenumber }}</td>
                                 <td class="action">
                                     <form action="{{ url('customer/'.$customer->id)}}" method="POST">

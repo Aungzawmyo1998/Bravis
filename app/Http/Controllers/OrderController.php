@@ -54,10 +54,11 @@ class OrderController extends Controller
 
     public function search(Request $request)
     {
+
         $orderProducts = DB::table('order_products')
                         ->join('products','products.id','=','order_products.product_id')
                         ->join('orders','orders.id','=','order_products.order_id')
-                        ->select('order_products.*','products.image as pimage','products.name as pname')
+                        ->select('order_products.*','products.id as pid','products.image as pimage','products.name as pname')
                         ->get()
                         ->groupBy('order_id');
 
@@ -100,7 +101,7 @@ class OrderController extends Controller
 
                     ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
-                    ->paginate(6);
+                    ->paginate(6)->appends($request->except('page'));
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -115,7 +116,7 @@ class OrderController extends Controller
             ->orWhereAny(['customer_orders.fname','customer_orders.lname','customer_orders.address','customer_orders.state'],'LIKE',"%$name%")
             ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
-            ->paginate(6);
+            ->paginate(6)->appends($request->except('page'));
         }
         elseif($startDate == null && $searchValue != null && $endDate != null) // 011 -
         {
@@ -133,7 +134,7 @@ class OrderController extends Controller
 
             ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
-            ->paginate(6);
+            ->paginate(6)->appends($request->except('page'));
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -145,19 +146,12 @@ class OrderController extends Controller
             // dd($name);
             $orders = DB::table('orders')
             ->join('customer_orders','customer_orders.id','=','orders.co_id')
-            // ->whereDate('orders.created_at',$startDate)
-            // ->whereDate('orders.updated_at',$endDate)
-            // ->orWhere('orders.id',$name)
+
             ->orWhere('customer_orders.fname','LIKE',"%$fname%")
             ->orWhere('customer_orders.lname','LIKE',"%$lname%")
-            // ->orWhere('customer_orders.address','LIKE',"%$name%")
             ->orWhereAny(['customer_orders.fname','customer_orders.lname','customer_orders.address','customer_orders.state'],'LIKE',"%$name%")
-
-            // ->orWhere('customers.firstname','LIKE',"%$name%")
-            // ->orWhere('customers.lastname','LIKE',"%$name%")
             ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
-
-            ->paginate(6);
+            ->paginate(1)->appends($request->except('page'));
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -173,7 +167,7 @@ class OrderController extends Controller
 
             ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
-            ->paginate(6);
+            ->paginate(6)->appends($request->except('page'));
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -186,7 +180,7 @@ class OrderController extends Controller
 
             ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
-            ->paginate(6);
+            ->paginate(6)->appends($request->except('page'));
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -198,7 +192,7 @@ class OrderController extends Controller
             ->whereDate('orders.created_at',$startDate)
             ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
 
-            ->paginate(6);
+            ->paginate(6)->appends($request->except('page'));
 
 
             return view('admins.order.list',compact('orders','orderProducts'));
@@ -210,7 +204,7 @@ class OrderController extends Controller
             $orders = DB::table('orders')
                     ->join('customer_orders','customer_orders.id','=','orders.co_id')
                     ->select('orders.*','customer_orders.fname as fname','customer_orders.lname as lname','customer_orders.phone','customer_orders.address','customer_orders.zip_code','customer_orders.state')
-                    ->paginate(6);
+                    ->paginate(6)->appends($request->except('page'));
 
             // return view('admins.order.list',compact('orders','orderProducts'));
             return redirect()->route('order.list');

@@ -20,7 +20,7 @@
             <form class="form-container" action="{{ route('category.search')}}" method="get">
                 @csrf
                 <div class="search-item">
-                    <input type="text" name="search" id="" placeholder="Search by name / email /phone no">
+                    <input type="text" name="search" id="" placeholder="Search by name ">
                     <select name="position" id="" class="form-select">
                         <option value="default">Role</option>
                         @foreach ($roles as $role )

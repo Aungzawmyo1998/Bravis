@@ -20,7 +20,7 @@
             <form action="{{ route('supplier.search')}}" class="form-container" method="GET">
                 @csrf
                 <div class="search-item">
-                    <input type="text" name="search" id="" placeholder="Search by name/email/phone-no">
+                    <input type="text" name="search" id="" placeholder="Search by name">
                     <select name="brand" id="">
                         <option value="default" selected>Brand</option>
                         @foreach ($brands as $brand )

@@ -162,18 +162,18 @@ class AdminController extends Controller
 
    public function search (Request $request)
    {
+    // dd($request->role);
 
     $roles = Role::get();
     $role = $request->role;
     $search = $request->search;
 
+
+
+
+
         if ($search == null && $role == 'default') {
 
-            // $staffs = Admin::with('role')
-            //     ->orderBy('id','desc')
-            //     ->where('status','active')
-            //     ->paginate(1);
-            // return view('admins.staff.staff',compact('staffs','roles'));
             return redirect()->route('staff.list.show');
 
         } elseif ($request->has('search') && $role == 'default') {
@@ -181,7 +181,7 @@ class AdminController extends Controller
                 ->whereAny(['name','email','phone',],'LIKE',"%$search%")
                 ->where('status','active')
                 ->orderBy('id','desc')
-                ->paginate(6);
+                ->paginate(6)->appends($request->except('page'));
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -191,7 +191,7 @@ class AdminController extends Controller
                 ->where('role_id','=',"$role")
                 ->where('status','active')
                 ->orderBy('id','desc')
-                ->paginate(6);
+                ->paginate(6)->appends($request->except('page'));
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
@@ -202,11 +202,12 @@ class AdminController extends Controller
                 ->where('role_id','=',"$role")
                 ->where('status','active')
                 ->orderBy('id','desc')
-                ->paginate(6);
+                ->paginate(6)->appends($request->except('page'));
 
             return view('admins.staff.staff',compact('staffs','roles'));
 
         }
+
 
    }
 

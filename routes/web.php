@@ -102,7 +102,7 @@ Route::middleware(['admin'])->group( function () {
     Route::put('/staff/{id}', [AdminController::class, 'update'])->name('staff.update.process');
     Route::delete('/staff/{id}', [AdminController::class, 'destroy'])->name('staff.delete');
     Route::get('staff/logout',[AdminController::class, 'logout'])->name('staff.logout');
-    ROute::post('/staff/search',[AdminController::class, 'search'])->name('staff.search');
+    ROute::get('/staff/search',[AdminController::class, 'search'])->name('staff.search');
 
 
     // Product
@@ -141,7 +141,7 @@ Route::middleware(['admin'])->group( function () {
     // customer
     Route::get('/customer/list', [CustomerController::class, 'customer'])->name('customer.list');
     Route::delete('/customer/{id}', [CustomerController::class , 'destroy'])->name('destroy.custome');
-    Route::post('/customer/search', [CustomerController::class, 'search'])->name('search.customer');
+    Route::get('/customer/search', [CustomerController::class, 'search'])->name('search.customer');
 });
 
 
